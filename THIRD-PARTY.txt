@@ -1,0 +1,31 @@
+================================================================================
+GNU General Public License V3
+================================================================================
+Component: ArduinoSD Copyright (c) 2010 SparkFun Electronics - Copyright (c) 2009 by William Greiman
+License Text URL: licenses/LICENSE-arduinosd.txt
+Source Code: https://github.com/arduino-libraries/SD
+
+================================================================================
+BSD 2-Clause License
+================================================================================
+Component: Copyright (c) 2012 Adafruit Industries
+License Text URL: licenses/LICENSE-Adafruit_GFX_Library.txt
+Source Code: https://github.com/adafruit/Adafruit-GFX-Library
+
+================================================================================
+BSD 3-Clause License
+================================================================================
+Component: Copyright (c) 2015, Adafruit Industries
+License Text URL: licenses/LICENSE-Adafruit_BluefruitLE_nRF51.txt
+Source Code: https://github.com/adafruit/Adafruit_BluefruitLE_nRF51
+
+Component: Copyright (c) 2012, Adafruit Industries
+License Text URL: licenses/LICENSE-Adafruit_SSD1306.txt
+Source Code: https://github.com/adafruit/Adafruit_SSD1306
+
+================================================================================
+MIT License
+================================================================================
+Component: Copyright (c) 2016 Adafruit Industries
+License Text URL: licenses/LICENSE-Adafruit_FeatherOLED.txt
+Source Code: https://github.com/adafruit/Adafruit_FeatherOLED
