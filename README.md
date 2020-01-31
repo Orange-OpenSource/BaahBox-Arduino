@@ -102,8 +102,6 @@ The common training tools are not fun, there are no games. We provide with Baah 
 </table>
 
 
-## Build your Baah Box
-
 ## More links
 
 Here are four links pointing to all sides of the project.
