@@ -8,7 +8,7 @@ Muscle rehabilitation or training sessions can be very tedious and boring - not 
 
 ## Rationale
 
-We believe that playing while training can be much more enjoyable -and thus- efficient. Being able to train at home would also multiply the training sessions and further improve the recovery rate. 
+We believe that playing while training can be much more enjoyable -and thus- efficient, especially for kids. Being able to train at home would also multiply the training sessions and further improve the recovery rate. 
 
 That is why we came out with the Baah Box, a palm-sized arduino-based device which interacts with games on a mobile phone or a tablet (using Bluetooth). 
 Myo-electric sensors, or any *move* sensor (like joystick, button, etc.) can be plugged to the box, which will send the movements to the games, and move the games characters accordingly.
@@ -24,7 +24,7 @@ We also wanted it to be easy to build for any maker:
 ## Why Baah ?
  
  Because a (mad) sheep is a recurrent character of the games we wrote ! 
- and ***Baah*** is the sheep's signature !
+ and ***Baah*** is the sheep's call !
 
 
 ## What you need to play with it
@@ -122,7 +122,7 @@ We also wanted it to be easy to build for any maker:
 
 ## Build your own
 
-If you want to build your own Baah Box, check the documentation at  https://github.com/Orange-OpenSource/BaahBox-Arduino/doc/img/BaahBox.
+If you want to build your own Baah Box, check the documentation at https://github.com/Orange-OpenSource/BaahBox-Arduino/doc/img/BaahBox.
 
 ## More links
 
