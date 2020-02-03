@@ -2,13 +2,13 @@
 
 The _Baah Box_ project aims at providing individuals (children or adults) in need of motor recovering or rehabilitation with a new, innovative, portable and fun-to-use muscle training device. 
 
-The device could also be useful to people born with limb agenesis (or who suffered limb loss) and who will be equiped with a prosthesis in the near future. Those people need to train specific muscles to learn how to control their future prosthesis.
+The device could also be useful to people born with limb agenesis (or who suffered limb loss) and who will be equiped with a prosthesis in the near future. These people need to train specific muscles to learn how to control their future prosthesis.
 
-Muscle rehabilitation or training sessions can be very tedious and boring - not mentionning tiring, especially for children. They often last less than an hour, but imply to go to a dedicated center or at physician therapist's office to access to the training devices. The trip to the center takes sometimes more time than the session itself.
+Muscle rehabilitation or training sessions can be very tedious and boring - not mentionning tiring, especially for children. They often last less than an hour, but imply to go to a dedicated center or at physician therapist's office to access to the training devices. The trip to the center often takes more times than the session itself.
 
 ## Rationale
 
-We believe that playing while training can be much more enjoyable -and thus- efficient, especially for kids. Being able to train at home would also multiply the training sessions and further improve the recovery rate. 
+We believe that playing while training can be much more enjoyable -and thus- efficient, especially for children. Being able to train at home would also multiply the training sessions and further improve the recovery rate. 
 
 That is why we came out with the Baah Box, a palm-sized arduino-based device which interacts with games on a mobile phone or a tablet (using Bluetooth). 
 Myo-electric sensors, or any *move* sensor (like joystick, button, etc.) can be plugged to the box, which will send the movements to the games, and move the games characters accordingly.
@@ -23,8 +23,7 @@ We also wanted it to be easy to build for any maker:
  
 ## Why Baah ?
  
- Because a (mad) sheep is a recurrent character of the games we wrote ! 
- and ***Baah*** is the sheep's call !
+ Because a (mad) sheep is a recurrent character of the mobile games that we wrote and that ***Baah*** is the sheep's call !
 
 
 ## What you need to play with it
@@ -122,13 +121,14 @@ We also wanted it to be easy to build for any maker:
 
 ## Build your own
 
-If you want to build your own Baah Box, check the documentation at https://github.com/Orange-OpenSource/BaahBox-Arduino/doc/img/BaahBox.
+If you want to build your own Baah Box, check the documentation at https://github.com/Orange-OpenSource/BaahBox-Arduino/doc/BaahBox.
 
 ## More links
 
 Here are four links pointing to all sides of the project.
 
-* The box (Arduino sources, user manual and build documentation, stl files for the enclosure): https://github.com/Orange-OpenSource/BaahBox-Arduino
+* The box (Arduino sources): https://github.com/Orange-OpenSource/BaahBox-Arduino
+* The box (user manual and build documentation, stl files for the enclosure): https://github.com/Orange-OpenSource/BaahBox-Arduino/doc/BaahBox
 * The iOS code: https://github.com/Orange-OpenSource/BaahBox-iOS
 * The Android code: https://github.com/Orange-OpenSource/BaahBox-Android
 * The assets: https://github.com/Orange-OpenSource/BaahBox-assets
