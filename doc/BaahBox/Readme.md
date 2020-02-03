@@ -1,5 +1,5 @@
 
-#Qu’est ce que la Baah Box ?
+# Qu’est ce que la Baah Box ?
 
 ![BaahBoxPix](./img/photoBaaBox.jpg)
 
@@ -11,13 +11,13 @@ La Baah Box est un équipement d’aide à la rééducation de muscles suite à 
 Le boîtier est connecté via Bluetooth au téléphone mobile.
 Des jeux sur le téléphone mobile permettent aux patients de faire bouger des personnages grâce aux contractions musculaires détectées par les capteurs. 
 
-#A quoi sert la Baah Box ?
+# A quoi sert la Baah Box ?
 
 * Pour les accidentés:  **ré-apprendre** à utiliser des muscles en séance d’ergothérapie ou de kinésithérapie - mais aussi à la maison.
 * Pour les personnes qui vont être équipées de prothèse myo-électrique:  **s’entraîner** au maniement de la prothèse.
 
 
-#Pourquoi Baah ?
+# Pourquoi Baah ?
 
 Parce que le mouton est un personnage récurrent de nos jeux … 
 et que Baah, *c’est le cri du mouton !* (en anglais)
@@ -27,11 +27,11 @@ et que Baah, *c’est le cri du mouton !* (en anglais)
 ![BaahBoxPix](./img/logo_moot_200x200.jpg)
 
 
-#Vous avez une BaahBox et vous voulez jouer avec ?
+# Vous avez une BaahBox et vous voulez jouer avec ?
 Téléchargez l'application sur votre mobile ***(liens vers le repo ios eet android)***
 et jetez un coup d'oeil sur le [Manuel d'utilisation](BaahBoxManual_fr.md)
 
-#Vous voulez une BaahBox ?
+# Vous voulez une BaahBox ?
 
 Deux solutions: rapprochez vous d'un FabLab ou d'un maker pour la faire faire...
 ou bien fabriquez-la vous même !
@@ -58,6 +58,8 @@ Vous avez deux possibilités pour connecter des capteurs à la baah Box:
  Ce connecteur permet de brancher sur la Baah Box des capteurs à sorties multiples comme un joystick de console de jeux (exemple présenté plus bas).
  Les sorties de celui que nous avons utilisé sont binaires, mais on peut avoir des sorties analogiques. Il faudra par contre modifier le code de la carte arduino pour prendre en compte un nouveau capteur.
 
+
+(Coming soon)
 ### Le joystick
 ### Les capteurs myo-électriques
 
