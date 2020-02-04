@@ -76,7 +76,7 @@ et que Baah, *c’est le cri du mouton !* (en anglais)
 
 ## Liens
 
-* Les sources Arduino: https://github.com/Orange-OpenSource/BaahBox-Arduino
+* Les sources Arduino sont dans le répertoire *project* du repo https://github.com/Orange-OpenSource/BaahBox-Arduino
 * L'application iOS: https://github.com/Orange-OpenSource/BaahBox-iOS
 * L'application Android: https://github.com/Orange-OpenSource/BaahBox-Android
 * Les ressources graphiques: https://github.com/Orange-OpenSource/BaahBox-assets

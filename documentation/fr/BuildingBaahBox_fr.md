@@ -14,7 +14,7 @@ Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Vous pou
 
 Le code actuel permet d'utiliser soit les jacks soit le DB9, mais pas les 2 en même temps. Comme ils n'utilisent pas les mêmes entrées sur la carte, le code peut être modifié afin de permettre une utilisation simultanée.
 
-### La liste des éléments de la Baah Box est [ici](BaahBoxBoM_fr.md). 
+### La liste des éléments de la Baah Box est [ici](../BaahBoxBoM.md). 
 
 
   
@@ -25,7 +25,7 @@ Le code actuel permet d'utiliser soit les jacks soit le DB9, mais pas les 2 en m
 
 Le *"form factor"* des cartes que nous avons choisies (Feather de chez Adafruit) permet de les empiler, et donc d'éviter l'utilisation/fabrication d'un circuit imprimé spécifique. Ce qui fait que la construction du boîtier ne nécessite que très peu de soudures.
 
-Il est tout à fait possible d'utiliser d'autres cartes, il faudra juste modifier le boîtier et adapter le [code](#code).  
+Il est tout à fait possible d'utiliser d'autres cartes, il faudra juste modifier le boîtier et adapter le code.  
 
 
 
@@ -34,23 +34,10 @@ Il est tout à fait possible d'utiliser d'autres cartes, il faudra juste modifie
 Le design de notre boîtier est une adaptation de celui [proposé par Adafruit](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather)  pour ses cartes Feather. 
 Adafruit propose des [réglages](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing) pour Cura et Simplify3D, que nous vous conseillons d'utiliser.
 
-## <a name="code"></a>Code arduino
 
-Il faudra: 
-* uploader le code sur la carte **arduino**,   
-* copier les fichiers USER.CFG et SYSTEM.CFG sur **la carte SD**.
-### *(**mettre lien vers le repo arduino**)*
+## Code arduino
 
-
-**ATTENTION**: le code actuel correspond aux cartes que nous avons utilisées, à savoir: 
-* 	Feather M0 BlueFruit de chez Adafruit,
-* 	Les shields (Feather wings) lecteur SD et écran TFT d'Adafruit.
-
-Si vous voulez utiliser une autre carte compatible BTLE, il vous faudra adapter légèrement le code à votre carte (notamment la configuration du module BTLE et la syntaxe légèrement differente du standard arduino, due au microprocesseur M0).
- [Documentation Feather M0 BlueFruit](https://learn.adafruit.com/adafruit-feather-m0-bluefruit-le/adapting-sketches-to-m0).
- *NB:* Le code arduino nécessite une carte relativement puissante avec plus de mémoire qu'une carte de base. Une arduino à base de 32u4, par exemple, ne suffira pas.
- 
-
+Allez voir par [ici](../../project/README.md)!
 
 ##Electronique
 
@@ -62,9 +49,6 @@ Nous utilisons le montage proposé par Adafruit pour [l'alimentation] (https://l
 Vous y trouverez toutes les informations pour le montage pour réaliser le câble ci dessous.
 
 ![BOM](../img/SwitchConnection.jpg)
-
-
- 
 
 
 
@@ -86,7 +70,7 @@ Pour alimenter les connecteurs, on peut commencer par souder
 Les jacks servent à connecter des capteurs analogiques à une sortie.
 Ils faut souder donc 3 fils: Vcc, GND et signal.
 
-![BOM](../img/JackConnections.jpg)
+![BOM](../img/JACK_Herve_400x300.jpg)
 
 ![BOM](../img/Jack.jpg)
 
@@ -123,7 +107,7 @@ On soude ensemble les cables noirs (GND) des jacks et du dB9 avec le celui de la
 
 Puis on soude les fils du connecteur sur la Feather, selon le tableau ci-dessous: 
 
-![BOM](../img/CorrespondanceCablesDB9_Feather.jpg)
+![BOM](../img/Tableau_DB9_Feather_Joystick_herve_400x300.jpg)
 
 On voit sur ce schema la correspondance avec les positions du joystick qui sera branché dessus.
 Par exemple : lorsque le Joystick sera en position haute, le signal de la la broche 12 de la Feather passera de 0 à 1.

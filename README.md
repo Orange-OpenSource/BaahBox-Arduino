@@ -108,7 +108,7 @@ If you want to build your own Baah Box, check the [documentation](./documentatio
 
 Here are four links pointing to all sides of the project.
 
-* The box (Arduino sources): https://github.com/Orange-OpenSource/BaahBox-Arduino
+* The box (the Arduino sources are in the *project* directory): https://github.com/Orange-OpenSource/BaahBox-Arduino
 * The iOS code: https://github.com/Orange-OpenSource/BaahBox-iOS
 * The Android code: https://github.com/Orange-OpenSource/BaahBox-Android
 * The assets: https://github.com/Orange-OpenSource/BaahBox-assets

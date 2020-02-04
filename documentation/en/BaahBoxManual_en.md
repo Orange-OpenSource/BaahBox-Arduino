@@ -3,7 +3,7 @@
 ####Version 0.1 du 28/05/2019 
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/photoBaaBox.jpg" width="600">
+<img src="../img/BaahBoxManual/photoBaaBox.jpg" width="600">
 </div>
 
 <p style="page-break-after: always;">&nbsp;</p>
@@ -18,19 +18,19 @@
 ##### Attention: La mise en route peut prendre plusieurs secondes.
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Boitier.JPG"" width="200">
+<img src="../img/BaahBoxManual/Boitier.JPG"" width="200">
 </div>
 <BR/>
 
 - Attendre 2-3 s si l'écran affiche des petits points blancs.
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Neige.jpg" width="200">
+<img src="../img/BaahBoxManual/Neige.jpg" width="200">
 </div>
 
 
 - Appuyer sur le bouton **Reset** en haut à gauche de l'écran, et au bout de 2s l'écran affiche "Baah Box":
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Reset.jpg" width="200">
+<img src="../img/BaahBoxManual/Reset.jpg" width="200">
 </div>
 <BR/>
 
@@ -43,23 +43,23 @@
 
 - Un appui affiche les 2 capteurs, 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/2Capteurs.jpg" width="200">
+<img src="../img/BaahBoxManual/2Capteurs.jpg" width="200">
 </div>
 - Le 2ème appui affiche le capteur 1 seul,
 	
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Capteur1.jpg" width="200">
+<img src="../img/BaahBoxManual/Capteur1.jpg" width="200">
 </div>
 
 
 - Le 3ème appui affiche le capteur 2 seul,
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Capteur2.jpg" width="200">
+<img src="../img/BaahBoxManual/Capteur2.jpg" width="200">
 </div>
 
 - Le 4ème appui affiche les informations sur le joystick,
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Joystick.jpg" width="200">
+<img src="../img/BaahBoxManual/Joystick.jpg" width="200">
 </div>
 - Un appui supplémentaire revient à l'affichage des 2 capteurs.
 
@@ -69,12 +69,12 @@
 - Appuyer sur le bouton **-C** pour afficher les paramètres globaux du boitier.
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Parameter1.jpg" width="200">
+<img src="../img/BaahBoxManual/Parameter1.jpg" width="200">
 </div>
 
 - Un 2ème appui affiche les informations sur le niveau de batterie du boitier
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Parameter2.jpg" width="200">
+<img src="../img/BaahBoxManual/Parameter2.jpg" width="200">
 </div>
 
 
@@ -89,7 +89,7 @@
 - Un message apparaît demandant de choisir la Baah Box sur laquelle on veut se connecter
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Screen Shot 2019-01-24 at 12.22.40.png" width="100" border="1">
+<img src="../img/BaahBoxManual/Screen Shot 2019-01-24 at 12.22.40.png" width="100" border="1">
 </div>
 
 
@@ -103,13 +103,13 @@ L'écran de connexion apparaît
 - choisir la box __-puis-__ cliquer sur OK en haut à droite
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Screen Shot 2019-01-24 at 12.22.58.png" width="100" border="1">
+<img src="../img/BaahBoxManual/Screen Shot 2019-01-24 at 12.22.58.png" width="100" border="1">
 </div>
 
 ###Revenir au menu principal en cliquant sur la flèche en haut à gauche.
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Screen Shot 2019-01-24 at 12.23.08.png" width="150" border="1">
+<img src="../img/BaahBoxManual/Screen Shot 2019-01-24 at 12.23.08.png" width="150" border="1">
 </div>
 
 ## Choisir un jeu en cliquant sur le bandeau correspondant
@@ -139,7 +139,7 @@ Pour accéder aux différents réglages, il faut appuyer sur la petite roue cran
 
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Screen Shot 2019-01-24 at 12.23.18.png" width="100" border="1">
+<img src="../img/BaahBoxManual/Screen Shot 2019-01-24 at 12.23.18.png" width="100" border="1">
 </div>
 
 ### Réglage de Connexion
@@ -151,7 +151,7 @@ Lorsque la connexion est effective, l'application revient sur l'écran précéde
 Lorsque votre mobile est déjà connecté à une BaahBox, celle-ci apparaît avec une coche sur sa gauche. Appuyer sur le bouton "Se déconnecter" pour vous déconnecter de cette BaahBox.
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Screen Shot 2019-01-24 at 12.23.49.png" width="100"  border="1">
+<img src="../img/BaahBoxManual/Screen Shot 2019-01-24 at 12.23.49.png" width="100"  border="1">
 </div>
 
 
@@ -160,7 +160,7 @@ Lorsque votre mobile est déjà connecté à une BaahBox, celle-ci apparaît ave
 Cette partie permet de configurer des paramètres globaux à toute l'application. Une fois terminé, appuyez sur "Paramètres" en haut à gauche pour revenir à l'écran précédent.
 
 <div style="text-align:center" markdown="1">
-<img src="./img/BaahBoxManual/Parameters.PNG" width="100"  border="1">
+<img src="../img/BaahBoxManual/Parameters.PNG" width="100"  border="1">
 </div>
 
 
@@ -211,18 +211,7 @@ et un bouton au dessus de l'écran : **Reset**
 
 ## Important
    
-###Pour recharger la batterie, il faut brancher le boîtier sur le chargeur USB,
-### **mais laisser le boîtier allumé** (interrupteur vers le scotch rouge).
-
-
-
-## Pour toute question: 
-
-
-
-contactez Frédérique Pinson au 06 76 75 72 05 
-
-[frederique.pinson@orange.com](mailto:frederique.pinson@orange.com)
-
+### Pour recharger la batterie, il faut brancher le boîtier sur le chargeur USB,
+### **mais laisser le boîtier allumé** 
 
 
