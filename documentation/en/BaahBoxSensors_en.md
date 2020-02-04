@@ -1,15 +1,3 @@
-Baah Box Sensors
+# Baah Box Sensors
 
-
-
-
-CApteirs myo
-
-
-sliders
-
-
-joystick
-
-
-....
+## coming soon

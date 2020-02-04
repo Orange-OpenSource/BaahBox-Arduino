@@ -1,7 +1,8 @@
+
+# WIP !!!
+
+
 # Exemple de capteurs pour la Baah Box
-
-
-
 
 ## Capteurs myo-éléctriques
 
