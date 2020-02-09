@@ -18,7 +18,7 @@
 ##### Warning: The start-up may take several seconds.
 
 <div style="text-align:center" markdown="1">
-<img src="../img/BaahBoxManual/Boitier.JPG"" width="200">
+<img src="../img/BaahBoxManual/Boitier.jpg"" width="200">
 </div>
 <BR/>
 
@@ -28,7 +28,7 @@
 </div>
 
 
-- Press the ** Reset ** button at the top left of the screen, and after 2s the screen displays "Baah Box":
+- Press the **Reset** button at the top left of the screen, and after 2s the screen displays "Baah Box":
 <div style="text-align:center" markdown="1">
 <img src="../img/BaahBoxManual/Reset.jpg" width="200">
 </div>
@@ -39,7 +39,7 @@
 
 - Put the sensors on the muscles to be trained.
 
-- Press the ** - B - ** button to display the curves of the data sent by the sensors.
+- Press the **-B-** button to display the curves of the data sent by the sensors.
 
 - A press displays the 2 sensors,
 <div style="text-align:center" markdown="1">
@@ -159,7 +159,7 @@ If your mobile is already connected to a BaahBox, it will appear with a check ma
 This part allows you to configure global settings for the whole application. Once done, tap "Settings" in the top left to return to the previous screen.
 
 <div style="text-align:center" markdown="1">
-<img src="../img/BaahBoxManual/Parameters.PNG" width="100"  border="1">
+<img src="../img/BaahBoxManual/Parameters.png" width="100"  border="1">
 </div>
 
 
@@ -191,7 +191,7 @@ and a button above the screen: **Reset**
 ### The **B** button is used to check the correct functioning of the sensors
 (see the corresponding section at the beginning of the document)
 
-### The ** C ** Button displaying configuration information and the battery level
+### The **C** Button displaying configuration information and the battery level
 
 - 1st press: display the following information:
 
