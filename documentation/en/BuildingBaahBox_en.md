@@ -114,7 +114,7 @@ For example: when the Joystick is in the high position, the signal from pin 12 o
 
 
 
-## Assembling:
+## Assembling
 
 Once everything is soldered, you have to put everything in the box!
 

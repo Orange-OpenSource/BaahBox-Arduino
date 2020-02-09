@@ -113,7 +113,7 @@ On voit sur ce schema la correspondance avec les positions du joystick qui sera 
 Par exemple : lorsque le Joystick sera en position haute, le signal de la la broche 12 de la Feather passera de 0 à 1.
 
 
-## Montage :
+## Montage
 
 Une fois que tout est soudé, il faut tout rentrer dans le boîtier !
 
