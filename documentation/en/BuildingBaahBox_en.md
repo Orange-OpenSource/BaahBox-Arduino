@@ -1,91 +1,87 @@
 
-# Fabriquer une Baah Box
+# Building a Baah Box
 
 ![BOM](../img/BOM.jpg)
 
 
 
-# Matériel
-La Baah Box consiste en une carte arduino compatible BTLE, un shield lecteur SD - avec une carte SD de 4Go, un écran TFT, et des connecteurs (2 jacks et/ou un connecteur DB9), le tout dans un boîtier imprimé en 3D.
+# Equipment
+The Baah Box consists of a BTLE compatible arduino card, an SD reader shield - with a 4GB SD card, a TFT screen, and connectors (2 jacks and / or a DB9 connector), all in a 3D printed case.
 
-Les jacks servent à connecter des capteurs à une seule sortie analogique comme des capteurs myo-électriques ou des potentiomètres (sliders). Les jacks peuvent être utilisés indépendamment seuls ou ensembles. 
+The jacks are used to connect sensors to a single analog output such as myoelectric sensors or potentiometers (sliders). The jacks can be used independently alone or together.
 
-Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Vous pourrez y brancher par exemple un joystick.
+The DB9 is used to connect a sensor to several (digital) outputs. You can connect a joystick, for example.
 
-Le code actuel permet d'utiliser soit les jacks soit le DB9, mais pas les 2 en même temps. Comme ils n'utilisent pas les mêmes entrées sur la carte, le code peut être modifié afin de permettre une utilisation simultanée.
+The current code allows you to use either the jacks or the DB9, but not both at the same time. Since they do not use the same entries on the card, the code can be updated to allow simultaneous use.
 
-### La liste des éléments de la Baah Box est [ici](../BaahBoxBoM.md). 
-
-
-  
-## Choix du matériel
-  
-
-*Nous avons fait le choix de prendre du matériel facile à trouver (dans un magasin d'électronique ou sur internet). Nous voulions que n'importe quel "maker" disposant d'une imprimante 3D et sachant faire des soudures simples puisse fabriquer une Baah Box.*
-
-Le *"form factor"* des cartes que nous avons choisies (Feather de chez Adafruit) permet de les empiler, et donc d'éviter l'utilisation/fabrication d'un circuit imprimé spécifique. Ce qui fait que la construction du boîtier ne nécessite que très peu de soudures.
-
-Il est tout à fait possible d'utiliser d'autres cartes, il faudra juste modifier le boîtier et adapter le code.  
+### The list of items in the Baah Box is [here](../BaahBoxBoM.md).
 
 
 
-## Impression du boîtier
-(téléchargez et imprimez les [fichiers STL](../3D/STLBaahBoxDB9.zip)).
-Le design de notre boîtier est une adaptation de celui [proposé par Adafruit](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather)  pour ses cartes Feather. 
-Adafruit propose des [réglages](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing) pour Cura et Simplify3D, que nous vous conseillons d'utiliser.
+## Choice of hardware
 
-## Code arduino
+
+* We have chosen to take hardware that is easy to find (in an electronics store or on the internet). We wanted any "maker" with a 3D printer and able to make simple welds to make a Baah Box. *
+
+The *"form factor"* of the cards we have chosen (Feather from Adafruit) makes it possible to stack them, and therefore to avoid the use/build of a specific printed circuit. This means that the construction of the box requires very few solders.
+
+It is quite possible to use other cards, you will just have to modify the box and adapt the code.
+
+
+
+## Printing the box
+(download and print the [STL files](../3D/STLBaahBoxDB9.zip)).
+The design of our box is an adaptation of that [proposed by Adafruit](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather) for its Feather cards.
+Adafruit offers [settings](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing) for Cura and Simplify3D, which we recommend using.
+
+
+## Arduino code
 
 Please check the documentation [here](../../project/README.md) !
 
+##Electronic
 
-##Electronique
+### Power
+So that the box can be used anywhere, we added a battery, and a switch.
+It is not mandatory to operate the card, which can just be connected to a usb power supply (5V).
 
-### Alimentation 
-Pour que le boîtier puisse être utilisé n'importe où, nous avons ajouté une batterie, et un interrupteur.
-Ce n'est pas obligatoire pour faire fonctionner la carte, qui peut juste être branchée sur une alimentation usb (5V).
+We use the assembly proposed by Adafruit for [power](https://learn.adafruit.com/on-slash-off-switches)
+You will find there all the information for the assembly to realize the cable below.
 
-Nous utilisons le montage proposé par Adafruit pour [l'alimentation] (https://learn.adafruit.com/on-slash-off-switches)
-Vous y trouverez toutes les informations pour le montage pour réaliser le câble ci dessous.
-
-![BOM](../img/SwitchConnection.jpg)
-
-
- 
+![BOM](../img /SwitchConnection.jpg)
 
 
 
 
-### Connectique 
-Nous branchons deux types de connecteurs sur la carte : 
-des jacks stéréo et un connecteur DB9.
+### Connectivity
+We plug two types of connectors on the card:
+stereo jacks and a DB9 connector.
 
 
-Pour alimenter les connecteurs, on peut commencer par souder 
-* le fil rouge sur la broche 3.3V
-* le fil noir sur la Feather.
+To power the connectors, you can start by soldering
+* the red wire on the 3.3V pin
+* the black wire on the Feather.
 
 
 ![BOM](../img/Feather_PowerCables.jpg)
 
 
 #### Jacks
-Les jacks servent à connecter des capteurs analogiques à une sortie.
-Ils faut souder donc 3 fils: Vcc, GND et signal.
+The jacks are used to connect analog sensors to an output.
+You need to solder 3 wires: Vcc, GND and signal.
 
 ![BOM](../img/JACK_Herve_400x300.jpg)
 
-
 ![BOM](../img/Jack.jpg)
 
-On soude les cables "signal"  (bleu et vert) des jack sur les broches analogiques A0 et A1 de la Feather. 
+We solder the "signal" cables (blue and green) of the jack on the analog pins A0 and A1 of the Feather.
 
 ![BOM](../img/Feather_JackConnection.jpg)
 
 
 
-On soude les fils rouge (Vcc) des jacks et de la feather ensemble.
-On voit sur la photo qu'on utilise une gaine thermo-rétractable après soudure pour éviter des   court-circuits. 
+We solder the red wires (Vcc) of the jacks and the feather together.
+We see in the pict that we use a heat-shrinkable sheath after soldering to avoid short circuits.
 
 ![BOM](../img/Feather_JackPowerConnection.jpg)
 
@@ -94,63 +90,60 @@ On voit sur la photo qu'on utilise une gaine thermo-rétractable après soudure 
 
 
 #### DB9
-Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Nous branchons un joystick sur ce connecteur DB9, qui n'a pas besoin d'être alimenté. 
-Par contre il nous faut brancher 5 cables :
-* Un fil (noir) qui servira de référence (soudé à la masse (GND),
-* 4 fils pour les contacteurs des différentes position du Joystick.
+The DB9 is used to connect a sensor to several (digital) outputs. We connect a joystick to this DB9 connector, which does not need to be powered.
+By cons we need to connect 5 cables:
+* A wire (black) which will serve as a reference (soldered to ground (GND),
+* 4 wires for the contactors of the different positions of the Joystick.
 
 
 ![BOM](../img/DB9.jpg)
 
 
 
-On soude ensemble les cables noirs (GND) des jacks et du dB9 avec le celui de la Feather  
+We solder together the black wires (GND) of the jacks and dB9 with the Feather one
 ![BOM](../img/Feather_Jack_And_DB9_GroundConnection.jpg)
 
 
 
-Puis on soude les fils du connecteur sur la Feather, selon le tableau ci-dessous: 
+Then we solder the connector wires on the Feather, according to the table below:
 
 ![BOM](../img/Tableau_DB9_Feather_Joystick_herve_400x300.jpg)
 
-On voit sur ce schema la correspondance avec les positions du joystick qui sera branché dessus.
-Par exemple : lorsque le Joystick sera en position haute, le signal de la la broche 12 de la Feather passera de 0 à 1.
+We see on this diagram the correspondence with the positions of the joystick which will be connected to it.
+For example: when the Joystick is in the high position, the signal from pin 12 of the Feather will go from 0 to 1.
 
 
 
-##Montage : 
+##Assembling:
 
-Une fois que tout est soudé, il faut tout rentrer dans le boîtier ! 
+Once everything is soldered, you have to put everything in the box!
 
-Nous utilisons le mode d'emploi fourni par Adafruit pour monter le boîtier de feather avec une batterie, en y ajoutant nos modifications (ajout des connecteurs).
-Nous vous conseillons de suivre les étapes comme indiqué dans ce [mode d'emploi](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/assembly), en y ajoutant la vissage des connecteurs sur le boîtier.
+We use the user manual provided by Adafruit to assemble the feather box with a battery, adding our modifications (adding connectors).
+We advise you to follow the steps as indicated in this [user manual](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/assembly), adding the screwing of the connectors on the box.
 
-- On commence par positionner la batterie et l'interrupteur
+- We start by positioning the battery and the switch
 
 ![BOM](../img/BatteryAndSwitchInBox.jpg)
 
-- on passe le connecteur de batterie par le trou du fond du boîtier
-- On met la feather en place dans le boitier.
-Comme les cartes s'empilent, 
-Vous avez le choix de ne visser que la feather dans le boîtier puis empiler les shields de la carte SD et l'écran.
+- we pass the battery connector through the hole in the bottom of the case
+- We put the feather in place in the case.
+As the cards pile up, you have the choice to screw only the feather in the case then stack the shields of the SD card and the screen.
 
-Avec les vis de entre 19 et 25mm  de long, on peut visser la feather et la carte SD.
-le shield écran est juste clipsé dessus.
+With the screws between 19 and 25mm long, you can screw the feather and the SD card.
+The screen shield is just clipped on.
 
-- On visse les jacks dans les deux trous circulaires côté façade
+- We screw the jacks in the two circular holes on the front side
 
 ![](../img/jacks_holes_small.jpg)
 
- et le DB9 dans son encart sur le côté de la boîtier.
- 
+ and the DB9 in its insert on the side of the box.
+
  ![](../img/DB9_hole_small.jpg)
 
-Tout est dans la boîte, il faut refermer...
+Everything is in the box, you have to close ...
 
 ![BOM](../img/boite_montee_2part.jpg)
-Et voilà la boîte montée !
-
+And here is the box mounted!
 
 
 ![BOM](../img/boitier_fini_small.jpg)
-
