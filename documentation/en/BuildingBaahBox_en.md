@@ -39,7 +39,7 @@ Adafruit offers [settings](https://learn.adafruit.com/3d-printed-case-for-adafru
 
 Please check the documentation [here](../../project/README.md) !
 
-##Electronic
+## Electronic
 
 ### Power
 So that the box can be used anywhere, we added a battery, and a switch.
@@ -48,7 +48,7 @@ It is not mandatory to operate the card, which can just be connected to a usb po
 We use the assembly proposed by Adafruit for [power](https://learn.adafruit.com/on-slash-off-switches)
 You will find there all the information for the assembly to realize the cable below.
 
-![BOM](../img /SwitchConnection.jpg)
+![BOM](../img/SwitchConnection.jpg)
 
 
 
@@ -114,7 +114,7 @@ For example: when the Joystick is in the high position, the signal from pin 12 o
 
 
 
-##Assembling:
+## Assembling:
 
 Once everything is soldered, you have to put everything in the box!
 
@@ -143,7 +143,7 @@ The screen shield is just clipped on.
 Everything is in the box, you have to close ...
 
 ![BOM](../img/boite_montee_2part.jpg)
-And here is the box mounted!
 
+And here is the box mounted!
 
 ![BOM](../img/boitier_fini_small.jpg)
