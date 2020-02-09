@@ -1,6 +1,6 @@
 # Mode d'emploi de la Baah Box
 
-####Version 0.1 du 28/05/2019 
+#### Version 0.1 du 28/05/2019
 
 <div style="text-align:center" markdown="1">
 <img src="../img/BaahBoxManual/photoBaaBox.jpg" width="600">
@@ -41,12 +41,12 @@
 
 - Appuyer sur le bouton **-B-** pour afficher les courbes des données envoyées par les capteurs.
 
-- Un appui affiche les 2 capteurs, 
+- Un appui affiche les 2 capteurs,
 <div style="text-align:center" markdown="1">
 <img src="../img/BaahBoxManual/2Capteurs.jpg" width="200">
 </div>
 - Le 2ème appui affiche le capteur 1 seul,
-	
+
 <div style="text-align:center" markdown="1">
 <img src="../img/BaahBoxManual/Capteur1.jpg" width="200">
 </div>
@@ -106,7 +106,7 @@ L'écran de connexion apparaît
 <img src="../img/BaahBoxManual/Screen Shot 2019-01-24 at 12.22.58.png" width="100" border="1">
 </div>
 
-###Revenir au menu principal en cliquant sur la flèche en haut à gauche.
+### Revenir au menu principal en cliquant sur la flèche en haut à gauche.
 
 <div style="text-align:center" markdown="1">
 <img src="../img/BaahBoxManual/Screen Shot 2019-01-24 at 12.23.08.png" width="150" border="1">
@@ -116,9 +116,9 @@ L'écran de connexion apparaît
 
 Pour chaque jeu, une petite animation montre ce qu'il faut faire.  Il faut cliquer sur **"Commencer"** pour jouer.
 
-###Information importante pour les jeux 
+### Information importante pour les jeux
 
-####Pensez à fermer l'application sur la tablette/le mobile après chaque utilisation.
+#### Pensez à fermer l'application sur la tablette/le mobile après chaque utilisation.
 
 
 <p style="page-break-after: always;">&nbsp;</p>
@@ -127,7 +127,7 @@ Pour chaque jeu, une petite animation montre ce qu'il faut faire.  Il faut cliqu
 
 Pour accéder aux différents réglages, il faut appuyer sur la petite roue crantée située en haut à droite de l'écran du mobile/de la tablette.
 
-#####Plusieurs catégories de réglages sont disponibles:
+##### Plusieurs catégories de réglages sont disponibles:
 
 - Connexion : pour sélectionner une autre BaahBox
 - Général :
@@ -144,7 +144,7 @@ Pour accéder aux différents réglages, il faut appuyer sur la petite roue cran
 
 ### Réglage de Connexion
 Cette partie gère la connexion et la déconnexion de votre BaahBox.
- 
+
 Sélectionnez la BaahBox dans la liste proposée. Appuyez ensuite sur OK en haut à droite de l'écran.
 Lorsque la connexion est effective, l'application revient sur l'écran précédent.
 
@@ -181,7 +181,7 @@ Une fois les paramètres sélectionnés, ils sont immédiatement pris en compte 
 
 ## Utilisation des boutons du boîtier
 
-Il y a 3 boutons à gauche de l'écran (**A**, **B**, **C**) 
+Il y a 3 boutons à gauche de l'écran (**A**, **B**, **C**)
 
 et un bouton au dessus de l'écran : **Reset**
 
@@ -190,10 +190,10 @@ et un bouton au dessus de l'écran : **Reset**
 ### Le bouton **A** affiche la page d'accueil (la bannière Baah Box)
 
 ### Le bouton **B** sert à vérifier le bon fonctionnement des capteurs
-(voir la section correspondante au début du document) 
+(voir la section correspondante au début du document)
 
 ### Le Bouton **C** affichage des informations de configuration et le niveau de batterie
- 
+
 - 1er appui : affichage des informations suivantes :
 
 	- BTLE : nom de la Baah Box (defini sur la carte SD)
@@ -210,9 +210,6 @@ et un bouton au dessus de l'écran : **Reset**
 # Pour recharger la batterie du boîtier
 
 ## Important
-   
+
 ###Pour recharger la batterie, il faut brancher le boîtier sur le chargeur USB,
-### **mais laisser le boîtier allumé** (interrupteur vers le scotch rouge).
-
-
-
+### **mais laisser le boîtier allumé** (interrupteur vers le scotch rouge)
