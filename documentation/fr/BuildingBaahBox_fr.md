@@ -14,7 +14,7 @@ Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Vous pou
 
 Le code actuel permet d'utiliser soit les jacks soit le DB9, mais pas les 2 en même temps. Comme ils n'utilisent pas les mêmes entrées sur la carte, le code peut être modifié afin de permettre une utilisation simultanée.
 
-### La liste des éléments de la Baah Box est [ici](../BaahBoxBoM.md).
+### La liste des éléments de la Baah Box est [ici](BaahBoxBoM_fr.md).
 
 
 
