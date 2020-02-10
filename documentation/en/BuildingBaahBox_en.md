@@ -14,7 +14,7 @@ The DB9 is used to connect a sensor to several (digital) outputs. You can connec
 
 The current code allows you to use either the jacks or the DB9, but not both at the same time. Since they do not use the same entries on the card, the code can be updated to allow simultaneous use.
 
-### The list of items in the Baah Box is [here](../BaahBoxBoM.md).
+### The list of items in the Baah Box is [here](./BaahBoxBoM_en.md).
 
 
 
