@@ -22,6 +22,7 @@ Le positionnement des capteurs sur le bras du patient est assez délicat; sur ch
 
 
 ![](../img/topSensor.jpg)
+
 On peut voir sur la droite du plan de connexion  les 3 points de connexions que nous utilisons : "+", "-", "sig".
 
 
@@ -32,6 +33,7 @@ On peut voir sur la droite du plan de connexion  les 3 points de connexions que 
 ## Soudure
 
 Pour utiliser un capteur myo-éléctrique avec la Baah box,
+
 ![](../img/photoBaahBox_p.jpg)
  
 Il faudra relier un jack stéréo au capteur via 3 cables (alimentation, masse et signal), d'environ un mètre de long.
@@ -40,6 +42,7 @@ Il faudra relier un jack stéréo au capteur via 3 cables (alimentation, masse e
 
 
 ![](../img/connection_jack_male.jpg)
+
 ![](../img/connections_myo.jpg)
 
 ## Pour tester: les *sliders*
@@ -50,7 +53,6 @@ Vous pouvez aussi tester (et jouer!) les applications et la connexion avec la Ba
 
 
 ![](../img/slider.jpg)
-
 
 
 
