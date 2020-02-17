@@ -108,7 +108,7 @@ Vous avez deux possibilités pour connecter des capteurs à la baah Box:
 
 * **Par les prises jack:**
  Tout capteur à une sortie analogique, compatible arduino et alimentable en 3.3V.
- Par exemple les capteurs myo-électriques présentés plus bas, ou des potentiomètres (sliders)
+ Par exemple les capteurs myo-électriques présentés plus bas, ou des potentiomètres.
  
 * **Via le connecteur DB9:**
 
@@ -119,6 +119,9 @@ Vous avez deux possibilités pour connecter des capteurs à la baah Box:
 
 
 
-### Le joystick (en cours)
-### Les capteurs myo-électriques (en cours)
+### Exemples de capteurs 
+
+Fabriquez un [joystick interactif ou des capteurs myo-électriques](./BaahBoxSensors_fr.md) pour votre Baah Box.
+
+
 
