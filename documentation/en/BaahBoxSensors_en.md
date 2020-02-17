@@ -30,6 +30,7 @@ You will find plenty of links and instructions on the web on how to use those se
 
 
 ![](../img/topSensor.jpg)
+
  You will have to use the 3 pins "+", "-", "sig" (as shown below on to the right of the sensor).
 
 
@@ -43,6 +44,7 @@ using 3 (approx. 1 m long) cables - one for Vcc, one for the Ground, and one for
 
 
 ![](../img/connection_jack_male.jpg)
+
 ![](../img/connections_myo.jpg)
 
 ## Sliders
@@ -60,10 +62,12 @@ always using the same connection  as the myoware sensor.
 ## Joystick
 
 You can use an Arcade Joystick with its connection cable, like this one.
+
 ![](../img/Arcade_Joystick_400X300.jpeg)
 
 
 And cut one end of the cable to solder it to a male DB9 connector.
+
 ![](../img/db9_male.jpg)
  
 ### Soldering 

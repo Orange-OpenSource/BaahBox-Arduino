@@ -105,6 +105,8 @@ Have a look on the [user's guide](./BaahBoxManual_en.md)
 
 If you want to build your own Baah Box, check the [documentation](./BuildingBaahBox_en.md).
 
+If you want to build your own sensors, check the [sensor documentation](./BaahBoxSensors_en.md).
+
 ## More links
 
 Here are four links pointing to all sides of the project.
