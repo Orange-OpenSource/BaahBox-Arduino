@@ -67,6 +67,8 @@ dont nous coupons une des extrémités pour la souder sur une prise DB9 mâle.
 ![](../img/db9_male.jpg)
 
 La table ci-dessous montre les connexions à effectuer. 
+
+
 ![](../img/DB9-Joystick.jpg)
 
 
