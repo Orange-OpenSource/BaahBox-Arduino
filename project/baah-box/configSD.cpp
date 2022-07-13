@@ -53,7 +53,7 @@ void configSDClass::init(void)
   }
   Serial.println("card initialized.\n");
 
-  Serial.println("Initialize config file for 3DHandZ...");
+  Serial.println("Initialize config file for BaahBox...");
 
   root = SD.open("/");
 
@@ -74,7 +74,7 @@ void configSDClass::init(void)
 //*********************************************
 void configSDClass::loadDefaultValues(void)
 {
-  this->btleDeviceName = "Baah Box";
+  this->btleDeviceName = "My Baah Box";
   this->nbMuscleSensor = NB_MUSCLE_SENSOR;
   //Serial.print("Default values for sensors : ");
   this->pinAnalogInputTab[0] = 0;

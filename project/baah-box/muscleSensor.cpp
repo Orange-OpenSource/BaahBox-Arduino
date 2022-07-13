@@ -89,6 +89,7 @@ int muscleSensorClass::init(unsigned long period, btleClass btle)
     // init scheduler
     scheduler = new Scheduler(millis(), MUSCLE_PERIOD_IN_MS);
     Serial.println("muscleClass::init => OK\n");
+    return 0;
 }
 
 //*********************************************
