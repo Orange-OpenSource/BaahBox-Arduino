@@ -53,7 +53,7 @@ void configSDClass::init(void)
   }
   Serial.println("card initialized.\n");
 
-  Serial.println("Initialize config file for 3DHandZ...");
+  Serial.println("Initialize config file for BaahBox...");
 
   root = SD.open("/");
 

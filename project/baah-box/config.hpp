@@ -40,13 +40,13 @@ extern configSDClass config3dHandz;
 #define HAND_TYPE HAND_SERIAL // no used in this version
 #define DISPLAY_DELAY 20      // timer refresh value for displayer
 #define APPLICATION_NAME "Baah Box"
-#define COPYRIGHT "(C) 2019 Orange SA"
+#define COPYRIGHT "(C) 2022 Orange SA"
 #define __DEBUG__ // debug mode (activate log on Serial outpout)
 
 //========================
 // BTLE parameters for default
 //========================
-#define BTLE_DEVICE_NAME "Baah Box 1"
+#define BTLE_DEVICE_NAME "Baah Box"
 
 //========================
 // Sensor parameters
