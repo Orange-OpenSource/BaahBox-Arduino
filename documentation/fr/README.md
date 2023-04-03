@@ -103,7 +103,7 @@ ou bien fabriquez-la vous même !
 
 Le coeur de la Baah Box est une petite carte Arduino...Il faut la programmer ! 
 
-Vous trouverez le code arduino (et la documentation pour l'installer) dans le repo [Arduino](https://github.com/Orange-OpenSource/BaahBox-Arduino/project)
+Vous trouverez le code arduino (et la documentation pour l'installer) dans le [répertoire projet du repo Arduino](../../project/)
  
 ## Fabriquez vos capteurs
 
