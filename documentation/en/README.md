@@ -109,7 +109,7 @@ If you want to build your own Baah Box, check the [documentation](./BuildingBaah
 
 Your Baah Box is composed of an arduino board with sensors and shields. You will need to program it !
 
-Check the [Arduino project] (https://github.com/Orange-OpenSource/BaahBox-Arduino/project) for the source code and the installation documentation.
+Check the [Arduino project](../../project/) for the source code and the installation documentation.
  
  ## Build your sensors
  
