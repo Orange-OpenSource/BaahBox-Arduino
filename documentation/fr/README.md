@@ -6,7 +6,7 @@ La Baah Box est un équipement d’aide à la rééducation de muscles suite à 
 * Divers capteurs musculaires (par ex. un joystick ou des détecteurs de contractions de muscles) 
 
 Le boîtier est connecté via Bluetooth au téléphone mobile.
-Des jeux sur le téléphone mobile permettent aux patients de faire bouger des personnages grâce aux contractions musculaires détectées par les capteurs. 
+Des jeux sur le téléphone mobile permettent aux patients de faire bouger des personnages grâce aux contractions musculaires détectées par les capteurs.
 
 
 ![BaahBoxPix](../img/photoBaaBox.jpg)
@@ -100,7 +100,10 @@ ou bien fabriquez-la vous même !
  [Suivez le guide !](BuildingBaahBox_fr.md)
 
 ## Téléchargez le code à mettre sur la Baah Box
-Vous trouverez le code arduino pour la carte de la Baah Box dans le repo [Arduino](https://github.com/Orange-OpenSource/BaahBox-Arduino)
+
+Le coeur de la Baah Box est une petite carte Arduino...Il faut la programmer ! 
+
+Vous trouverez le code arduino (et la documentation pour l'installer) dans le repo [Arduino](https://github.com/Orange-OpenSource/BaahBox-Arduino/project)
  
 ## Fabriquez vos capteurs
 

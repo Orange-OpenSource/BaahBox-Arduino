@@ -105,6 +105,24 @@ Have a look on the [user's guide](./BaahBoxManual_en.md)
 
 If you want to build your own Baah Box, check the [documentation](./BuildingBaahBox_en.md).
 
+## Program your Baah Box
+
+Your Baah Box is composed of an arduino board with sensors and shields. You will need to program it !
+
+Check the [Arduino project] (https://github.com/Orange-OpenSource/BaahBox-Arduino/project) for the source code and the installation documentation.
+ 
+ ## Build your sensors
+ 
+We propose two kinds of connexions to plug sensors to the Baah Box :
+
+* **standard jack:**
+ Fits any analog arduino compatible sensor (3.3 V only).
+ Sliders, myo-electric sensors are good examples.
+ You can plug two sensors, they will be connected to Analog pins on the arduino. 
+ 
+* **DB9 plug:**
+This plug is very useful for arcade console joysticks with 5 connectors (see below how to build and use one). 
+
 If you want to build your own sensors, check the [sensor documentation](./BaahBoxSensors_en.md).
 
 ## More links
