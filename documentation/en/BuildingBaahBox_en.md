@@ -6,7 +6,7 @@
 
 
 # Equipment
-The Baah Box consists of a BTLE compatible arduino card, an SD reader shield - with a 4GB SD card, a TFT screen, and connectors (2 jacks and / or a DB9 connector), all in a 3D printed case.
+The Baah Box consists of a BTLE compatible arduino card, an SD reader shield - with a 4GB SD card, a TFT screen shield, and connectors (2 jacks and / or a DB9 connector), all in a 3D printed case.
 
 The jacks are used to connect sensors to a single analog output such as myoelectric sensors or potentiometers (sliders). The jacks can be used independently alone or together.
 
@@ -125,9 +125,10 @@ We advise you to follow the steps as indicated in this [user manual](https://lea
 
 ![BOM](../img/BatteryAndSwitchInBox.jpg)
 
-- we pass the battery connector through the hole in the bottom of the case
+- We pass the battery connector through the hole in the bottom of the case
 - We put the feather in place in the case.
-As the cards pile up, you have the choice to screw only the feather in the case then stack the shields of the SD card and the screen.
+
+As the cards pile up, you have the choice to screw only the feather in the case then stack the shields of the SD card and the screen (on top).
 
 With the screws between 19 and 25mm long, you can screw the feather and the SD card.
 The screen shield is just clipped on.

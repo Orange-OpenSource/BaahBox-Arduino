@@ -1,7 +1,7 @@
 
 # Exemple de capteurs pour la Baah Box
 
-## Capteurs myo-éléctriques
+## A. Capteurs myo-éléctriques
 
 Principe de base : les capteurs de muscles delivrent un signal analogique proportionnel à l'influx musculaire exercé sur eux.
 
@@ -39,15 +39,13 @@ Pour utiliser un capteur myo-éléctrique avec la Baah box,
 Il faudra relier un jack stéréo au capteur via 3 cables (alimentation, masse et signal), d'environ un mètre de long.
 
 
-
-
 ![](../img/connection_jack_male.jpg)
 
 ![](../img/connections_myo.jpg)
 
-## Pour tester: les *sliders*
+### Tester les connexions avec des potentiomètres (*sliders*)
 
-Vous pouvez aussi tester (et jouer!) les applications et la connexion avec la Baah Box avec des potentiomètres linéaires (*sliders*) !
+Vous pouvez aussi tester (et jouer!) les applications et la connexion avec la Baah Box avec des potentiomètres (*sliders*) !
 
 (Toujours en reliant le jack au potentiomètre en utilisant les broches VCC, GND, et SIG)
 
@@ -56,7 +54,7 @@ Vous pouvez aussi tester (et jouer!) les applications et la connexion avec la Ba
 
 
 
-## Joystick
+## B. Joystick
 
 Nous utilisons un joystick de borne d'arcade.
 

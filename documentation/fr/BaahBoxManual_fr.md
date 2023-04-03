@@ -12,7 +12,7 @@
 - Brancher les capteurs sur le boîtier (par les prises jack, comme sur la photo ci-dessus)
 
 - Allumer avec le petit interrupteur sur le coté du boîtier (interrupteur vers le scotch rouge).
-
+ 
 
 
 ##### Attention: La mise en route peut prendre plusieurs secondes.

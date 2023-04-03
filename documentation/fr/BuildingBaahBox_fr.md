@@ -35,7 +35,7 @@ Le design de notre boîtier est une adaptation de celui [proposé par Adafruit](
 Adafruit propose des [réglages](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing) pour Cura et Simplify3D, que nous vous conseillons d'utiliser.
 
 
-## Code arduino
+## Code de l'arduino
 
 Allez voir par [ici](../../project/README.md)!
 
