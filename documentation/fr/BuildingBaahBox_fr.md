@@ -41,6 +41,7 @@ Allez voir par [ici](../../project/README.md)!
 
 ## Electronique
 
+
 ### Alimentation
 Pour que le boîtier puisse être utilisé n'importe où, nous avons ajouté une batterie, et un interrupteur.
 Ce n'est pas obligatoire pour faire fonctionner la carte, qui peut juste être branchée sur une alimentation usb (5V).
@@ -51,16 +52,27 @@ Vous y trouverez toutes les informations pour le montage pour réaliser le câbl
 ![BOM](../img/SwitchConnection.jpg)
 
 
+### Préparation des cartes 
+Nous commençons par souder les broches sur les différentes cartes afin de les empiler.
+Attention au sens, il y a un coté ou il y a moins de broches, il faut bien repérer 
+ce coté sur la proto shield. (cf photos)
+Une petite astuce pour souder les broches courtes et longues du même coté pour toutes les cartes: Nous avons placé sur toutes les photos, les cartes avec les deux trous de vis cuivrés en haut et le coté court à droite.
 
+
+photos....
+
+Il ne reste plus qu'à souder les fils sur la proto shield pour connecter les capteurs.
 
 ### Connectique
-Nous branchons deux types de connecteurs sur la carte :
+
+
+Nous branchons deux types de connecteurs sur la proto shield:
 des jacks stéréo et un connecteur DB9.
 
 
 Pour alimenter les connecteurs, on peut commencer par souder
 * le fil rouge sur la broche 3.3V
-* le fil noir sur la Feather.
+* le fil noir sur la proto shield.
 
 
 ![BOM](../img/Feather_PowerCables.jpg)
