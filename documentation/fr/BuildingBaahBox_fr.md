@@ -30,7 +30,7 @@ Il est tout à fait possible d'utiliser d'autres cartes, il faudra juste modifie
 
 
 ## Impression du boîtier
-(téléchargez et imprimez les [fichiers STL](../3D/STLBaahBoxDB9.zip)).
+(téléchargez et imprimez les [fichiers STL](../Hardware/BaahBox/)).
 Le design de notre boîtier est une adaptation de celui [proposé par Adafruit](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather)  pour ses cartes Feather.
 Adafruit propose des [réglages](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing) pour Cura et Simplify3D, que nous vous conseillons d'utiliser.
 
