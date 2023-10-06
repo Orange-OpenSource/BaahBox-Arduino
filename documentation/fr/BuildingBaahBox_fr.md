@@ -41,17 +41,6 @@ Allez voir par [ici](../../project/README.md)!
 
 ## Electronique
 
-
-### Alimentation
-Pour que le boîtier puisse être utilisé n'importe où, nous avons ajouté une batterie, et un interrupteur.
-Ce n'est pas obligatoire pour faire fonctionner la carte, qui peut juste être branchée sur une alimentation usb (5V).
-
-Nous utilisons le montage proposé par Adafruit pour [l'alimentation] (https://learn.adafruit.com/on-slash-off-switches)
-Vous y trouverez toutes les informations pour le montage pour réaliser le câble ci dessous.
-
-![BOM](../img/SwitchConnection.jpg)
-
-
 ### Préparation des cartes 
 Nous commençons par souder les broches sur les différentes cartes afin de les empiler.
 Attention au sens, il y a un coté ou il y a moins de broches, il faut bien repérer 
@@ -105,7 +94,7 @@ On voit sur la photo qu'on utilise une gaine thermo-rétractable après soudure 
 Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Nous branchons un joystick sur ce connecteur DB9, qui n'a pas besoin d'être alimenté.
 Par contre il nous faut brancher 5 cables :
 * Un fil (noir) qui servira de référence (soudé à la masse (GND),
-* 4 fils pour les contacteurs des différentes position du Joystick.
+* 4 fils pour les contacteurs des différentes positions du Joystick.
 
 
 ![BOM](../img/DB9.jpg)
@@ -123,6 +112,16 @@ Puis on soude les fils du connecteur sur la Feather, selon le tableau ci-dessous
 
 On voit sur ce schema la correspondance avec les positions du joystick qui sera branché dessus.
 Par exemple : lorsque le Joystick sera en position haute, le signal de la la broche 12 de la Feather passera de 0 à 1.
+
+
+### Alimentation
+Pour que le boîtier puisse être utilisé n'importe où, nous avons ajouté une batterie, et un interrupteur.
+Ce n'est pas obligatoire pour faire fonctionner la carte, qui peut juste être branchée sur une alimentation usb (5V).
+
+Nous utilisons le montage proposé par Adafruit pour [l'alimentation] (https://learn.adafruit.com/on-slash-off-switches)
+Vous y trouverez toutes les informations pour le montage pour réaliser le câble ci dessous.
+
+![BOM](../img/SwitchConnection.jpg)
 
 
 ## Montage
