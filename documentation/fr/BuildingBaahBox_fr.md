@@ -1,7 +1,7 @@
 
 # Fabriquer une Baah Box
 
-![BOM](../img/BOM.jpg)
+![BOM](../img/BOM_BaahBoxV2.jpg)
 
 
 
