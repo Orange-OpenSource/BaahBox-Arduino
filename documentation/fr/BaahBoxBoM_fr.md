@@ -47,6 +47,6 @@ https://www.adafruit.com/product/2922
 
 * manchons thermo-rétractables
 
-* 1 boîtier à imprimer en 3D (cf [stl](../3D/STLBaahBoxDB9.zip))
+* 1 boîtier à imprimer en 3D (cf les fichiers [stl](../Hardware/BaahBox/))
  
 
