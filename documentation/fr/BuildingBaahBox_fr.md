@@ -6,11 +6,18 @@
 
 
 # Matériel
-La Baah Box consiste en une carte arduino compatible BTLE, un shield lecteur SD - avec une carte SD de 4Go, un écran TFT, et des connecteurs (2 jacks et/ou un connecteur DB9), le tout dans un boîtier imprimé en 3D.
+La Baah Box consiste en:
+* une carte arduino compatible BTLE,
+* un support pour souder les cables de connection (proto shield),
+* un shield lecteur SD - avec une carte SD de 4Go, 
+* un écran TFT, 
+* et des connecteurs (2 jacks et/ou un connecteur DB9), 
 
-Les jacks servent à connecter des capteurs à une seule sortie analogique comme des capteurs myo-électriques ou des potentiomètres (sliders). Les jacks peuvent être utilisés indépendamment seuls ou ensembles.
+le tout dans un boîtier imprimé en 3D.
 
-Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Vous pourrez y brancher par exemple un joystick.
+Les jacks servent à connecter des capteurs à une seule sortie analogique comme des capteurs myo-électriques ou des potentiomètres (sliders). Les jacks peuvent être utilisés indépendamment seuls ou ensemble.
+
+Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Vous pourrez y brancher par exemple un joystick de borne d'arcade (voir plus bas pour la construction d'un joystick pour la box).
 
 Le code actuel permet d'utiliser soit les jacks soit le DB9, mais pas les 2 en même temps. Comme ils n'utilisent pas les mêmes entrées sur la carte, le code peut être modifié afin de permettre une utilisation simultanée.
 
