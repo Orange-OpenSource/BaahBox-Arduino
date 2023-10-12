@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#include <arduino.h>
+#include <Arduino.h>
 #include "btle.hpp"
 #include "config.hpp"
 #include "muscleSensor.hpp"
