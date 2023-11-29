@@ -16,7 +16,7 @@ The Baah Box is basically stack of arduino + shield cards :
 
 The jacks are used to connect sensors to a single analog output such as myoelectric sensors or potentiometers (sliders). The jacks can be used independently alone or together.
 
-The DB9 connector is used to connect a sensor to several (digital) outputs. You can connect an arcade joystick, for example.
+The DB9 connector is used to connect a sensor with several (digital) outputs. You can connect an arcade joystick, for example.
 
 The current code allows you to use either the jacks or the DB9, but not both at the same time. Since they do not use the same entries on the card, it should be fairly easy to update the code in order to allow simultaneous use .
 
@@ -29,14 +29,14 @@ The current code allows you to use either the jacks or the DB9, but not both at 
 
 * We have chosen to take hardware that is easy to find (in an electronics store or on the internet). We wanted any "maker" with a 3D printer and able to make simple welds to make a Baah Box. *
 
-The *"form factor"* of the cards we have chosen (Feather from Adafruit) makes it possible to stack them, and therefore to avoid the use/build of a specific printed circuit. This means that the construction of the box requires very few solders.
+The *"form factor"* of the cards we have chosen (Feather from Adafruit) makes it possible to stack them, and therefore to avoid the use/build of a specific printed circuit. This means that the construction of the box requires very little soldering.
 
-It is quite possible to use other cards, you will just have to modify the box and adapt the code.
+It is quite possible to use other cards, byou will just have to modify the 3D enclosure and adapt the code (mainly arduino libraries dedicated to the card you want to use).
 
 
 
 ## Printing the box
-(download and print the [STL files](../3D/STLBaahBoxDB9.zip)).
+(download and print the [STL files](../Hardware/BaahBox/)).
 The design of our box is an adaptation of that [proposed by Adafruit](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather) for its Feather cards.
 Adafruit offers [settings](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing) for Cura and Simplify3D, which we recommend using.
 
