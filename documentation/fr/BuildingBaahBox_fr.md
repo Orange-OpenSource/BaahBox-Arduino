@@ -139,13 +139,14 @@ On soude les fils du connecteur sur la proto shield, selon le tableau ci-dessous
 On voit sur ce schema la correspondance avec les positions du joystick qui sera branché dessus.
 Par exemple : lorsque le Joystick sera en position haute, le signal de la la broche 12 de la Feather passera de 0 à 1.
 
+## Montage
+
 On visse les jacks sur la paroi ainsi que  le DB9 ...
 Et voici une photo d'une box finie ! 
 
 Il ne reste plus qu'à empiler les cartes, fermer le couvercle  et tester ! 
 
 ![Alt text](proto_soldered_inBox.jpg)
-## Montage
 Il ne reste plus qu'à fermer la boîte !
 
 
