@@ -64,7 +64,7 @@ Afin d'éviter toute erreur de broches, voici les photos des cartes avec leurs b
 ![BOM](../img/Adalogger_headers.jpg)
 
 
-
+Une petite astuce pour souder les broches bien parallèles : retourner la carte avec les broches en place, et y mettre de la patafix pour eviter que les broches ne bougent pas...
 ![Patafix Trick](../img/patafix_trick.jpg)
 
 
@@ -73,9 +73,14 @@ Photos des cartes avec broches soudées
 ![M0_soldered](../img/M0_soldered.jpg)
 ![BOM](../img/double_proto_shield_aside_M0.jpg)
 
+Photos des cartes avec broches empilées
+
+![Alt text](M0_stacked.jpeg)
 
 ![Alt text](Full_stack.jpeg) 
-    ![Alt text](M0_stacked.jpeg) 
+ 
+De bas en haut: 
+la proto shield, puis la Feather M0, la SD shield, et la TFT. 
    
 Il ne reste plus qu'à souder les fils sur la proto shield pour connecter les capteurs.
 
@@ -90,116 +95,83 @@ Pour alimenter les connecteurs, on peut commencer par souder
 * le fil rouge sur la broche 3.3V
 * le fil noir sur la proto shield.
 
-![Alt text](proto_soldered_inBox.jpg)
-
 #### Jacks
 Les jacks servent à connecter des capteurs analogiques à une sortie.
 Il faut souder donc 3 fils: Vcc, GND et signal.
 
 ![BOM](../img/JACK_Herve_400x300.jpg)
 
-![BOM](../img/Jack.jpg)
 
  ![Alt text](Jack2023.jpg) 
-  ![Alt text](OneJAckSoldering.jpeg) 
-    ![Alt text](OnJackSoldered.jpeg) 
 
-   ![Alt text](Jacks_Soldered2.jpeg)
-    ![Alt text](JackSoldered.jpeg) 
-    
-On soude les cables "signal"  (bleu et vert) des jack sur les broches analogiques A0 et A1 de la Feather.
+ On soude les cables "signal"  (bleu et vert) des jack sur les broches analogiques A0 et A1 de la proto shield.
 
-![BOM](../img/Feather_JackConnection.jpg)
+On soude les fils rouge (Vcc) des jacks et de la proto shield ensemble.
 
+  ![OneJAckSoldering](OneJAckSoldering.jpeg)
+    ![OnJackSoldered](OnJackSoldered.jpeg)
+     Premier jack
+   ![Jacks_Soldered2](Jacks_Soldered2.jpeg)
+    ![JackSoldered](JackSoldered.jpeg)
 
-
-On soude les fils rouge (Vcc) des jacks et de la feather ensemble.
-On voit sur la photo qu'on utilise une gaine thermo-rétractable après soudure pour éviter des court-circuits.
-
-![BOM](../img/Feather_JackPowerConnection.jpg)
-
-
-
-
+Les deux jacks sont soudés !
 
 #### DB9
-Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Nous branchons un joystick sur ce connecteur DB9, qui n'a pas besoin d'être alimenté.
+Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Nous branchons par exemple  un joystick  de borne d'arcade sur ce connecteur DB9, qui n'a pas besoin d'être alimenté.
+
 Par contre il nous faut brancher 5 cables :
 * Un fil (noir) qui servira de référence (soudé à la masse (GND),
-* 4 fils pour les contacteurs des différentes positions du Joystick.
+* 4 fils pour les contacteurs des différentes positions du joystick.
 
 ![Alt text](DB9_colors.jpeg) 
- ![Alt text](DB9_outside_Box.jpeg) 
- ![Alt text](DB9_soldered_postionned-2.jpeg)
+
+Le connecteur DB9 sera vissé par l'exterieur de la boîte, pour des raisons de solidité.
+cela impose de souder ce connecteur en place.
   ![Alt text](DB9_thru_box.jpeg) 
-  ![Alt text](DB9-outofBox.jpeg)
-![BOM](../img/DB9.jpg)
+
+ ![Alt text](DB9_outside_Box.jpeg) 
+ ![Alt text](DB9_soldered_postionned.jpeg)
+
+
 
 ![Alt text](DB9_soldered_postionned.jpeg)
 
 
-
-
-
-On soude ensemble les cables noirs (GND) des jacks et du dB9 avec le celui de la Feather  
-![BOM](../img/Feather_Jack_And_DB9_GroundConnection.jpg)
-
-
-
-Puis on soude les fils du connecteur sur la Feather, selon le tableau ci-dessous:
+On soude les fils du connecteur sur la proto shield, selon le tableau ci-dessous:
 
 ![BOM](../img/Tableau_DB9_Feather_Joystick_herve_400x300.jpg)
 
 On voit sur ce schema la correspondance avec les positions du joystick qui sera branché dessus.
 Par exemple : lorsque le Joystick sera en position haute, le signal de la la broche 12 de la Feather passera de 0 à 1.
 
+On visse les jacks sur la paroi ainsi que  le DB9 ...
+Et voici une photo d'une box finie ! 
 
-### Alimentation
+Il ne reste plus qu'à empiler les cartes, fermer le couvercle  et tester ! 
+
+![Alt text](proto_soldered_inBox.jpg)
+
+
+ 
+ 
+ 
+
+### Alimentation (option)
 Pour que le boîtier puisse être utilisé n'importe où, nous avons ajouté une batterie, et un interrupteur.
 Ce n'est pas obligatoire pour faire fonctionner la carte, qui peut juste être branchée sur une alimentation usb (5V).
 
-Nous utilisons le montage proposé par Adafruit pour [l'alimentation] (https://learn.adafruit.com/on-slash-off-switches)
+Nous utilisons une adaptation du montage proposé par Adafruit pour [l'alimentation] (https://learn.adafruit.com/on-slash-off-switches)
 Vous y trouverez toutes les informations pour le montage pour réaliser le câble ci dessous.
 
-![BOM](../img/SwitchConnection.jpg)
+Dans notre cas, l'interrupteur se visse dans un trou sur la paroi de la boîte, mais le montage reste le même. 
+![Alt text](All_in_box_nolid.jpeg)
 
 
 ## Montage
+Il ne reste plus qu'à fermer la boîte !
 
-Une fois que tout est soudé, il faut tout rentrer dans le boîtier !
-![M0_stacked](../img/M0_stacked.jpg)
-![M0_stacked](../img/Full_stack.jpg)
-![Alt text](All_in_box_nolid.jpeg)
+
 ![Alt text](Full_BOX_Lid.jpeg) 
+
+et la brancher sur un joystick....
 ![Alt text](YohannJoystick.jpeg)
-
-
-Nous utilisons le mode d'emploi fourni par Adafruit pour monter le boîtier de feather avec une batterie, en y ajoutant nos modifications (ajout des connecteurs).
-Nous vous conseillons de suivre les étapes comme indiqué dans ce [mode d'emploi](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/assembly), en y ajoutant la vissage des connecteurs sur le boîtier.
-
-- On commence par positionner la batterie et l'interrupteur
-
-![BOM](../img/BatteryAndSwitchInBox.jpg)
-
-- on passe le connecteur de batterie par le trou du fond du boîtier
-- On met la feather en place dans le boitier.
-Comme les cartes s'empilent, vous avez le choix de ne visser que la feather dans le boîtier puis empiler les shields de la carte SD et l'écran.
-
-Avec les vis de entre 19 et 25mm  de long, on peut visser la feather et la carte SD.
-Le shield écran est juste clipsé dessus.
-
-- On visse les jacks dans les deux trous circulaires coté façade
-
-![](../img/jacks_holes_small.jpg)
-
- et le DB9 dans son encart sur le coté de la boîtier.
-
- ![](../img/DB9_hole_small.jpg)
-
-Tout est dans la boîte, il faut refermer...
-
-![BOM](../img/boite_montee_2part.jpg)
-
-Et voilà la boîte montée !
-
-![BOM](../img/boitier_fini_small.jpg)
