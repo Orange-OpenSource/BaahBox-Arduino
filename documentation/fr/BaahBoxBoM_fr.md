@@ -28,9 +28,11 @@ https://www.adafruit.com/product/2922
 * 1 batterie LiPo (max 1200 mA pour que cela rentre dans le boîtier)
    3.7v 1000 or 1200mAh 
    https://www.adafruit.com/product/258
+   
+   (Attention à la connectique de la batterie si ce n'est pas le modèle Adafruit. Certaines batteries LiPo sont connectées à l'inverse de celle de la photo. Vous pouvez inverser les fils en les dégageant du connecteur avec une petite pointe)
 
 * 1 interrupteur de type switch 
- https://www.adafruit.com/product/805 
+ https://www.adafruit.com/product/3221 
   
 * 1 câble de connection JST-PH 
  https://www.adafruit.com/product/1131
