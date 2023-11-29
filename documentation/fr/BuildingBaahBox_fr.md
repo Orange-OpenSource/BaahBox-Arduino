@@ -51,12 +51,32 @@ Allez voir par [ici](../../project/README.md)!
 ### Préparation des cartes 
 Nous commençons par souder les broches sur les différentes cartes afin de les empiler.
 Attention au sens, il y a un coté ou il y a moins de broches, il faut bien repérer 
-ce coté sur la proto shield. (cf photos)
+ce coté sur la proto shield. 
+
 Une petite astuce pour souder les broches courtes et longues du même coté pour toutes les cartes: Nous avons placé sur toutes les photos, les cartes avec les deux trous de vis cuivrés en haut et le coté court à droite.
 
+Afin d'éviter toute erreur de broches, voici les photos des cartes avec leurs broches avant soudure :
 
-photos....
+![M0 headers](../img/M0_headers.jpg)!
+![BOM](../img/double_proto_shield_M0_headers.jpg)
+![BOM](../img/ADA_TFT_headers.jpg) 
+(NB: la carte Feather wing TFT est souvent envoyée par les revendeurs avec les broches déjà soudées)
+![BOM](../img/Adalogger_headers.jpg)
 
+
+
+![Patafix Trick](../img/patafix_trick.jpg)
+
+
+
+Photos des cartes avec broches soudées 
+![M0_soldered](../img/M0_soldered.jpg)
+![BOM](../img/double_proto_shield_aside_M0.jpg)
+
+
+![Alt text](Full_stack.jpeg) 
+    ![Alt text](M0_stacked.jpeg) 
+   
 Il ne reste plus qu'à souder les fils sur la proto shield pour connecter les capteurs.
 
 ### Connectique
@@ -70,9 +90,7 @@ Pour alimenter les connecteurs, on peut commencer par souder
 * le fil rouge sur la broche 3.3V
 * le fil noir sur la proto shield.
 
-
-![BOM](../img/Feather_PowerCables.jpg)
-
+![Alt text](proto_soldered_inBox.jpg)
 
 #### Jacks
 Les jacks servent à connecter des capteurs analogiques à une sortie.
@@ -82,6 +100,13 @@ Il faut souder donc 3 fils: Vcc, GND et signal.
 
 ![BOM](../img/Jack.jpg)
 
+ ![Alt text](Jack2023.jpg) 
+  ![Alt text](OneJAckSoldering.jpeg) 
+    ![Alt text](OnJackSoldered.jpeg) 
+
+   ![Alt text](Jacks_Soldered2.jpeg)
+    ![Alt text](JackSoldered.jpeg) 
+    
 On soude les cables "signal"  (bleu et vert) des jack sur les broches analogiques A0 et A1 de la Feather.
 
 ![BOM](../img/Feather_JackConnection.jpg)
@@ -103,8 +128,16 @@ Par contre il nous faut brancher 5 cables :
 * Un fil (noir) qui servira de référence (soudé à la masse (GND),
 * 4 fils pour les contacteurs des différentes positions du Joystick.
 
-
+![Alt text](DB9_colors.jpeg) 
+ ![Alt text](DB9_outside_Box.jpeg) 
+ ![Alt text](DB9_soldered_postionned-2.jpeg)
+  ![Alt text](DB9_thru_box.jpeg) 
+  ![Alt text](DB9-outofBox.jpeg)
 ![BOM](../img/DB9.jpg)
+
+![Alt text](DB9_soldered_postionned.jpeg)
+
+
 
 
 
@@ -134,6 +167,12 @@ Vous y trouverez toutes les informations pour le montage pour réaliser le câbl
 ## Montage
 
 Une fois que tout est soudé, il faut tout rentrer dans le boîtier !
+![M0_stacked](../img/M0_stacked.jpg)
+![M0_stacked](../img/Full_stack.jpg)
+![Alt text](All_in_box_nolid.jpeg)
+![Alt text](Full_BOX_Lid.jpeg) 
+![Alt text](YohannJoystick.jpeg)
+
 
 Nous utilisons le mode d'emploi fourni par Adafruit pour monter le boîtier de feather avec une batterie, en y ajoutant nos modifications (ajout des connecteurs).
 Nous vous conseillons de suivre les étapes comme indiqué dans ce [mode d'emploi](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/assembly), en y ajoutant la vissage des connecteurs sur le boîtier.

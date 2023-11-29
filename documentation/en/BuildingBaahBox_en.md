@@ -37,7 +37,7 @@ It is quite possible to use other cards, byou will just have to modify the 3D en
 
 ## Printing the box
 (download and print the [STL files](../Hardware/BaahBox/)).
-The design of our box is an adaptation of that [proposed by Adafruit](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather) for its Feather cards.
+The design of our box is an adaptation of this one, [proposed by Adafruit](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather) for its Feather cards.
 Adafruit offers [settings](https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing) for Cura and Simplify3D, which we recommend using.
 
 
