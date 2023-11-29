@@ -1,18 +1,24 @@
 
 # Building a Baah Box
 
-![BOM](../img/BOM.jpg)
+![BOM](../img/BOM_BaahBoxV2.jpg)
 
 
 
 # Equipment
-The Baah Box consists of a BTLE compatible arduino card, an SD reader shield - with a 4GB SD card, a TFT screen shield, and connectors (2 jacks and / or a DB9 connector), all in a 3D printed case.
+The Baah Box is basically stack of arduino + shield cards :
+ * a BTLE compatible arduino card
+ * a prototyping shield 
+ * a SD reader shield - with a 4GB SD card
+ * a TFT screen shield
+ 
+  and connectors (2 jacks and / or a DB9 connector), all in a 3D printed case.
 
 The jacks are used to connect sensors to a single analog output such as myoelectric sensors or potentiometers (sliders). The jacks can be used independently alone or together.
 
-The DB9 is used to connect a sensor to several (digital) outputs. You can connect a joystick, for example.
+The DB9 connector is used to connect a sensor to several (digital) outputs. You can connect an arcade joystick, for example.
 
-The current code allows you to use either the jacks or the DB9, but not both at the same time. Since they do not use the same entries on the card, the code can be updated to allow simultaneous use.
+The current code allows you to use either the jacks or the DB9, but not both at the same time. Since they do not use the same entries on the card, it should be fairly easy to update the code in order to allow simultaneous use .
 
 ### The list of items in the Baah Box is [here](./BaahBoxBoM_en.md).
 
