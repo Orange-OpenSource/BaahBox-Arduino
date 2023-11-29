@@ -67,7 +67,7 @@ Afin d'éviter toute erreur de broches, voici les photos des cartes avec leurs b
 ![BOM](../img/Adalogger_headers.jpg)
 
 
-Une petite astuce pour souder les broches bien parallèles : retourner la carte avec les broches en place, et y mettre de la patafix pour eviter que les broches ne bougent pas...
+Une petite astuce pour souder les broches bien parallèles : retourner la carte avec les broches en place, et y mettre de la patafix pour éviter que les broches ne bougent pendant la soudure...
 ![Patafix Trick](../img/patafix_trick.jpg)
 
 
@@ -93,17 +93,15 @@ Il ne reste plus qu'à souder les fils sur la proto shield pour connecter les ca
 Nous branchons deux types de connecteurs sur la proto shield:
 des jacks stéréo et un connecteur DB9.
 
-
-Pour alimenter les connecteurs, on peut commencer par souder
-* le fil rouge sur la broche 3.3V
-* le fil noir sur la proto shield.
-
 #### Jacks
 Les jacks servent à connecter des capteurs analogiques à une sortie.
 Il faut souder donc 3 fils: Vcc, GND et signal.
 
+Cablage d'un jack mâle: 
+
 ![BOM](../img/JACK_Herve_400x300.jpg)
 
+cablage d'un jack femelle
 
  ![Alt text](Jack2023.jpg) 
 
@@ -133,12 +131,6 @@ cela impose de souder ce connecteur en place.
   ![Alt text](DB9_thru_box.jpeg) 
 
  ![Alt text](DB9_outside_Box.jpeg) 
- ![Alt text](DB9_soldered_postionned.jpeg)
-
-
-
-![Alt text](DB9_soldered_postionned.jpeg)
-
 
 On soude les fils du connecteur sur la proto shield, selon le tableau ci-dessous:
 
@@ -153,11 +145,16 @@ Et voici une photo d'une box finie !
 Il ne reste plus qu'à empiler les cartes, fermer le couvercle  et tester ! 
 
 ![Alt text](proto_soldered_inBox.jpg)
+## Montage
+Il ne reste plus qu'à fermer la boîte !
 
 
- 
- 
- 
+![Alt text](Full_BOX_Lid.jpeg) 
+
+et la brancher sur un joystick....
+![Alt text](YohannJoystick.jpeg)
+
+
 
 ### Alimentation (option)
 Pour que le boîtier puisse être utilisé n'importe où, nous avons ajouté une batterie, et un interrupteur.
@@ -168,13 +165,3 @@ Vous y trouverez toutes les informations pour le montage pour réaliser le câbl
 
 Dans notre cas, l'interrupteur se visse dans un trou sur la paroi de la boîte, mais le montage reste le même. 
 ![Alt text](All_in_box_nolid.jpeg)
-
-
-## Montage
-Il ne reste plus qu'à fermer la boîte !
-
-
-![Alt text](Full_BOX_Lid.jpeg) 
-
-et la brancher sur un joystick....
-![Alt text](YohannJoystick.jpeg)
