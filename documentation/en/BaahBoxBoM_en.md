@@ -29,10 +29,10 @@ https://www.adafruit.com/product/2830
 * 1 Lithium Ion Polymer Battery - 3.7v 1000 or 1200mAh (a more powerful battery may not fit in the box)
    https://www.adafruit.com/product/258
  
- (Be very careful if you buy an other LiPo battery. The power and GND may be inverted (compared to what you can see on the picture). You can still swap them, using a sharp pin to extract the cables from the connector).
+ (Be very careful if you buy an other LiPo battery. The power and GND may be inverted (compared to what you can see on the picture). You will have to swap them, using a sharp pin to extract the cables from the connector).
  
 
-* 1 SPDT Switch
+* 1 Mini Panel Mount SPDT Toggle Switch
   https://www.adafruit.com/product/3221 
   
 * 1 JST-PH Battery Extension Cable - 500mm 
