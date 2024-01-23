@@ -1,19 +1,24 @@
 #  BOM 
 
 
-![Bom](../img/BOM.jpg)
+![Bom](../img/BOM_BaahBoxV2.jpg)
 
 
 
 * 1 Adafruit Feather M0 Bluefruit LE
  https://www.adafruit.com/product/2995 
-  with Header Kit for Feather
- https://www.adafruit.com/product/2886  
+  with stacking headers for Feather
+https://www.adafruit.com/product/2830  
  
+ 
+ * 1 FeatherWing Doubler - Prototyping Add-on
+ https://www.adafruit.com/product/2890
+with short stacking headers 
+ https://www.adafruit.com/product/2886  
  
 * 1 Adalogger FeatherWing - RTC + SD
 https://www.adafruit.com/product/2922 
- with  Stacking Headers for Feather
+ with  stacking headers for Feather
 https://www.adafruit.com/product/2830 
  
 * 1 assembled Adafruit FeatherWing OLED 
@@ -23,9 +28,12 @@ https://www.adafruit.com/product/2830
 
 * 1 Lithium Ion Polymer Battery - 3.7v 1000 or 1200mAh (a more powerful battery may not fit in the box)
    https://www.adafruit.com/product/258
+ 
+ (Be very careful if you buy an other LiPo battery. The power and GND may be inverted (compared to what you can see on the picture). You will have to swap them, using a sharp pin to extract the cables from the connector).
+ 
 
-* 1 Breadboard-friendly SPDT Slide Switch
- https://www.adafruit.com/product/805 
+* 1 Mini Panel Mount SPDT Toggle Switch
+  https://www.adafruit.com/product/3221 
   
 * 1 JST-PH Battery Extension Cable - 500mm 
  https://www.adafruit.com/product/1131
@@ -42,6 +50,6 @@ https://www.adafruit.com/product/2830
 
 * heat-shrinkable tubes
 
-* 3D printed box (cf [stl](../3D/STLBaahBoxDB9.zip))
+* 3D printed box (cf [stl](../Hardware/BaahBox/))
  
 

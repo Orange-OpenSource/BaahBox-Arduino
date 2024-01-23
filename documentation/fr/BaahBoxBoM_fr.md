@@ -1,22 +1,26 @@
 # Liste du matériel
 
 
-![Bom](../img/BOM.jpg)
+![Bom](../img/BOM_BaahBoxV2.jpg)
 
 
 
-* 1 feather M0 Bluefruit (Adafruit Feather M0 Bluefruit LE)
+* 1 Feather M0 Bluefruit (Adafruit Feather M0 Bluefruit LE)
  https://www.adafruit.com/product/2995 
-   avec broches empilables courtes 
+ avec broches empilables longues 
+https://www.adafruit.com/product/2830 
+   
+ 
+ * 1 FeatherWing de prototypage double (proto shield)
+ https://www.adafruit.com/product/2890
+avec broches empilables courtes 
  https://www.adafruit.com/product/2886  
  
- 
-* 1 Feather Wing lecteur de carte SD 
+
+* 1 FeatherWing lecteur de carte SD 
 https://www.adafruit.com/product/2922 
-avec broches empilables longues 
-https://www.adafruit.com/product/2830 
- 
-* 1 Feather Wing écran OLED 128x32 (assemblée)
+
+* 1 FeatherWing écran OLED 128x32 (assemblée)
  https://www.adafruit.com/product/3045 
   
 * 1 carte mini SD (4 Go) 
@@ -24,9 +28,11 @@ https://www.adafruit.com/product/2830
 * 1 batterie LiPo (max 1200 mA pour que cela rentre dans le boîtier)
    3.7v 1000 or 1200mAh 
    https://www.adafruit.com/product/258
+   
+   (Attention à la connectique de la batterie si ce n'est pas le modèle Adafruit. Certaines batteries LiPo sont connectées à l'inverse de celle de la photo. Vous pouvez inverser les fils en les dégageant du connecteur avec une petite pointe)
 
 * 1 interrupteur de type switch 
- https://www.adafruit.com/product/805 
+ https://www.adafruit.com/product/3221 
   
 * 1 câble de connection JST-PH 
  https://www.adafruit.com/product/1131
@@ -43,6 +49,6 @@ https://www.adafruit.com/product/2830
 
 * manchons thermo-rétractables
 
-* 1 boîtier à imprimer en 3D (cf [stl](../3D/STLBaahBoxDB9.zip))
+* 1 boîtier à imprimer en 3D (cf les fichiers [stl](../Hardware/BaahBox/))
  
 
