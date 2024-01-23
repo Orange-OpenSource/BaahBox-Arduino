@@ -144,15 +144,19 @@ Par exemple : lorsque le Joystick sera en position haute, le signal de la la bro
 On visse les jacks sur la paroi ainsi que  le DB9 ...
 Et voici une photo d'une box finie ! 
 
-Il ne reste plus qu'à empiler les cartes, fermer le couvercle  et tester ! 
+On empile les cartes...
 
 ![Alt text](proto_soldered_inBox.jpg)
+
+![Alt text](All_in_box_nolid.jpeg)
+
 Il ne reste plus qu'à fermer la boîte !
 
 
 ![Alt text](Full_BOX_Lid.jpeg) 
 
-et la brancher sur un joystick....
+et la brancher sur un joystick...
+
 ![Alt text](YohannJoystick.jpeg)
 
 
