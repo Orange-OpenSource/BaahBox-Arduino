@@ -76,10 +76,10 @@ et que Baah, *c’est le cri du mouton !* (en anglais)
 
 ## Liens
 
-* Les sources Arduino sont dans le répertoire *project* du repo https://github.com/Orange-OpenSource/BaahBox-Arduino
-* L'application iOS: https://github.com/Orange-OpenSource/BaahBox-iOS
-* L'application Android: https://github.com/frederiquepinson/BaahBox-Flutter
-* Les ressources graphiques: https://github.com/Orange-OpenSource/BaahBox-assets
+* Les sources Arduino sont dans le répertoire *project* du repo [BaahBox-Arduino](https://github.com/Orange-OpenSource/BaahBox-Arduino)
+* L'application iOS: [BaahBox-iOS](https://github.com/Orange-OpenSource/BaahBox-iOS)
+* L'application Android: [BaahBox-Flutter](https://github.com/frederiquepinson/BaahBox-Flutter)
+* Les ressources graphiques: [BaahBox-assets](https://github.com/Orange-OpenSource/)
 
 
 
@@ -87,10 +87,10 @@ et que Baah, *c’est le cri du mouton !* (en anglais)
 Jetez un coup d'oeil sur le [Manuel d'utilisation](BaahBoxManual_fr.md)
 
 Nous allons publier les applications sur les stores d'ici peu.
-mais si vous voulez tester les version alpha:  
-* pour android c'est [ici](https://github.com/frederiquepinson/BaahBox-Flutter/releases/download/BaahBox-v1.0-alpha/app-release.apk) 
+Mais si vous voulez tester les version alpha:  
+* Pour android c'est [ici](https://github.com/frederiquepinson/BaahBox-Flutter/releases/download/BaahBox-v1.0-alpha/app-release.apk) 
 
-*  contactez nous (frederique.pinson@orange.com) pour récupérer la version testflight de l'application iOS.
+*  Contactez nous (frederique.pinson@orange.com) pour récupérer la version testflight de l'application iOS.
 
 
 # Vous voulez une BaahBox ?
