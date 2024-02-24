@@ -131,10 +131,14 @@ Here are four links pointing to all sides of the project.
 
 * The box (the Arduino sources are in the *project* directory): https://github.com/Orange-OpenSource/BaahBox-Arduino
 * The iOS code: https://github.com/Orange-OpenSource/BaahBox-iOS
-* The Android code: https://github.com/Orange-OpenSource/BaahBox-Android
+* The Android code: https://github.com/frederiquepinson/BaahBox-Flutter
 * The assets: https://github.com/Orange-OpenSource/BaahBox-assets
 
 
 ## About stores
 
-Keep an eye here, we'll deliver the apps on stores soon ;-)
+Keep an eye here, we'll deliver the apps on stores soon ;-) 
+But if you want test the application beforehand, 
+
+you can download the android version [here](https://github.com/frederiquepinson/BaahBox-Flutter/releases/download/BaahBox-v1.0-alpha/app-release.apk)
+or contact us (frederique.pinson@orange.com) to enroll in the iOS testflight program.
