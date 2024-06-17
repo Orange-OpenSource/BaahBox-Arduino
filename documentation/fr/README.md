@@ -84,13 +84,13 @@ et que Baah, *c’est le cri du mouton !* (en anglais)
 
 
 # Vous avez une BaahBox et vous voulez jouer avec ?
-Jetez un coup d'oeil sur le [Manuel d'utilisation](BaahBoxManual_fr.md)
+Jetez un coup d'oeil sur le [Manuel d'utilisation](BaahBoxManual_fr.md)!
 
 Nous allons publier les applications sur les stores d'ici peu.
 Mais si vous voulez tester les version alpha:  
-* Pour android c'est [ici](https://github.com/frederiquepinson/BaahBox-Flutter/releases/download/BaahBox-v1.0-alpha/app-release.apk) 
+* Pour android c'est par [ici](https://github.com/frederiquepinson/BaahBox-Flutter/releases/), 
 
-*  Contactez nous (frederique.pinson@orange.com) pour récupérer la version testflight de l'application iOS.
+*  Pour iOS, contactez nous (frederique.pinson@orange.com) pour récupérer la version testflight de l'application iOS.
 
 
 # Vous voulez une BaahBox ?
