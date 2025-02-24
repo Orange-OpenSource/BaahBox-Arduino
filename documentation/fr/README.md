@@ -86,7 +86,12 @@ et que Baah, *c’est le cri du mouton !* (en anglais)
 # Vous avez une BaahBox et vous voulez jouer avec ?
 Jetez un coup d'oeil sur le [Manuel d'utilisation](BaahBoxManual_fr.md)!
 
-Nous allons publier les applications sur les stores d'ici peu.
+L'application BaahBox est sur les deux stores.
+* BaahBox [android](https://play.google.com/store/apps/details?id=com.orange.labs.baahbox&pcampaignid=web_share)
+* BaahBox [iOS](https://apps.apple.com/fr/app/baahbox/id1474621985)
+
+ ![BBQRcodes](../img/BBQRcodes.png)
+
 Mais si vous voulez tester les version alpha:  
 * Pour android c'est par [ici](https://github.com/Orange-OpenSource/BaahBox-Flutter-android/releases/), 
 
@@ -95,8 +100,13 @@ Mais si vous voulez tester les version alpha:
 
 # Vous voulez une BaahBox ?
 
-Deux solutions: rapprochez vous d'un FabLab ou d'un maker pour la faire faire...
-ou bien fabriquez-la vous même !
+
+
+* **Option clef en main :** contactez le Fablab de Lannion (contact@fablab-lannion.org),
+ qui pourra vous en fabriquer une à prix coûtant.
+
+* **Option maker :**  fabriquez-la vous même !
+
 
 
 ## Fabriquez votre Baah Box
