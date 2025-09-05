@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Documentation complète de BaahBox - Solution de rééducation musculaire et d'entraînement aux prothèses myo-électriques" />
+  <title>Documentation - BaahBox</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/lightbox.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/logo.webp" style="border-radius: 50%;" alt="" width="50" height="50">
+            <span>BaahBox</span>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="documentation.html" class="active">Documentation</a></li>
+          <li><a href="index.html#telechargements">Téléchargements</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="documentation">
+    <div class="container">
+      <div class="doc-sidebar">
+        <h3>Sommaire</h3>
+        <ul class="doc-nav">
+          <li><a href="#introduction">1. Présentation</a></li>
+          <li><a href="#utilisation">2. Utilisation de la BaahBox</a></li>
+          <li><a href="#configuration">3. Configuration de l'application</a></li>
+          <li><a href="#jeux">4. Jeux</a></li>
+          <li><a href="#télécharger">5. Télécharger l'application</a></li>
+          <li><a href="#ressources">6. Ressources</a></li>
+        </ul>
+      </div>
+      
+      <div class="doc-content">
+        <section id="introduction" class="doc-section">
+          <h1>Manuel d'utilisation BaahBox</h1>
+          <p>La BaahBox est un équipement pour la rééducation musculaire après un accident ou un traumatisme. La BaahBox se compose de deux éléments, une boite contenant l'électronique de communication avec une aplication smartphone, sur laquelle vient se brancher un module adapté à la rééducation visée (capteurs myo-électriques, poignées, joystick ou autres).</p>
+          
+          <div style="text-align: center; margin: 30px 0;">
+            <img src="assets/images/doc/Boitier.webp" alt="BaahBox avec ses capteurs" style="width: 100%; max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" class="lightbox-img">
+          </div>
+          
+          <h2>Composition</h2>
+          <ul>
+            <li>Un boîtier électronique avec écran et boutons de contrôle</li>
+            <li>Des capteurs (myo-électriques, poignées, joystick ou autres)</li>
+            <li>Une application mobile (iOS et Android)</li>
+          </ul>
+          
+          <h2>Fonctionnement</h2>
+          <p>La BaahBox se connecte en Bluetooth (Bluetooth low energie pour consomer moins) à un smartphone ou une tablette. Les capteurs détectent l'activité musculaire et permettent de contrôler des jeux de rééducation spécialement conçus pour la rééducation.</p>
+          
+          <div class="note">
+            <img src="assets/images/icons/info.png" class="note-img" style="max-width:25px" alt=""/>
+            <p>Le nom "Baah" vient du cri du mouton en anglais, en référence au personnage principal de nos jeux de rééducation.</p>
+          </div>
+        </section>
+
+        <section id="utilisation" class="doc-section">
+          <h2>Utilisation de la BaahBox</h2>
+
+          <h3>Matériel fourni</h3>
+          <ul>
+            <li>Boîtier BaahBox avec écran TFT intégré</li>
+            <li>Capteurs myo-électriques avec électrodes adhésives</li>
+            <li>Alimentation électrique ou batterie (optionnel)</li>
+          </ul>
+
+          <h3>Étapes d'allumage</h3>
+          <ol>
+            <li>Allumez le boîtier BaahBox avec l'interrupteur latéral (si votre BaahBox est équipée d'une batterie, sinon branchez-la)</li>
+            <li>Connectez le capteur à la prise DB9 du boîtier</li>
+          </ol>
+
+          <div class="note">
+            <img src="assets/images/icons/note.png" class="note-img" style="max-width:15px" alt=""/>
+            <p>La mise en route peut prendre plusieurs secondes. Si l'écran affiche des petits points blancs, attendez 2-3 secondes.</p>
+          </div>
+
+          <h3>Navigation dans les menus</h3>
+          <p>La BaahBox est équipée de plusieurs boutons pour naviguer dans les menus :</p>
+          <ul>
+            <li><strong>Bouton A :</strong> Sélection/validation</li>
+            <li><strong>Bouton B :</strong> Affichage des courbes des capteurs</li>
+            <li><strong>Bouton C :</strong> Retour/annulation et affichage des informations du boîtier</li>
+            <li><strong>Bouton Reset :</strong> Redémarre la BaahBox</li>
+          </ul>
+          <img src="assets/images/doc/baah-box-start/baah-box-buttons.webp" alt="Boutons de la BaahBox" style="width: 100%; max-width: 300px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+
+          <h3>Informations générales sur le boitier</h3>
+          <p>Pour afficher les paramètres globaux du boitier :</p>
+          <ol>
+            <li>Appuyez sur le bouton <strong>-C-</strong> pour afficher les paramètres globaux du boitier
+              <div style="text-align: center; margin: 15px 0;">
+                <img src="assets/images/doc/utilisation/Parameter1.webp" alt="Paramètres globaux du boitier" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+              </div>
+            </li>
+            <li>Un deuxième appui sur le bouton <strong>-C-</strong> affiche les informations sur le niveau de batterie du boitier
+              <div style="text-align: center; margin: 15px 0;">
+                <img src="assets/images/doc/utilisation/Parameter2.webp" alt="Niveau de batterie du boitier" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+              </div>
+            </li>
+          </ol>
+
+          <h3>Vérification du bon fonctionnement des capteurs</h3>
+          <p>Pour vérifier le bon fonctionnement des capteurs :</p>
+          <ol>
+            <li>Branchez le capteur souhaité sur la BaahBox (joystick, poignée, etc.)</li>
+            <li>Appuyez sur le bouton <strong>-B-</strong> pour afficher les courbes des données envoyées par les capteurs :
+              <ul style="margin-top: 10px;">
+                <li>1er appui : Affiche les 2 capteurs
+                  <div style="text-align: center; margin: 15px 0;">
+                    <img src="assets/images/doc/utilisation/2Capteurs.webp" alt="Affichage des 2 capteurs" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+                  </div>
+                </li>
+                <li>2ème appui : Affiche uniquement le capteur 1
+                  <div style="text-align: center; margin: 15px 0;">
+                    <img src="assets/images/doc/utilisation/Capteur1.webp" alt="Affichage du capteur 1" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+                  </div>
+                </li>
+                <li>3ème appui : Affiche uniquement le capteur 2
+                  <div style="text-align: center; margin: 15px 0;">
+                    <img src="assets/images/doc/utilisation/Capteur2.webp" alt="Affichage du capteur 2" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+                  </div>
+                </li>
+                <li>4ème appui : Affiche les informations du joystick
+                  <div style="text-align: center; margin: 15px 0;">
+                    <img src="assets/images/doc/utilisation/Joystick.webp" alt="Affichage des informations du joystick" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+                  </div>
+                </li>
+                <li>5ème appui : Retour à l'affichage des 2 capteurs</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="configuration" class="doc-section">
+          <h2>Configuration</h2>
+
+          <h3>Connexion à l'application mobile</h3>
+          <ol>
+            <li>Téléchargez l'application mobile BaahBox sur votre appareil (voir section <a href="#télécharger">Télécharger l'application</a>)</li>
+            <li>Activez le Bluetooth et lancez l'application</li>
+            <li>Appuyez sur l'icône des paramètres
+              <img src="assets/images/doc/link-new-baah-box/settings.webp" alt="Icône des paramètres" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+            </li>
+            <li>Allez dans Connexion
+              <div style="text-align: center; margin: 15px 0;">
+                <img src="assets/images/doc/link-new-baah-box/connection.webp" alt="Vérification de la connexion" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+              </div>
+            </li>
+            <li>Appuyez sur "Démarrer" pour démarrer la recherche de votre BaahBox
+              <div style="text-align: center; margin: 15px 0;">
+                <img src="assets/images/doc/link-new-baah-box/start-search.webp" alt="Bouton Démarrer la recherche" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+              </div>
+            </li>
+            <li>Puis sélectionnez votre BaahBox dans la liste
+              <div style="text-align: center; margin: 15px 0;">
+                <img src="assets/images/doc/link-new-baah-box/select-baah-box.webp" alt="Sélection de la BaahBox" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+              </div>
+            </li>
+          </ol>
+          <h3>Configuration des capteurs</h3>
+          <p>Pour configurer le type de capteur utilisé :</p>
+          <ol>
+            <li>Allez dans les paramètres de l'application</li>
+            <li>Sélectionnez "General"
+              <div style="text-align: center; margin: 15px 0;">
+                <img src="assets/images/doc/captors/general.webp" alt="Menu General" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+              </div>
+            </li>
+            <li>Choisissez le type de capteur dans la liste
+              <div style="text-align: center; margin: 15px 0;">
+                <img src="assets/images/doc/captors/select-capt-type.webp" alt="Sélection du type de capteur" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img">
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section id="jeux" class="doc-section">
+          
+          <h3>Choisir un jeu</h3>
+          <p>Pour commencer à jouer :</p>
+          <ol>
+            <li>Cliquez sur le bandeau correspondant au jeu de votre choix
+            <img src="assets/images/doc/games/game-list.webp" alt="Bandeau de jeux" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img"/></li>
+            <li>Un court texte vous explique comment jouer
+            <img src="assets/images/doc/games/explanation.webp" alt="Explication du jeu" style="max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="lightbox-img"/></li>
+            <li>Cliquez sur <strong>"Jouer"</strong> pour démarrer la partie</li>
+          </ol>
+          
+          <div class="note">
+            <img src="assets/images/icons/note.png" class="note-img" style="max-width:15px" alt=""/>
+            <p><strong>Astuce :</strong> Pour économiser la batterie de votre smartphone, pensez à couper le bluetooth après utilisation.</p>
+          </div>
+        </section>
+
+        <section id="télécharger" class="doc-section">
+          <h2>Télécharger l'application</h2>
+          <p>L'application BaahBox est disponible sur les deux plateformes :</p>
+        
+          <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 0 30px 0;">
+            <div style="flex: 1; min-width: 250px; text-align: center; background: #212b39; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+              <h3 style="margin-top: 0; color: var(--color-accent);">Pour Android</h3>
+              <a href="https://play.google.com/store/apps/details?id=com.orange.labs.baahbox&pcampaignid=web_share" target="_blank" style="display: inline-block; margin-bottom: 10px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Disponible sur Google Play" style="height: 50px;">
+              </a>
+              <p style="margin: 10px 0 0 0;">
+                <a href="https://github.com/Orange-OpenSource/BaahBox-Flutter-android/releases/" target="_blank" style="color: var(--color-accent);">Version alpha</a>
+              </p>
+            </div>
+            
+            <div style="flex: 1; min-width: 250px; text-align: center; background: #212b39; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+              <h3 style="margin-top: 0; color: var(--color-accent);">Pour iOS</h3>
+              <a href="https://apps.apple.com/fr/app/baahbox/id1474621985" target="_blank" style="display: inline-block; margin-bottom: 10px;">
+                <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Télécharger sur l'App Store" style="height: 50px;">
+              </a>
+              <p style="margin: 10px 0 0 0;">
+                <a href="mailto:frederique.pinson@orange.com" style="color: var(--color-accent);">Version TestFlight</a>
+              </p>
+            </div>
+          </div>
+          
+          <h3>Scanner pour télécharger</h3>
+          <p>Utilisez l'appareil photo de votre téléphone pour scanner le code correspondant à votre appareil :</p>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 0 30px 0; justify-content: center;">
+            <div style="text-align: center;">
+              <p style="font-weight: bold; margin-bottom: 10px;">Android</p>
+              <img 
+                src="assets/images/doc/qrcode-android.webp"
+                alt="QR code pour télécharger l'application Android" 
+                style="max-width: 150px; border: 1px solid #2d3b4d; border-radius: 8px;"
+                class="lightbox-img"
+              >
+            </div>
+            
+            <div style="text-align: center;">
+              <p style="font-weight: bold; margin-bottom: 10px;">iOS</p>
+              <img 
+                src="assets/images/doc/qrcode-apple.webp"
+                alt="QR code pour télécharger l'application iOS" 
+                style="max-width: 150px; border: 1px solid #2d3b4d; border-radius: 8px;"
+                class="lightbox-img"
+              >
+            </div>
+          </div>
+        </section>
+        
+        <section id="ressources" class="doc-section">
+          <h2>Ressources techniques</h2>
+          <ul>
+            <li>Les sources Arduino sont dans le répertoire project du repo : <a href="https://github.com/Orange-OpenSource/BaahBox-Arduino" target="_blank">BaahBox-Arduino</a> </li>
+            <li>Les sources de l'application iOS : <a href="https://github.com/Orange-OpenSource/BaahBox-iOS" target="_blank">BaahBox-iOS</a></li>
+            <li>Les sources de l'application Android : <a href="https://github.com/Orange-OpenSource/BaahBox-Flutter-android" target="_blank">BaahBox-Flutter-android</a></li>
+            <li>Les ressources graphiques : <a href="https://github.com/Orange-OpenSource/BaahBox-assets" target="_blank">BaahBox-assets</a></li>
+          </ul>
+        </section>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BaahBox</h3>
+          <p>Une solution pour la rééducation musculaire et l'entraînement aux prothèses myo-électriques.</p>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><img src="https://www.svgrepo.com/show/450156/github.svg"  style="width:20px; height:auto;" alt=""/></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Liens rapides</h3>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="index.html#telechargements">Téléchargements</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-email">
+            <img src="assets/images/icons/mailto.svg" alt="Email" class="email-icon">
+            <a href="mailto:frederique.pinson@orange.com">frederique.pinson@orange.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Orange SA. Distribué sous licence GPL v3.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script src="js/lightbox.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

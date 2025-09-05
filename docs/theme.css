@@ -1,0 +1,67 @@
+:root {
+  --color-bg: #0D1117;
+  --color-bg-alt: #161B22;
+  --color-text-primary: #C9D1D9;
+  --color-text-secondary: #8B949E;
+  --color-accent: #58A6FF;
+  --color-button-bg: #238636;
+  --color-button-bg-hover: #2EA043;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background-color: var(--color-bg-alt);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+h1, h2 {
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: var(--color-button-bg);
+  border: none;
+  color: var(--color-text-primary);
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: var(--color-button-bg-hover);
+}
+
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background-color: var(--color-bg-alt);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+  transition: background-color 0.3s ease;
+}
