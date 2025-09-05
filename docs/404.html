@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="404 Error - Page not found on BaahBox">
+    <title>404 - Page Not Found | BaahBox</title>
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+    <meta name="theme-color" content="#000000">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @font-face {
+            font-family: 'System';
+            font-style: normal;
+            font-weight: 300 800;
+            font-display: swap;
+            src: local('-apple-system'), local('BlinkMacSystemFont'), 
+                 local('Segoe UI'), local('Roboto'), local('Oxygen-Sans'), 
+                 local('Ubuntu'), local('Cantarell'), local('Helvetica Neue'), 
+                 local('sans-serif');
+        }
+        :root {
+            --primary: #00a1ff;
+            --primary-dark: #0077cc;
+            --secondary: #00dc82;
+            --dark: #000000;
+            --light: #f0f0f0;
+            --gray: #94a3b8;
+            --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
+            --text-gradient: linear-gradient(90deg, #00ff88, #00a1ff);
+        }
+        
+        body {
+            font-family: 'System', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .spotlight {
+            position: fixed;
+            bottom: -30vh;
+            left: 0;
+            right: 0;
+            height: 40vh;
+            background: linear-gradient(45deg, #00dc82, #36e4da 50%, #0047e1);
+            filter: blur(20vh);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 520px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .error-code {
+            font-size: clamp(4rem, 20vw, 8rem);
+            font-weight: 800;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 0 0.5rem 0;
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+        
+        .error-title {
+            font-size: clamp(1.5rem, 6vw, 2.25rem);
+            font-weight: 700;
+            margin: 0 0 1.25rem 0;
+            line-height: 1.2;
+            color: var(--light);
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000000;
+            color: #ffffff;
+            padding: 8px 16px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #00a1ff;
+            outline-offset: 2px;
+        }
+        
+        .error-message {
+            font-size: 1.25rem;
+            color: #c0c0c0;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+        
+        *:focus-visible {
+            outline: 2px solid #00a1ff;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .btn:focus:not(:focus-visible) {
+            outline: none;
+        }
+        
+        .btn-container {
+            position: relative;
+            display: inline-block;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #00ff88, #00a1ff);
+            padding: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 161, 255, 0.2);
+        }
+        
+        .btn-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 161, 255, 0.3);
+        }
+        
+        .btn-container:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 161, 255, 0.2);
+        }
+        
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            background: #000000;
+            color: white;
+            min-width: 200px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        @media (prefers-contrast: more) {
+            .btn {
+                border: 2px solid #ffffff;
+            }
+            
+            .btn-text {
+                -webkit-text-fill-color: #ffffff;
+            }
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00a1ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            opacity: 0.1;
+        }
+        
+        .btn-text {
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(90deg, #00ff88, #00a1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (prefers-reduced-motion: no-preference) {
+            .btn:hover .btn-text {
+                background: linear-gradient(90deg, #00ff88, #00a1ff, #00ff88);
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: textShine 3s linear infinite;
+            }
+            
+            .btn-container:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 161, 255, 0.3);
+            }
+            
+            .btn-container:active {
+                transform: translateY(0);
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 1.75rem;
+            }
+            
+            .error-message {
+                font-size: 1.125rem;
+            }
+            
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9375rem;
+                min-width: 160px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; text-align:left; backdrop-filter: blur(10px);">
+        <nav class="navbar">
+                <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/logo.webp" width="50px" height="50px" style="border-radius: 50%;" alt=""/>
+            <span>BaahBox</span>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home page</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="index.html#downloads">Downloads</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+    <div class="spotlight" aria-hidden="true"></div>
+    
+    <main id="main-content" class="container" tabindex="-1">
+        <h1 class="error-code" aria-label="Error 404">404</h1>
+        <h2 class="error-title">Page Not Found</h2>
+        <p class="error-message">Sorry, we couldn't find the page you're looking for.</p>
+        
+        <div class="btn-container">
+            <a href="/BaahBox" class="btn" aria-label="Go back to home page">
+                <span class="btn-text">Back to Home</span>
+            </a>
+        </div>
+    </main>
+    
+    <footer style="position: absolute; bottom: 2rem; left: 0; right: 0; text-align: center; color: #555555; font-size: 0.875rem; color:white" role="contentinfo">
+        &copy; 2025 Orange SA. Licensed under GPL v3.
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Documentation des jeux -  BaahBox" />
+  <title>Documentation des Jeux - BaahBox</title>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    .games-header {
+      text-align: center;
+      margin: 2rem 0 3rem;
+      padding: 0 1rem;
+    }
+    
+    .games-header h1 {
+      color: #4a90e2;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .games-header p {
+      color: #b8c2d9;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    
+    .games-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .game-card {
+      background: #1e2b3a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #2d3b4d;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 1rem;
+    }
+    
+    .game-screenshot {
+      width: 100%;
+      min-height: 200px;
+      background: #1a232e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    
+    .game-screenshot img {
+      max-width: 100%;
+      max-height: 250px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      background: #1a232e;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    
+    .game-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .game-title {
+      color: #4a90e2;
+      margin: 0 0 0.75rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .game-description {
+      color: #b8c2d9;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    
+    .game-settings {
+      background: rgba(45, 59, 77, 0.2);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: auto;
+    }
+    
+    .game-settings h4 {
+      margin: 0 0 0.75rem 0;
+      color: #8a9bb2;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .parametre {
+      margin-bottom: 0.5rem;
+    }
+    
+    .parametre-nom {
+      color: #6d9ce8;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline;
+    }
+    
+    .parametre-description {
+      color: #a8b3c9;
+      font-size: 0.95rem;
+      display: inline;
+      margin-left: 0.5rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background: #4a90e2;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #357abd;
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #4a90e2;
+      color: #4a90e2;
+    }
+    
+    .btn-outline:hover {
+      background: rgba(74, 144, 226, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #4a90e2;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .back-link:hover {
+      color: #357abd;
+    }
+    
+    .back-link svg {
+      margin-right: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .game-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/logo.webp" width="40" height="40" style="border-radius: 50%;" alt="BaahBox Logo"/>
+            <span>BaahBox</span>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="index.html#downloads">Downloads</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="documentation.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to Documentation
+    </a>
+    
+    <div class="games-header">
+      <h2>Jeux</h2>
+    </div>
+    
+    <div class="games-grid">
+
+      <div class="game-card" id="saute-mouton-saute">
+        <div class="game-screenshot">
+          <img src="assets/images/doc/games/mouton.webp" alt="Saute, mouton, saute !">
+        </div>
+
+        <div class="game-content">
+          <h3 class="game-title">Saute, mouton, saute !</h3>
+          <p class="game-description">Essayez de sauter un certain nombre de barrières</p>
+          <div class="game-settings">
+            <h4>Paramètres</h4>
+            <div class="parametre">
+              <span class="parametre-description">Vous pouvez modifier la difficulté en changeant le nombre de barrières et la vitesse de défilement.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-card" id="fais-exploser-le-ballon">
+        <div class="game-screenshot">
+          <img src="assets/images/doc/games/ballon.webp" alt="Fais exploser le ballon">
+        </div>
+        <div class="game-content">
+          <h3 class="game-title">Fais exploser le ballon !</h3>
+          <p class="game-description">Gonflez le ballon</p>
+        </div>
+      </div>
+
+      <div class="game-card" id="la-bataille-de-l-espace">
+        <div class="game-screenshot">
+          <img src="assets/images/doc/games/espace.webp" alt="La bataille de l'espace">
+        </div>
+        <div class="game-content">
+          <h3 class="game-title">La bataille de l'espace</h3>
+          <p class="game-description">Évitez les météorites</p>
+          <div class="game-settings">
+            <h4>Paramètres</h4>
+            <div class="parametre">
+              <span class="parametre-description">Vous pouvez modifier la difficulté en changeant la vitesse des astéroïdes, ainsi que le nombre de vaisseaux.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-card" id="gobe-les-mouches">
+        <div class="game-screenshot">
+          <img src="assets/images/doc/games/slurp.webp" alt="Slurp">
+        </div>
+        <div class="game-content">
+          <h3 class="game-title">Gobe les mouches</h3>
+          <p class="game-description">Orientez le crapaud pour gober des mouches</p>
+          <div class="game-settings">
+            <h4>Paramètres</h4>
+          <div class="parametre">
+            <p class="game-description">Vous pouvez modifier la difficulté en changeant le temps pendant lequel les mouches ne bougent pas, ainsi qu'en modifiant l'activation du tir automatique.</p>
+          </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-card" id="labyrinthe">
+        <div class="game-screenshot">
+          <img src="assets/images/doc/games/labyrinthe.webp" alt="Labyrinthe">
+        </div>
+        <div class="game-content">
+          <h3 class="game-title">Labyrinthe</h3>
+          <p class="game-description">Traversez le labyrinthe</p>
+          <div class="game-settings">
+            <h4>Paramètres</h4>
+            <div class="parametre">
+              <span class="parametre-description">Vous pouvez modifier la difficulté en activant le mode chronométré, en modifiant la taille du labyrinthe, la pénalisation des impactes, ainsi que la vitesse de déplacement.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-card" id="labyrinthe-3D">
+        <div class="game-screenshot">
+          <img src="assets/images/doc/games/labyrinthe3d.webp" alt="Labyrinthe 3D">
+        </div>
+        <div class="game-content">
+          <h3 class="game-title">Labyrinthe 3D</h3>
+          <p class="game-description">Traversez le labyrinthe en 3D</p>
+          <div class="game-settings">
+            <h4>Paramètres</h4>
+            <div class="parametre">
+              <span class="parametre-description">Vous pouvez modifier la difficulté en activant le mode chronométré, en modifiant la taille du labyrinthe, ainsi que la vitesse de déplacement.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BaahBox</h3>
+          <p>Une solution pour la rééducation musculaire et l'entraînement aux prothèses myo-électriques.</p>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><img src="https://www.svgrepo.com/show/450156/github.svg"  style="width:20px; height:auto;" alt=""/></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Liens rapides</h3>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="index.html#telechargements">Téléchargements</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-email">
+            <img src="assets/images/icons/mailto.svg" alt="Email" class="email-icon">
+            <a href="mailto:frederique.pinson@orange.com">frederique.pinson@orange.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Orange SA. Distribué sous licence GPL v3.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

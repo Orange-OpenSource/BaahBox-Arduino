@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Documentation complète de BaahBox - Solution de rééducation musculaire et d'entraînement aux prothèses myo-électriques" />
+  <title>Documentation - BaahBox</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .doc-card {
+      background: #1e2b3a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      border: 1px solid #2d3b4d;
+    }
+    
+    .doc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .doc-card h3 {
+      color: #4a90e2;
+      margin-top: 0;
+      border-bottom: 1px solid #2d3b4d;
+      padding-bottom: 0.5rem;
+    }
+    
+    .doc-card p {
+      color: #b8c2d9;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #28384b;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    
+    .btn:hover {
+      background: #17202b;
+      color: white;
+    }
+    
+    .intro {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+    
+    .intro h1 {
+      margin-bottom: 1rem;
+    }
+    
+    .intro p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #b8c2d9;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/logo.webp" style="border-radius: 50%;" alt="" width="50" height="50">
+            <span>BaahBox</span>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="documentation.html" class="active">Documentation</a></li>
+          <li><a href="index.html#telechargements">Téléchargements</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="documentation">
+    <div class="container">
+      <section class="intro">
+        <h1>Documentation BaahBox</h1>
+        <p>Bienvenue dans la documentation de la BaahBox.</p>
+      </section>
+      
+      <div class="doc-grid">
+        <div class="doc-card">
+          <h2>Manuel d'utilisation</h2>
+          <p>Comment utiliser votre BaahBox</p>
+          <a href="manuel-utilisation.html" class="btn">Voir le manuel</a>
+        </div>
+        
+        <div class="doc-card">
+          <h2>Capteurs</h2>
+          <p>Différent capteurs supportés et leur assemblage</p>
+          <a href="capteurs.html" class="btn">Voir les capteurs</a>
+        </div>
+        
+        <div class="doc-card">
+          <h2>Guide d'assemblage</h2>
+          <p>Assamblez vous-même votre BaahBox</p>
+          <a href="assemblage.html" class="btn">Voir le guide</a>
+        </div>
+
+        <div class="doc-card">
+          <h2>Jeux</h2>
+          <p>La liste des jeux</p>
+          <a href="games.html" class="btn">Voir les jeux</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BaahBox</h3>
+          <p>Une solution pour la rééducation musculaire et l'entraînement aux prothèses myo-électriques.</p>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><img src="https://www.svgrepo.com/show/450156/github.svg"  style="width:20px; height:auto;" alt=""/></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Liens rapides</h3>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="#telechargements">Téléchargements</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-email">
+            <img src="assets/images/icons/mailto.svg" alt="Email" class="email-icon">
+            <a href="mailto:frederique.pinson@orange.com">frederique.pinson@orange.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Orange SA. Distribué sous licence GPL v3.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
