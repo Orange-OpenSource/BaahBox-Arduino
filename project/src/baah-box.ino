@@ -33,11 +33,6 @@ handzDisplay display3dhandz;
 // SDCard
 configSDClass config3dHandz;
 
-// tinyUSB for nrf52
-#if defined(USE_TINYUSB)
-#include <Adafruit_TinyUSB.h> // for Serial
-#endif
-
 
 //*********************************************
 //*
