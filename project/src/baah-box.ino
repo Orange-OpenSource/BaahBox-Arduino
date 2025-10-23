@@ -33,7 +33,6 @@ handzDisplay display3dhandz;
 // SDCard
 configSDClass config3dHandz;
 
-
 //*********************************************
 //*
 //*       S E T U P
