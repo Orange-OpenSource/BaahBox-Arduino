@@ -18,9 +18,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Arduino.h>
-#include "config.hpp"
 #include "display.hpp"
-#include "configSD.hpp"
 
 int decalage = 64;
 int cptDisplayBatt = 0;

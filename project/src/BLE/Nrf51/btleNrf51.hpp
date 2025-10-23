@@ -18,8 +18,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef btleNRF1_hpp
-#define btleNRF51_hpp
+#ifndef btle51Class_hpp
+#define btle51Class_hpp
 
 #include <stdio.h>
 #define BTLE_END_OF_CHAR '#'

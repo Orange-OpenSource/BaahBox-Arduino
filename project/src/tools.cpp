@@ -18,7 +18,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Arduino.h>
-#include "display.hpp"
+#include "./Display/ADA_TFT_SSD1306/display.hpp"
 
 //*********************************************
 //*
@@ -35,7 +35,7 @@ float getVbat(void)
   //Serial.print("VBat: ");
   //Serial.println(measuredvbat);
 
-  // to solve conflict issue between batterie input and BUTTON_A input
+  // to solve conflict issue between battery input and BUTTON_A input
   pinMode(BUTTON_A, OUTPUT);
   digitalWrite(BUTTON_A, HIGH);
   pinMode(BUTTON_A, INPUT);

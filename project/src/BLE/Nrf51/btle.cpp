@@ -20,10 +20,6 @@
 #include <SPI.h>
 #include "btle.hpp"
 
-// #ifdef USE_NRF51
-//     #include "Nrf51/btleNrf51.hpp"
-//     btle51Class ble51;
-// #endif
 
 /*=========================================================================*/
 
@@ -54,9 +50,7 @@ void btleClass::init(char *inputDeviceName)
 
   Serial.println("begin of btle Init");
 
-  #ifdef USE_NRF51
   ble51.init(inputDeviceName); 
-  #endif
 }
 
 //*********************************************
@@ -66,9 +60,7 @@ void btleClass::init(char *inputDeviceName)
 //*********************************************
 void btleClass::write(char *data, int dataLength)
 {
-  #ifdef USE_NRF51
   ble51.write(data, dataLength); 
-  #endif
 }
 
 /**************************************************************************/
@@ -78,7 +70,6 @@ void btleClass::write(char *data, int dataLength)
 /**************************************************************************/
 int btleClass::read(char *command)
 {
-  #ifdef USE_NRF51
-  ble51.read(command); 
-  #endif
+  return ble51.read(command); 
+  
 }

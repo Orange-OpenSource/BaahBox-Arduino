@@ -18,13 +18,13 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Arduino.h>
-#include "btle.hpp"
-#include "config.hpp"
-#include "muscleSensor.hpp"
+#include "BLE/Nrf51/btle.hpp"
+#include "Config/config.hpp"
+#include "./Sensors/muscleSensor.hpp"
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include "display.hpp"
-#include "configSD.hpp"
+#include "./Display/ADA_TFT_SSD1306/display.hpp"
+#include "./SD/configSD.hpp"
 
 btleClass btle;
 muscleSensorClass muscleSensor;

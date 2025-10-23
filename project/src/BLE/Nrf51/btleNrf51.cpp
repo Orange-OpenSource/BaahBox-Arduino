@@ -18,7 +18,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <SPI.h>
-#include "../include/Nrf51/btleNrf51.hpp"
+#include "btleNrf51.hpp"
 #include "Adafruit_BLE.h"
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "Adafruit_BluefruitLE_UART.h"

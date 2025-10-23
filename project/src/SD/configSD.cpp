@@ -19,7 +19,6 @@
 
 #include <Arduino.h>
 #include "configSD.hpp"
-#include "config.hpp"
 
 //*********************************************
 //*

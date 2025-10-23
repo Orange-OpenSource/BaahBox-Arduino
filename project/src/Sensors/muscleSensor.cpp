@@ -18,9 +18,9 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Arduino.h>
-#include "config.hpp"
+#include "../Config/config.hpp"
 #include "muscleSensor.hpp"
-#include "configSD.hpp"
+#include "../SD/configSD.hpp"
 
 extern configSDClass config3dHandz;
 
