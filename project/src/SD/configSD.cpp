@@ -38,29 +38,38 @@ configSDClass::configSDClass()
 //*********************************************
 void configSDClass::init(void)
 {
-  Serial.print("\nInitializing SD card...");
+  
 
   // we'll use the initialization code from the utility libraries
   // since we're just testing if the card is working!
-  if (!SD.begin(CHIP_SELECT_SD_PIN))
-  {
-    Serial.println("Card failed, or not present");
+  #if USE_ESP32S3
+    Serial.println("No SD so far for ESP32S3 TFT config");
     this->loadDefaultValues();
     Serial.println("Set defaults Init Values");
     printConfig();
     return;
-  }
-  Serial.println("card initialized.\n");
+  #else
+    Serial.print("\nInitializing SD card...");
+     if (!SD.begin(CHIP_SELECT_SD_PIN))
+    {
+     Serial.println("Card failed, or not present");
+      this->loadDefaultValues();
+     Serial.println("Set defaults Init Values");
+     printConfig();
+     return;
+    }
+    Serial.println("card initialized.\n");
 
-  Serial.println("Initialize config file for BaahBox...");
+    Serial.println("Initialize config file for BaahBox...");
 
-  root = SD.open("/");
+    root = SD.open("/");
 
-  analyseConfigFile(userConfigFileName);
-  analyseConfigFile(systemConfigFileName);
-  Serial.println("Read config on SD card OK");
+    analyseConfigFile(userConfigFileName);
+    analyseConfigFile(systemConfigFileName);
+    Serial.println("Read config on SD card OK");
 
-  printConfig();
+    printConfig();
+  #endif
 }
 
 //*********************************************
@@ -96,165 +105,165 @@ void configSDClass::loadDefaultValues(void)
 //*  - extract value from lines
 //*
 //*********************************************
-void configSDClass::analyseConfigFile(String configFileName)
-{
-  // open the file. note that only one file can be open at a time,
-  // so you have to close this one before opening another.
-  File dataFile = SD.open(configFileName, FILE_READ);
-  Serial.print("Analyze config file : ");
-  Serial.println(configFileName);
+// void configSDClass::analyseConfigFile(String configFileName)
+// {
+//   // open the file. note that only one file can be open at a time,
+//   // so you have to close this one before opening another.
+//   File dataFile = SD.open(configFileName, FILE_READ);
+//   Serial.print("Analyze config file : ");
+//   Serial.println(configFileName);
 
-  // if the file is available, read to it:
-  if (dataFile)
-  {
-    String line;
-    char car;
-    int index;
-    while (dataFile.available())
-    {
-      line = "";
-      while ((car = dataFile.read()) != '\n')
-      {
-        line.concat(car);
-      }
+//   // if the file is available, read to it:
+//   if (dataFile)
+//   {
+//     String line;
+//     char car;
+//     int index;
+//     while (dataFile.available())
+//     {
+//       line = "";
+//       while ((car = dataFile.read()) != '\n')
+//       {
+//         line.concat(car);
+//       }
 
-      index = isValidLine(line);
-      if (index != -1)
-      {
-        // set value of parameter
-        String key = line.substring(0, index);
-        key.trim();
-        String value = line.substring(index + 1, line.length());
-        value.trim();
-        key.toUpperCase();
-        if (key.equals("BTLE_DEVICE_NAME"))
-        {
-          this->btleDeviceName = value;
-        }
-        else if (key.equals("NB_MUSCLE_SENSOR"))
-        {
-          this->nbMuscleSensor = value.toInt();
-        }
-        else if (key.equals("MUSCLE_FILTER_FACTOR"))
-        {
-          this->muscleFilterSensor = value.toFloat();
-        }
-        else if (key.equals("JOYSTICK_DIGITAL_INPUT_PIN"))
-        {
-          char tmp[20];
-          this->joystickDigitalInputs = value;
-          value.toCharArray(tmp, 20);
-          char *p = strtok(tmp, ",");
-          int idx = 0;
-          while (p != nullptr && idx < NB_JOYSTICK_PIN)
-          {
-            if (atoi(p) != 0){
-              joystickDigitalInputTab[idx] = atoi(p);
-              Serial.print("affectation pin joystick : ");
-              Serial.print(atoi(p));
-              Serial.println();
+//       index = isValidLine(line);
+//       if (index != -1)
+//       {
+//         // set value of parameter
+//         String key = line.substring(0, index);
+//         key.trim();
+//         String value = line.substring(index + 1, line.length());
+//         value.trim();
+//         key.toUpperCase();
+//         if (key.equals("BTLE_DEVICE_NAME"))
+//         {
+//           this->btleDeviceName = value;
+//         }
+//         else if (key.equals("NB_MUSCLE_SENSOR"))
+//         {
+//           this->nbMuscleSensor = value.toInt();
+//         }
+//         else if (key.equals("MUSCLE_FILTER_FACTOR"))
+//         {
+//           this->muscleFilterSensor = value.toFloat();
+//         }
+//         else if (key.equals("JOYSTICK_DIGITAL_INPUT_PIN"))
+//         {
+//           char tmp[20];
+//           this->joystickDigitalInputs = value;
+//           value.toCharArray(tmp, 20);
+//           char *p = strtok(tmp, ",");
+//           int idx = 0;
+//           while (p != nullptr && idx < NB_JOYSTICK_PIN)
+//           {
+//             if (atoi(p) != 0){
+//               joystickDigitalInputTab[idx] = atoi(p);
+//               Serial.print("affectation pin joystick : ");
+//               Serial.print(atoi(p));
+//               Serial.println();
 
-            }else {
-              if (strcmp(p, "A5") == 0) joystickDigitalInputTab[idx] = A5;
-              Serial.print("affectation pin joystick A5 : ");
-              Serial.print(A5);
-              Serial.println();
-            }
-            p = strtok(NULL, ",");
-            Serial.print("joystickDigitalInputTab[idx] : ");
-            Serial.print(joystickDigitalInputTab[idx]);
-            Serial.println();
-            idx++;
-          }
-        }
-        else if (key.equals("MUSCLE_ANALOG_INPUT_PIN"))
-        {
-          char tmp[20];
-          this->pinAnalogInputs = value;
-          value.toCharArray(tmp, 20);
-          char *p = strtok(tmp, ",");
-          int idx = 0;
-          while (p != nullptr && idx < NB_JOYSTICK_PIN)
-          {
-            switch (atoi(p))
-            {
-            case 0:
-              this->pinAnalogInputTab[idx++] = A0;
-              break;
-            case 1:
-              this->pinAnalogInputTab[idx++] = A1;
-              break;
-            case 2:
-              this->pinAnalogInputTab[idx++] = A2;
-              break;
-            case 3:
-              this->pinAnalogInputTab[idx++] = A3;
-              break;
-            case 4:
-              this->pinAnalogInputTab[idx++] = A4;
-              break;
-            case 5:
-              this->pinAnalogInputTab[idx++] = A5;
-              break;
-            default:
-              Serial.println("ERROR : analog input pin invalid");
-            }
-            p = strtok(NULL, ",");
-          }
-        }
-        else if (key.equals("LANGUAGE"))
-        {
+//             }else {
+//               if (strcmp(p, "A5") == 0) joystickDigitalInputTab[idx] = A5;
+//               Serial.print("affectation pin joystick A5 : ");
+//               Serial.print(A5);
+//               Serial.println();
+//             }
+//             p = strtok(NULL, ",");
+//             Serial.print("joystickDigitalInputTab[idx] : ");
+//             Serial.print(joystickDigitalInputTab[idx]);
+//             Serial.println();
+//             idx++;
+//           }
+//         }
+//         else if (key.equals("MUSCLE_ANALOG_INPUT_PIN"))
+//         {
+//           char tmp[20];
+//           this->pinAnalogInputs = value;
+//           value.toCharArray(tmp, 20);
+//           char *p = strtok(tmp, ",");
+//           int idx = 0;
+//           while (p != nullptr && idx < NB_JOYSTICK_PIN)
+//           {
+//             switch (atoi(p))
+//             {
+//             case 0:
+//               this->pinAnalogInputTab[idx++] = A0;
+//               break;
+//             case 1:
+//               this->pinAnalogInputTab[idx++] = A1;
+//               break;
+//             case 2:
+//               this->pinAnalogInputTab[idx++] = A2;
+//               break;
+//             case 3:
+//               this->pinAnalogInputTab[idx++] = A3;
+//               break;
+//             case 4:
+//               this->pinAnalogInputTab[idx++] = A4;
+//               break;
+//             case 5:
+//               this->pinAnalogInputTab[idx++] = A5;
+//               break;
+//             default:
+//               Serial.println("ERROR : analog input pin invalid");
+//             }
+//             p = strtok(NULL, ",");
+//           }
+//         }
+//         else if (key.equals("LANGUAGE"))
+//         {
 
-          if (value.equals("FR"))
-          {
-            Serial.println("Selection de la langue francaise");
-          }
-          else if (value.equals("EN"))
-          {
-            Serial.println("English language selected");
-          }
-          else if (value.equals("ES"))
-          {
-            Serial.println("Idioma español seleccionado");
-          }
-          else if (value.equals("DE"))
-          {
-            Serial.println("Spanische Sprache ausgewählt");
-          }
-          else
-          {
-            Serial.println("Default english language selected");
-            value = "EN";
-          }
-          this->language = value;
-        }
-        else
-        {
-          Serial.print("Unknown key : ");
-          Serial.println(key);
-        }
-      }
-    }
-    dataFile.close();
-  }
-  // if the file isn't open, pop up an error:
-  else
-  {
-    Serial.print("error opening ");
-    Serial.println(configFileName);
-  }
-}
+//           if (value.equals("FR"))
+//           {
+//             Serial.println("Selection de la langue francaise");
+//           }
+//           else if (value.equals("EN"))
+//           {
+//             Serial.println("English language selected");
+//           }
+//           else if (value.equals("ES"))
+//           {
+//             Serial.println("Idioma español seleccionado");
+//           }
+//           else if (value.equals("DE"))
+//           {
+//             Serial.println("Spanische Sprache ausgewählt");
+//           }
+//           else
+//           {
+//             Serial.println("Default english language selected");
+//             value = "EN";
+//           }
+//           this->language = value;
+//         }
+//         else
+//         {
+//           Serial.print("Unknown key : ");
+//           Serial.println(key);
+//         }
+//       }
+//     }
+//     dataFile.close();
+//   }
+//   // if the file isn't open, pop up an error:
+//   else
+//   {
+//     Serial.print("error opening ");
+//     Serial.println(configFileName);
+//   }
+// }
 //*********************************************
 //*
 //*       isValidLine
 //*
 //*********************************************
-int configSDClass::isValidLine(String line)
-{
-  if (line.indexOf("#") == 0)
-    return -1;
-  return line.indexOf('=');
-}
+// int configSDClass::isValidLine(String line)
+// {
+//   if (line.indexOf("#") == 0)
+//     return -1;
+//   return line.indexOf('=');
+// }
 
 //*********************************************
 //*

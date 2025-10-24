@@ -17,20 +17,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __scheduler_hpp
-#define __scheduler_hpp
+#include <Arduino.h>
+#include "display.hpp"
 
-class Scheduler
+//*********************************************
+//*
+//*       getVbat
+//*
+//*********************************************
+#define VBATPIN A7
+float getVbat(void)
 {
-public:
-  Scheduler(unsigned long loopTimestamp, unsigned long refreshDelay);
-  Scheduler();
-  bool needToBeExecuted(void);
+  float measuredvbat = analogRead(VBATPIN);
+  measuredvbat *= 2;    // we divided by 2, so multiply back
+  measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
+  measuredvbat /= 1024; // convert to voltage
+  
+  solveButtonConflict();
+  return measuredvbat;
+}
 
-private:
-  unsigned long displayLoopDelay;
-  unsigned long loopTimestamp;
-  unsigned long refreshDelay;
-};
+void solveButtonConflict(void) {
+// to solve conflict issue between battery input and BUTTON_A input
+  pinMode(BUTTON_A, OUTPUT);
+  digitalWrite(BUTTON_A, HIGH);
+  pinMode(BUTTON_A, INPUT);
 
-#endif /* __scheduler_hpp */
+}

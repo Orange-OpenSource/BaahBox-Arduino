@@ -25,7 +25,7 @@
 #include "../../Sensors/muscleSensor.hpp"
 #include "../../SD/configSD.hpp"
 #include "../../Config/config.hpp"
-#include "../../tools.hpp"
+#include "tools.hpp"
 
 extern Adafruit_SSD1306 display;
 

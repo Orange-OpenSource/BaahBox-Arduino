@@ -18,12 +18,26 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Arduino.h>
-#include "BLE/Nrf51/btle.hpp"
+
+#ifdef USE_NRF51
+  #include "BLE/Nrf51/btle.hpp"
+  #include "Display/ADA_OLED_FEATHERWING/display.hpp"
+
+#endif
+
+#ifdef USE_NRF52
+    #include "BLE/Nrf52/btle.hpp"
+    #include "Display/ADA_OLED_FEATHERWING/display.hpp"
+
+#endif
+
+#ifdef USE_ESP32S3
+    #include "BLE/ESP32S3/btle.hpp"
+     #include "Display/ADA_ESP32_TFT/display.hpp"
+#endif
+
 #include "Config/config.hpp"
 #include "./Sensors/muscleSensor.hpp"
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include "./Display/ADA_TFT_SSD1306/display.hpp"
 #include "./SD/configSD.hpp"
 
 btleClass btle;

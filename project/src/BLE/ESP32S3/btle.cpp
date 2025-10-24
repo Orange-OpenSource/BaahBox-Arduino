@@ -22,6 +22,15 @@
 #include "btle.hpp"
 
 
+// Callback pour recevoir la commande
+class MyCallbacks : public BLECharacteristicCallbacks {
+  void onWrite(BLECharacteristic *pCharacteristic) {
+    std::string rxValue = pCharacteristic->getValue();
+    if (rxValue == "CALIBRATE") {
+      //Serial.println("Commande CALIBRATE reçue");
+    }
+  }
+};
 /*=========================================================================*/
 
 //*********************************************
@@ -92,13 +101,3 @@ int btleClass::read(char *command)
 
 }
 
-
-// Callback pour recevoir la commande
-class MyCallbacks : public BLECharacteristicCallbacks {
-  void onWrite(BLECharacteristic *pCharacteristic) {
-    std::string rxValue = pCharacteristic->getValue();
-    if (rxValue == "CALIBRATE") {
-      //Serial.println("Commande CALIBRATE reçue");
-    }
-  }
-};

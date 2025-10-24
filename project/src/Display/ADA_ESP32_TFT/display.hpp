@@ -1,0 +1,86 @@
+// ******************************************
+// * Baah Box Arduino : Sensor BTLE gateway *
+// ******************************************
+
+// Copyright (C) 2017 – 2023 Orange SA
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+#ifndef __DISPLAY_HPP
+#define __DISPLAY_HPP
+
+#include <Adafruit_GFX.h>
+#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
+#include <SPI.h>
+
+#include "../../Sensors/muscleSensor.hpp"
+#include "../../SD/configSD.hpp"
+#include "../../Config/config.hpp"
+#include "tools.hpp"
+
+extern Adafruit_ST7789 display;
+
+#define BUTTON_A 0
+#define BUTTON_B 1
+#define BUTTON_C 2
+
+// key for translation
+#define KEY_SENSOR 0
+#define KEY_ANALOG_INPUTS 1
+#define KEY_SETTINGS 2
+#define KEY_VERSION 3
+#define KEY_BATTERY 4
+#define KEY_LICENCE 5
+
+
+extern muscleSensorClass muscleSensor;
+
+class handzDisplay
+{
+public:
+  handzDisplay(void);
+  ~handzDisplay();
+  void init(void);
+  void checkButtons(void);
+  void update(void);
+  Scheduler *scheduler;
+
+private:
+  int button_A_pressed;
+  int button_B_pressed;
+  int button_C_pressed;
+  int tblCapteur1[62], tblCapteur2[62];
+  int tblCapteur[126];
+  int capteur1, capteur2, idxTblCapteur;
+  int displayMode;
+  int buttonNotReleased;
+
+  int cptRefresh = 0;
+
+  Adafruit_ST7789 display = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+
+  void DisplayBanner(void);
+  int isButtonPressed(void);
+  void displayAxes(int type);
+  void capteurs(int type);
+  void displayCapteur(int channel, int type);
+  void joystick(void);
+  void refreshDisplay(void);
+  void displayConfig(void);
+  void displayConfig2(void);
+  void displayLicences(void);
+  String getTranslatedString(int key);
+};
+
+#endif /* display_hpp */

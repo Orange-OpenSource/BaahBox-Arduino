@@ -23,7 +23,9 @@
 #define configSD_hpp
 
 #include <SPI.h>
-#include <SD.h>
+#if !(USE_ESP32S3)
+  #include <SD.h>
+#endif
 
 #define MAX_NB_MUSCLE_SENSOR 5
 #define FILENAME_SIZE 50
@@ -31,7 +33,6 @@
 
 // change this to match your SD shield or module;
 // Adafruit SD shields and modules: pin 10
-#define CHIP_SELECT_SD_PIN 10
 
 /* Btle lib Class*/
 class configSDClass
@@ -50,12 +51,15 @@ public:
   void init();
 
 private:
+  #if !(USE_ESP32S3)
   File root;
   File dataFile;
+
   String userConfigFileName = "USER.CFG";
   String systemConfigFileName = "SYSTEM.CFG";
   int isValidLine(String line);
   void analyseConfigFile(String filename);
+  #endif
   void printConfig(void);
   void loadDefaultValues(void);
 };

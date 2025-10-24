@@ -21,5 +21,5 @@
 #define __TOOLS_HPP
 
 float getVbat(void);
-
+void solveButtonConflict();
 #endif /* __TOOLS.HPP */
