@@ -1,6 +1,4 @@
-Français | English
-------------- | -------------
-[![BaahBoxPix](./documentation/img/fr.jpg)](./documentation/fr/README.md) | [![BaahBoxPix](./documentation/img/en.jpg)](./documentation/en/README.md)| Content 
+# Présentation
+Cliquez sur l'image ci-dessous pour accéder au site de présentation de la Baah Box.
 
-
-![BaahBoxPix](./documentation/img/photoBaaBox.jpg)
+[![BaahBoxPix](https://github.com/Orange-OpenSource/BaahBox-Arduino/blob/dev/docs/assets/images/snapShopBBoxDoc.png)](https://orange-opensource.github.io/BaahBox-Arduino/)

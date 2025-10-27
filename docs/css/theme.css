@@ -13,6 +13,7 @@
   --color-text-primary: #C9D1D9;
   --color-text-secondary: #8B949E;
   --color-accent: #58A6FF;
+  --color-accent-alt: #2c7be5;
   --color-border: #30363d;
   --color-card-bg: #161B22;
   --color-card-shadow: rgba(0, 0, 0, 0.2);
@@ -112,7 +113,7 @@ img {
 
 .btn-primary {
   background-color: var(--color-primary);
-  color: white;
+  display: white;
   position: relative;
   transition: all 0.3s ease;
   background-color: #1a5bbf;
