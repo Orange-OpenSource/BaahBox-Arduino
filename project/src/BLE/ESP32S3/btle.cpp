@@ -17,9 +17,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-//#include <SPI.h>
-
 #include "btle.hpp"
+#include <string.h>
 
 
 // Callback pour recevoir la commande
@@ -88,7 +87,15 @@ void btleClass::init(char *inputDeviceName)
 //*********************************************/
 void btleClass::write(char *data, int dataLength)
 {
-  pSensorDataCharacteristic->setValue(data);
+  std::string str;
+  int len = strlen(char);
+
+  // Copy characters from char* to string using
+  // std::copy and std::back_inserter
+    copy(data, data + len-1, back_inserter(str));
+  str.push_back(90);
+
+  pSensorDataCharacteristic->setValue(str);
   pSensorDataCharacteristic->notify();
 }
 /**************************************************************************/
