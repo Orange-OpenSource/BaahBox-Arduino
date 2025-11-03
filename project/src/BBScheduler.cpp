@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#include "scheduler.hpp"
+#include "BBScheduler.hpp"
 #include <Arduino.h>
 
 //*********************************************
@@ -25,7 +25,7 @@
 //*       Constructor
 //*
 //*********************************************
-Scheduler::Scheduler(unsigned long loopTimestamp, unsigned long refreshDelay)
+BBScheduler::BBScheduler(unsigned long loopTimestamp, unsigned long refreshDelay)
 {
   this->loopTimestamp = loopTimestamp;
   this->refreshDelay = refreshDelay;
@@ -36,7 +36,7 @@ Scheduler::Scheduler(unsigned long loopTimestamp, unsigned long refreshDelay)
 //*       Constructor
 //*
 //*********************************************
-Scheduler::Scheduler()
+BBScheduler::BBScheduler()
 {
 }
 
@@ -45,7 +45,7 @@ Scheduler::Scheduler()
 //*       needToBeExecuted
 //*
 //*********************************************
-bool Scheduler::needToBeExecuted(void)
+bool BBScheduler::needToBeExecuted(void)
 {
   displayLoopDelay = millis() - loopTimestamp;
 

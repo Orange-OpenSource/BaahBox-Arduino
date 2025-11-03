@@ -17,14 +17,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __scheduler_hpp
-#define __scheduler_hpp
+#ifndef __BBscheduler_hpp
+#define __BBscheduler_hpp
 
-class Scheduler
+class BBScheduler
 {
 public:
-  Scheduler(unsigned long loopTimestamp, unsigned long refreshDelay);
-  Scheduler();
+  BBScheduler(unsigned long loopTimestamp, unsigned long refreshDelay);
+  BBScheduler();
   bool needToBeExecuted(void);
 
 private:
@@ -33,4 +33,4 @@ private:
   unsigned long refreshDelay;
 };
 
-#endif /* __scheduler_hpp */
+#endif /* __BBscheduler_hpp */

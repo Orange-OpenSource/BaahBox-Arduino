@@ -73,7 +73,7 @@ void handzDisplay::init(void)
     button_B_pressed = 0;
     button_C_pressed = 0;
 
-    scheduler = new Scheduler(millis(), DISPLAY_DELAY);
+    scheduler = new BBScheduler(millis(), DISPLAY_DELAY);
 }
 
 //*********************************************

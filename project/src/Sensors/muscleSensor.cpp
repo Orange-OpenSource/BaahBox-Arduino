@@ -87,7 +87,7 @@ int muscleSensorClass::init(unsigned long period, btleClass btle)
     */
 
     // init scheduler
-    scheduler = new Scheduler(millis(), MUSCLE_PERIOD_IN_MS);
+    scheduler = new BBScheduler(millis(), MUSCLE_PERIOD_IN_MS);
     Serial.println("muscleClass::init => OK\n");
     return 0;
 }
@@ -116,10 +116,7 @@ int tmpDisplay = 0;
 void muscleSensorClass::muscleAcquisition(void)
 {
     char tmp[10];
-    char tmp2[2048] = "";
     int index = 0;
-
-    int value[MAX_NB_MUSCLE_SENSOR];
 
     for (int i = 0; i < config3dHandz.nbMuscleSensor; i++)
     {
@@ -146,6 +143,7 @@ void muscleSensorClass::muscleAcquisition(void)
     btle.write(tmp, index);
 
 #ifdef __DEBUG__
+    char tmp2[2048] = "";
     if (tmpDisplay++ > 10)
     {
         sprintf(tmp2, "%d %d %d %d", tmp[0] * 32 + tmp[1], tmp[2] * 32 + tmp[3], tmp[4], tmp[5]);

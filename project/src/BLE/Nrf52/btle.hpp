@@ -26,6 +26,17 @@
 #define BTLE_MAX_BUFFER_SIZE 512
 #define BTLE_MAX_DEVICE_NAME 128
 
+#include <bluefruit.h>
+#include <Adafruit_LittleFS.h>
+#include <InternalFileSystem.h>
+
+// UUIDs pour le service et caractéristiques
+#define SERVICE_UUID        "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
+#define CHAR_COMMAND_UUID   "6E400002-B5A3-F393-E0A9-E50E24DCCA9E" // pour recevoir "CALIBRATE"
+#define CHAR_POSITION_UUID  "6E400003-B5A3-F393-E0A9-E50E24DCCA9E" // pour envoyer la position
+
+
+
 
 // COMMON SETTINGS
 // ----------------------------------------------------------------------------------------------
@@ -43,11 +54,20 @@ public:
   int read(char *command);
   void write(char *data, int dataLength);
   char deviceName[BTLE_MAX_DEVICE_NAME];
+  
 
 private:
   bool configured;
   int btleBufferInputsIndex;
   char btleBufferInputs[BTLE_MAX_BUFFER_SIZE];
+  void startAdvertising(void);
+
+  // BLE Service
+  BLEDfu  bledfu;  // OTA DFU service
+  BLEDis  bledis;  // device information
+  BLEUart bleuart; // uart over ble
+  BLEBas  blebas;  // battery
+
 };
 
 #endif /* btle_hpp */

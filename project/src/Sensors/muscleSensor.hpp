@@ -32,7 +32,7 @@
 #endif
 
 #include "SD/configSD.hpp"
-#include "../scheduler.hpp"
+#include "../BBScheduler.hpp"
 
 
 #ifndef muscleSensor_hpp
@@ -52,7 +52,7 @@ public:
 
   btleClass btle;
   int storedValues[MAX_NB_MUSCLE_SENSOR];
-  Scheduler *scheduler;
+  BBScheduler *scheduler;
 
 private:
   int lowpass(int value, int index);

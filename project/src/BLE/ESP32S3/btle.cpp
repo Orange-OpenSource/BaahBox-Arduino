@@ -88,12 +88,12 @@ void btleClass::init(char *inputDeviceName)
 void btleClass::write(char *data, int dataLength)
 {
   std::string str;
-  int len = strlen(char);
+// Manually push characters from char* to string
+    for (int i = 0; data[i] != '\0'; i++) {
+        str.push_back(data[i]);
+    }
+// quid du 90 ?
 
-  // Copy characters from char* to string using
-  // std::copy and std::back_inserter
-    copy(data, data + len-1, back_inserter(str));
-  str.push_back(90);
 
   pSensorDataCharacteristic->setValue(str);
   pSensorDataCharacteristic->notify();
