@@ -54,7 +54,7 @@ public:
   void init(void);
   void checkButtons(void);
   void update(void);
-  Scheduler *scheduler;
+  BBScheduler *scheduler;
 
 private:
   int button_A_pressed;
