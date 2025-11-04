@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,19 +19,21 @@
 
 #include <Arduino.h>
 #include "display.hpp"
+#include <Wire.h>
 
 int decalage = 64;
 int cptDisplayBatt = 0;
 
-extern configSDClass config3dHandz;
+extern BBConfigClass config;
 
 //*********************************************
 //*
 //*       Constructor
 //*
 //*********************************************
-handzDisplay::handzDisplay()
+BBDisplay::BBDisplay()
 {
+    oled = Adafruit_SSD1306(128, 32, &WIRE);
 }
 
 //*********************************************
@@ -39,7 +41,7 @@ handzDisplay::handzDisplay()
 //*       Destructor
 //*
 //*********************************************
-handzDisplay::~handzDisplay()
+BBDisplay::~BBDisplay()
 {
 }
 
@@ -48,14 +50,26 @@ handzDisplay::~handzDisplay()
 //*       Init
 //*
 //*********************************************
-void handzDisplay::init(void)
+void BBDisplay::init(void)
 {
     Serial.println("OLED FeatherWing test");
-    // by default, we'll generate the high voltage from the 3.3v line internally! (neat!)
-    display.begin(SSD1306_SWITCHCAPVCC, 0x3C); // initialize with the I2C addr 0x3C (for the 128x32)
+    oled.begin(SSD1306_SWITCHCAPVCC, 0x3C); // Address 0x3C for 128x32
 
-    display.clearDisplay();
-    display.display();
+    Serial.println("OLED begun");
+
+    // Show image buffer on the display hardware.
+    // Since the buffer is intialized with an Adafruit splashscreen
+    // internally, this will display the splashscreen.
+    // display.display();
+    delay(1000);
+
+    // Clear the buffer.
+    oled.clearDisplay();
+    oled.display();
+
+    pinMode(BUTTON_A, INPUT_PULLUP);
+    pinMode(BUTTON_B, INPUT_PULLUP);
+    pinMode(BUTTON_C, INPUT_PULLUP);
 
     for (int index = 0; index < 62; index++)
     {
@@ -66,9 +80,6 @@ void handzDisplay::init(void)
 
     displayMode = 1;
 
-    pinMode(BUTTON_A, INPUT_PULLUP);
-    pinMode(BUTTON_B, INPUT_PULLUP);
-    pinMode(BUTTON_C, INPUT_PULLUP);
     button_A_pressed = 0;
     button_B_pressed = 0;
     button_C_pressed = 0;
@@ -81,15 +92,15 @@ void handzDisplay::init(void)
 //*       Display banner
 //*
 //*********************************************
-void handzDisplay::DisplayBanner(void)
+void BBDisplay::DisplayBanner(void)
 {
-    display.setTextSize(2);
-    display.setTextColor(WHITE);
-    display.setCursor(10, 1);
-    display.println(APPLICATION_NAME);
-    display.setTextSize(1);
-    display.setCursor(10, 24);
-    display.println(config3dHandz.copyright);
+    oled.setTextSize(2);
+    oled.setTextColor(WHITE);
+    oled.setCursor(10, 1);
+    oled.println(APPLICATION_NAME);
+    oled.setTextSize(1);
+    oled.setCursor(10, 24);
+    oled.println(config.copyright);
 }
 
 //*********************************************
@@ -97,7 +108,7 @@ void handzDisplay::DisplayBanner(void)
 //*       isButtonPressed
 //*
 //*********************************************
-int handzDisplay::isButtonPressed(void)
+int BBDisplay::isButtonPressed(void)
 {
     // read displayer buttons
     int button_A = digitalRead(BUTTON_A);
@@ -167,15 +178,15 @@ int handzDisplay::isButtonPressed(void)
 //*       displayAxes
 //*
 //*********************************************
-void handzDisplay::displayAxes(int type)
+void BBDisplay::displayAxes(int type)
 {
     // type =>
     //  0 : 2 sensors
     //  1 : sensor 1 only
     //  2 : sensor 2 only
 
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
+    oled.setTextSize(1);
+    oled.setTextColor(WHITE);
     int PosLegende = 25;
     int x0 = 0;
     int y0 = 0;
@@ -186,29 +197,29 @@ void handzDisplay::displayAxes(int type)
     {
     case 0:
         // display caption for sensor 1
-        display.setCursor(5, PosLegende);
-        display.print(getTranslatedString(KEY_SENSOR));
-        display.print("1");
+        oled.setCursor(5, PosLegende);
+        oled.print(getTranslatedString(KEY_SENSOR));
+        oled.print("1");
         // display caption for sensor 2
-        display.setCursor(64 + 5, PosLegende);
-        display.print(getTranslatedString(KEY_SENSOR));
-        display.print("2");
+        oled.setCursor(64 + 5, PosLegende);
+        oled.print(getTranslatedString(KEY_SENSOR));
+        oled.print("2");
 
-        display.drawLine(x0, y0, x0, y1, WHITE);
-        display.drawLine(x0, y1, x1 - 2, y1, WHITE);
+        oled.drawLine(x0, y0, x0, y1, WHITE);
+        oled.drawLine(x0, y1, x1 - 2, y1, WHITE);
 
-        display.drawLine(x0 + decalage, y0, x0 + decalage, y1, WHITE);
-        display.drawLine(x0 + decalage, y1, x1 + decalage - 2, y1, WHITE);
+        oled.drawLine(x0 + decalage, y0, x0 + decalage, y1, WHITE);
+        oled.drawLine(x0 + decalage, y1, x1 + decalage - 2, y1, WHITE);
         break;
     case 1:
     case 2:
         x1 = 64 + decalage;
         // display caption for selected sensor
-        display.setCursor(50, PosLegende);
-        display.print(getTranslatedString(KEY_SENSOR));
-        display.print(type);
-        display.drawLine(x0, y0, x0, y1, WHITE);
-        display.drawLine(x0, y1, x1 - 2, y1, WHITE);
+        oled.setCursor(50, PosLegende);
+        oled.print(getTranslatedString(KEY_SENSOR));
+        oled.print(type);
+        oled.drawLine(x0, y0, x0, y1, WHITE);
+        oled.drawLine(x0, y1, x1 - 2, y1, WHITE);
         break;
     }
 }
@@ -218,7 +229,7 @@ void handzDisplay::displayAxes(int type)
 //*       capteurs
 //*
 //*********************************************
-void handzDisplay::capteurs(int type)
+void BBDisplay::capteurs(int type)
 {
     muscleSensor.getValue(&capteur1, &capteur2);
     displayAxes(type);
@@ -260,7 +271,7 @@ void handzDisplay::capteurs(int type)
 //*       displayCapteur
 //*
 //*********************************************
-void handzDisplay::displayCapteur(int channel, int type)
+void BBDisplay::displayCapteur(int channel, int type)
 {
     int posX, posY;
 
@@ -279,7 +290,7 @@ void handzDisplay::displayCapteur(int channel, int type)
                 posX = index + 1 + decalage;
                 posY = map(tblCapteur2[index], 0, 1023, 22, 0);
             }
-            display.drawPixel(posX, posY, WHITE);
+            oled.drawPixel(posX, posY, WHITE);
         }
         break;
     case 1:
@@ -288,7 +299,7 @@ void handzDisplay::displayCapteur(int channel, int type)
         {
             posX = index + 1;
             posY = map(tblCapteur[index], 0, 1023, 22, 0);
-            display.drawPixel(posX, posY, WHITE);
+            oled.drawPixel(posX, posY, WHITE);
         }
         break;
     }
@@ -299,11 +310,11 @@ void handzDisplay::displayCapteur(int channel, int type)
 //*       refreshDisplay
 //*
 //*********************************************
-void handzDisplay::refreshDisplay()
+void BBDisplay::refreshDisplay()
 {
     if (cptRefresh++ > 5)
     {
-        display.display();
+        oled.display();
         cptRefresh = 0;
     }
 }
@@ -313,53 +324,53 @@ void handzDisplay::refreshDisplay()
 //*       joystick
 //*
 //*********************************************
-void handzDisplay::joystick()
+void BBDisplay::joystick()
 {
-    int btGauche = digitalRead(config3dHandz.joystickDigitalInputTab[1]);
-    int btDroit = digitalRead(config3dHandz.joystickDigitalInputTab[0]);
-    int btBas = digitalRead(config3dHandz.joystickDigitalInputTab[2]);
-    int btHaut = digitalRead(config3dHandz.joystickDigitalInputTab[3]);
-    //int btGauche = digitalRead(11);
-    //int btDroit = digitalRead(A5);
-    //int btBas = digitalRead(12);
-    //int btHaut = digitalRead(13);
+    int btGauche = digitalRead(config.joystickDigitalInputTab[1]);
+    int btDroit = digitalRead(config.joystickDigitalInputTab[0]);
+    int btBas = digitalRead(config.joystickDigitalInputTab[2]);
+    int btHaut = digitalRead(config.joystickDigitalInputTab[3]);
+    // int btGauche = digitalRead(11);
+    // int btDroit = digitalRead(A5);
+    // int btBas = digitalRead(12);
+    // int btHaut = digitalRead(13);
 
     char blancs[20] = "           ";
     char titre[20] = " Joystick  ";
 
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
+    oled.setTextSize(1);
+    oled.setTextColor(WHITE);
+    oled.setCursor(0, 0);
 
-    display.print(blancs);
-    display.print("   [");
+    oled.print(blancs);
+    oled.print("   [");
     if (btHaut == 0)
-        display.print("*");
+        oled.print("*");
     else
-        display.print(" ");
-    display.println("]");
+        oled.print(" ");
+    oled.println("]");
 
-    display.print(titre);
-    display.print("[");
+    oled.print(titre);
+    oled.print("[");
     if (btGauche == 0)
-        display.print("*");
+        oled.print("*");
     else
-        display.print(" ");
-    display.print("]");
-    display.print("   [");
+        oled.print(" ");
+    oled.print("]");
+    oled.print("   [");
     if (btDroit == 0)
-        display.print("*");
+        oled.print("*");
     else
-        display.print(" ");
-    display.println("]");
+        oled.print(" ");
+    oled.println("]");
 
-    display.print(blancs);
-    display.print("   [");
+    oled.print(blancs);
+    oled.print("   [");
     if (btBas == 0)
-        display.print("*");
+        oled.print("*");
     else
-        display.print(" ");
-    display.print("]");
+        oled.print(" ");
+    oled.print("]");
 }
 
 //*********************************************
@@ -367,18 +378,16 @@ void handzDisplay::joystick()
 //*       displayConfig
 //*
 //*********************************************
-void handzDisplay::displayConfig()
+void BBDisplay::displayConfig()
 {
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.println(getTranslatedString(KEY_SETTINGS));
-    display.print("BTLE : ");
-    display.println(config3dHandz.btleDeviceName);
-    display.print(getTranslatedString(KEY_ANALOG_INPUTS));
-    display.println(config3dHandz.pinAnalogInputs);
-    display.print(getTranslatedString(KEY_VERSION));
-    display.println(VERSION_3DHANDZ);
+    oled.setTextSize(1);
+    oled.setTextColor(WHITE);
+    oled.setCursor(0, 0);
+    oled.println(getTranslatedString(KEY_SETTINGS));
+    oled.print("BTLE Name : ");
+    oled.println(config.btleDeviceName);
+    oled.print(getTranslatedString(KEY_VERSION));
+    oled.println(VERSION_BBox);
 }
 
 //*********************************************
@@ -386,12 +395,12 @@ void handzDisplay::displayConfig()
 //*       displayConfig2
 //*
 //*********************************************
-void handzDisplay::displayConfig2()
+void BBDisplay::displayConfig2()
 {
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.println(getTranslatedString(KEY_SETTINGS));
+    oled.setTextSize(1);
+    oled.setTextColor(WHITE);
+    oled.setCursor(0, 0);
+    oled.println(getTranslatedString(KEY_SETTINGS));
     float tmp = getVbat();
     // map batterie level between 3,7V and 4,2V to %
     int charge = map(tmp * 100, 370, 420, 0, 100);
@@ -403,26 +412,26 @@ void handzDisplay::displayConfig2()
     {
         charge = 0;
     }
-    display.print("Vbat = ");
-    display.print(tmp);
-    display.print("V (");
-    display.print(charge);
-    display.println("%)");
-    display.print(getTranslatedString(KEY_BATTERY));
-    display.print("[");
+    oled.print("Vbat = ");
+    oled.print(tmp);
+    oled.print("V (");
+    oled.print(charge);
+    oled.println("%)");
+    oled.print(getTranslatedString(KEY_BATTERY));
+    oled.print("[");
     for (int i = 0; i <= 95; i += 12)
     {
         if (i <= charge)
         {
-            display.print("*");
+            oled.print("*");
         }
         else
         {
-            display.print(" ");
+            oled.print(" ");
         }
     }
-    display.println("]");
-    display.display();
+    oled.println("]");
+    oled.display();
 }
 
 //*********************************************
@@ -430,12 +439,12 @@ void handzDisplay::displayConfig2()
 //*       displayLicences
 //*
 //*********************************************
-void handzDisplay::displayLicences()
+void BBDisplay::displayLicences()
 {
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.println(getTranslatedString(KEY_LICENCE));
+    oled.setTextSize(1);
+    oled.setTextColor(WHITE);
+    oled.setCursor(0, 0);
+    oled.println(getTranslatedString(KEY_LICENCE));
 }
 
 //*********************************************
@@ -443,7 +452,7 @@ void handzDisplay::displayLicences()
 //*       update
 //*
 //*********************************************
-void handzDisplay::update(void)
+void BBDisplay::update(void)
 {
     switch (displayMode)
     {
@@ -454,7 +463,7 @@ void handzDisplay::update(void)
         // nothing to display
         break;
     case 1:
-        display.clearDisplay();
+        oled.clearDisplay();
         DisplayBanner();
         displayMode = 0;
         break;
@@ -462,37 +471,37 @@ void handzDisplay::update(void)
         displayMode = 21;
         break;
     case 21:
-        display.clearDisplay();
+        oled.clearDisplay();
         capteurs(0);
         break;
     case 22:
         displayMode = 23;
         break;
     case 23:
-        display.clearDisplay();
+        oled.clearDisplay();
         capteurs(1);
         break;
     case 24:
         displayMode = 25;
         break;
     case 25:
-        display.clearDisplay();
+        oled.clearDisplay();
         capteurs(2);
         break;
     case 26:
         displayMode = 27;
         break;
     case 27:
-        display.clearDisplay();
+        oled.clearDisplay();
         joystick();
         break;
     case 31:
-        display.clearDisplay();
+        oled.clearDisplay();
         displayConfig();
         displayMode = 32;
         break;
     case 33:
-        display.clearDisplay();
+        oled.clearDisplay();
         displayConfig2();
         cptDisplayBatt = 0;
         displayMode = 34;
@@ -500,13 +509,13 @@ void handzDisplay::update(void)
     case 34:
         if (cptDisplayBatt++ > 50)
         {
-            display.clearDisplay();
+            oled.clearDisplay();
             displayConfig2();
             cptDisplayBatt = 0;
         }
         break;
     case 35:
-        display.clearDisplay();
+        oled.clearDisplay();
         displayLicences();
         displayMode = 36;
         break;
@@ -522,7 +531,7 @@ void handzDisplay::update(void)
 //*       chackButtons
 //*
 //*********************************************
-void handzDisplay::checkButtons(void)
+void BBDisplay::checkButtons(void)
 {
     int buttonPressed = isButtonPressed();
 
@@ -588,7 +597,7 @@ void handzDisplay::checkButtons(void)
 
 // key are defined in display.hpp
 String EN_Strings[] = {"Sensor ", "Used channels:", "Settings", "Version: ", "Battery: ", "Licence: GPLv3"};
-String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Licence: GPLv3"};
+String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Licence: GPLv3)"};
 String ES_Strings[] = {"Sensor ", "Canales usados : ", "Configuraciones", "Version: ", "Batería: ", "Licencia: GPLv3"};
 String DE_Strings[] = {"Sensor ", "Benutzte Kanäle : ", "Parameter", "Version: ", "Batterie: ", "Lizenz: GPLv3"};
 //*********************************************
@@ -596,10 +605,10 @@ String DE_Strings[] = {"Sensor ", "Benutzte Kanäle : ", "Parameter", "Version: 
 //*       getTranslatedString
 //*
 //*********************************************
-String handzDisplay::getTranslatedString(int key)
+String BBDisplay::getTranslatedString(int key)
 {
     // get the translated value of string identified by the key
-    String language = config3dHandz.language;
+    String language = config.language;
     if (language.equals("FR"))
     {
         return FR_Strings[key];

@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,9 +24,8 @@
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include <SPI.h>
 
-#include "../../Sensors/muscleSensor.hpp"
-#include "../../SD/configSD.hpp"
-#include "../../Config/config.hpp"
+#include "Sensors/muscleSensor.hpp"
+#include "Config/BBConfig.hpp"
 #include "tools.hpp"
 
 extern Adafruit_ST7789 display;
@@ -43,14 +42,13 @@ extern Adafruit_ST7789 display;
 #define KEY_BATTERY 4
 #define KEY_LICENCE 5
 
-
 extern muscleSensorClass muscleSensor;
 
-class handzDisplay
+class BBDisplay
 {
 public:
-  handzDisplay(void);
-  ~handzDisplay();
+  BBDisplay(void);
+  ~BBDisplay();
   void init(void);
   void checkButtons(void);
   void update(void);
@@ -68,7 +66,7 @@ private:
 
   int cptRefresh = 0;
 
-  Adafruit_ST7789 display = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+  Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
 
   void DisplayBanner(void);
   int isButtonPressed(void);

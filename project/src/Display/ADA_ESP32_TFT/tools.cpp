@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -25,18 +25,17 @@
 //*       getVbat
 //*
 //*********************************************
-//#define VBATPIN A7
+// #define VBATPIN A7
 float getVbat(void)
 {
   // float measuredvbat = analogRead(VBATPIN);
   // measuredvbat *= 2;    // we divided by 2, so multiply back
   // measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
   // measuredvbat /= 1024; // convert to voltage
-  
+
   // solveButtonConflict();
   return 3.8;
 }
-
 
 // void setup() {
 //   Serial.begin(115200);
@@ -49,7 +48,7 @@ float getVbat(void)
 //     delay(2000);
 //   }
 //   Serial.print(F("Found MAX17048"));
-//   Serial.print(F(" with Chip ID: 0x")); 
+//   Serial.print(F(" with Chip ID: 0x"));
 //   Serial.println(maxlipo.getChipID(), HEX);
 // }
 

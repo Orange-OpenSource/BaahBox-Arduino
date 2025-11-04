@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -32,15 +32,15 @@ float getVbat(void)
   measuredvbat *= 2;    // we divided by 2, so multiply back
   measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
   measuredvbat /= 1024; // convert to voltage
-  
+
   solveButtonConflict();
   return measuredvbat;
 }
 
-void solveButtonConflict(void) {
-// to solve conflict issue between battery input and BUTTON_A input
+void solveButtonConflict(void)
+{
+  // to solve conflict issue between battery input and BUTTON_A input
   pinMode(BUTTON_A, OUTPUT);
   digitalWrite(BUTTON_A, HIGH);
   pinMode(BUTTON_A, INPUT);
-
 }
