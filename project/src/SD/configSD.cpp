@@ -84,7 +84,7 @@ void configSDClass::loadDefaultValues(void)
 {
   this->btleDeviceName = "Baah Box";
   this->nbMuscleSensor = NB_MUSCLE_SENSOR;
-  //Serial.print("Default values for sensors : ");
+  Serial.print("Default values for sensors : ");
   this->pinAnalogInputTab[0] = 0;
   this->pinAnalogInputTab[1] = 1;
   this->joystickDigitalInputTab[0] = A5;
