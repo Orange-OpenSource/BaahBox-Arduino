@@ -47,6 +47,33 @@ body {
   overflow-x: hidden;
 }
 
+section.hero {
+  position: relative;
+  padding: 4rem 0 3rem;
+  background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg) 30%, var(--color-bg-alt) 100%);
+  overflow: hidden;
+}
+
+section.about {
+  position: relative;
+  padding: 3rem 0;
+  background: linear-gradient(to bottom, var(--color-bg-alt) 0%, var(--color-bg) 50%);
+  margin-top: -1.5rem;
+  padding-top: 4rem;
+  clip-path: polygon(0 1.5rem, 100% 0, 100% 100%, 0% 100%);
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  background: var(--color-bg-alt);
+  clip-path: ellipse(80% 100% at 50% 0%);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
