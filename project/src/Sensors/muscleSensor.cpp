@@ -122,6 +122,12 @@ void muscleSensorClass::muscleAcquisition(void)
     for (int i = 0; i < config.nbMuscleSensor; i++)
     {
         int mapValue = lowpass(analogRead(config.pinAnalogInputTab[i]), i);
+#ifdef __ANALOG__JOYSTICK__
+        if (mapValue >= 440 && mapValue <= 550)
+        {
+            mapValue = 500;
+        }
+#endif
         storedValues[i] = mapValue;
         int a = mapValue / 32;
         int b = mapValue - (a * 32);
@@ -135,7 +141,7 @@ void muscleSensorClass::muscleAcquisition(void)
         (1 - digitalRead(config.joystickDigitalInputTab[0])) * 8 +
         (1 - digitalRead(config.joystickDigitalInputTab[1])) * 4 +
         (1 - digitalRead(config.joystickDigitalInputTab[2])) * 2 +
-         1 - digitalRead(config.joystickDigitalInputTab[3]);
+        1 - digitalRead(config.joystickDigitalInputTab[3]);
 
     tmp[index] = c;
     index++;

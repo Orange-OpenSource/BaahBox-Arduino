@@ -384,7 +384,7 @@ void BBDisplay::displayConfig()
     oled.setTextColor(WHITE);
     oled.setCursor(0, 0);
     oled.println(getTranslatedString(KEY_SETTINGS));
-    oled.print("BTLE Name : ");
+    oled.println("BTLE Name : ");
     oled.println(config.btleDeviceName);
     oled.print(getTranslatedString(KEY_VERSION));
     oled.println(VERSION_BBox);
@@ -596,10 +596,9 @@ void BBDisplay::checkButtons(void)
 }
 
 // key are defined in display.hpp
-String EN_Strings[] = {"Sensor ", "Used channels:", "Settings", "Version: ", "Battery: ", "Licence: GPLv3"};
-String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Licence: GPLv3)"};
-String ES_Strings[] = {"Sensor ", "Canales usados : ", "Configuraciones", "Version: ", "Batería: ", "Licencia: GPLv3"};
-String DE_Strings[] = {"Sensor ", "Benutzte Kanäle : ", "Parameter", "Version: ", "Batterie: ", "Lizenz: GPLv3"};
+String EN_Strings[] = {"Sensor ", "Used channels:", "Settings", "Version: ", "Battery: ", "Copyright (c) 2025\nOrange SA\nLicence: GPLv3"};
+String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Copyright (c) 2025\nOrange SA\nLicence: GPLv3"};
+String ES_Strings[] = {"Sensor ", "Canales usados : ", "Configuraciones", "Version: ", "Batería: ", "Copyright (c) 2025\nOrange SA\nLicencia: GPLv3"};
 //*********************************************
 //*
 //*       getTranslatedString
@@ -620,10 +619,6 @@ String BBDisplay::getTranslatedString(int key)
     else if (language.equals("ES"))
     {
         return ES_Strings[key];
-    }
-    else if (language.equals("DE"))
-    {
-        return DE_Strings[key];
     }
     return EN_Strings[key];
 }
