@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,20 +17,43 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __scheduler_hpp
-#define __scheduler_hpp
 
-class Scheduler
+#ifndef genericSensor_hpp
+#define genericSensor_hpp
+
+#ifdef USE_NRF51
+#include "./BLE/Nrf51/btle.hpp"
+#endif
+
+#ifdef USE_NRF52
+#include "./BLE/Nrf52/btle.hpp"
+#endif
+
+#ifdef USE_ESP32S3
+#include "./BLE/ESP32S3/btle.hpp"
+#endif
+
+#include "Config/BBConfig.hpp"
+#include "../BBScheduler.hpp"
+
+class genericSensorClass
 {
+
 public:
-  Scheduler(unsigned long loopTimestamp, unsigned long refreshDelay);
-  Scheduler();
-  bool needToBeExecuted(void);
+  genericSensorClass(void);
+  ~genericSensorClass();
+
+  int init(unsigned long period, btleClass btle);
+  int memory[NB_ANALOG_SENSORS] = {};
+  void getAnalogInputs(int *input1, int *input2);
+  void sensorAcquisition(void);
+
+  btleClass btle;
+  int storedValues[NB_ANALOG_SENSORS];
+  BBScheduler *scheduler;
 
 private:
-  unsigned long displayLoopDelay;
-  unsigned long loopTimestamp;
-  unsigned long refreshDelay;
+  int lowpass(int value, int index);
 };
 
-#endif /* __scheduler_hpp */
+#endif /* muscleSensor_hpp */
