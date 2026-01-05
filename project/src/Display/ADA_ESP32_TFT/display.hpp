@@ -72,7 +72,7 @@ private:
   int isButtonPressed(void);
   void displayAxes(int type);
   void capteurs(int type);
-  void displayCapteur(int channel, int type);
+  void displayAnalogInputs(int channel, int type);
   void joystick(void);
   void refreshDisplay(void);
   void displayConfig(void);

@@ -17,21 +17,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-
 #ifndef genericSensor_hpp
 #define genericSensor_hpp
-
-#ifdef USE_NRF51
-#include "./BLE/Nrf51/btle.hpp"
-#endif
-
-#ifdef USE_NRF52
-#include "./BLE/Nrf52/btle.hpp"
-#endif
-
-#ifdef USE_ESP32S3
-#include "./BLE/ESP32S3/btle.hpp"
-#endif
 
 #include "Config/BBConfig.hpp"
 #include "../BBScheduler.hpp"
@@ -43,12 +30,11 @@ public:
   genericSensorClass(void);
   ~genericSensorClass();
 
-  int init(unsigned long period, btleClass btle);
+  int init(unsigned long period);
   int memory[NB_ANALOG_SENSORS] = {};
   void getAnalogInputs(int *input1, int *input2);
-  void sensorAcquisition(void);
+  int sensorAcquisition(char *bleMessage);
 
-  btleClass btle;
   int storedValues[NB_ANALOG_SENSORS];
   BBScheduler *scheduler;
 

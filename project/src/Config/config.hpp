@@ -37,7 +37,7 @@ typedef struct
 #define MAIN_LOOP_DELAY 1
 #define DISPLAY_DELAY 20 // timer refresh value for displayer
 #define APPLICATION_NAME "Baah Box"
-#define COPYRIGHT "(c)2025 Orange SA"
+#define COPYRIGHT "(c)2026 Orange SA"
 
 //========================
 // BTLE parameters for default
@@ -50,7 +50,7 @@ typedef struct
 
 #define NB_DIGITAL_PINS 4
 #define NB_ANALOG_SENSORS 2
-#define SENSOR_ACQUISITION_PERIOD_IN_MS 50   // timer refresh value for sensor acquisition
-#define ANALOG_SENSOR_FILTER 0.5 // time constant for low pass filter on muscle signal
+#define SENSOR_ACQUISITION_PERIOD_IN_MS 50 // timer refresh value for sensor acquisition
+#define ANALOG_SENSOR_FILTER 0.5           // time constant for low pass filter on muscle signal
 
 #endif /* config_hpp */

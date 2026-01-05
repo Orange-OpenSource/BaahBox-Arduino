@@ -22,13 +22,11 @@
 #ifdef USE_NRF51
 #include "BLE/Nrf51/btle.hpp"
 #include "Display/ADA_OLED_FEATHERWING/display.hpp"
-
 #endif
 
 #ifdef USE_NRF52
 #include "BLE/Nrf52/btle.hpp"
 #include "Display/ADA_OLED_FEATHERWING/display.hpp"
-
 #endif
 
 #ifdef USE_ESP32S3
@@ -43,6 +41,7 @@ btleClass btle;
 genericSensorClass genericSensor;
 BBDisplay bbDisplay;
 BBConfigClass config;
+char sensorData[10];
 
 //*********************************************
 //*
@@ -51,7 +50,6 @@ BBConfigClass config;
 //*********************************************
 void setup()
 {
-
 #ifdef __DEBUG__
     {
         // initialize serial communication
@@ -68,20 +66,18 @@ void setup()
 #endif
     // load parameters
     config.init();
-
-    // initialise BTLE
+    // initialize BTLE
     char tmpDeviceName[50];
     config.btleDeviceName.toCharArray(tmpDeviceName, 50);
     btle.init(tmpDeviceName);
     Serial.print("BTLE initialized => ");
     Serial.println(tmpDeviceName);
-
-    genericSensor.init(SENSOR_ACQUISITION_PERIOD_IN_MS, btle);
+    // initialize Sensors
+    genericSensor.init(SENSOR_ACQUISITION_PERIOD_IN_MS);
     Serial.println("Sensors initialized");
-
-    // init display
+    // initialize Display
     bbDisplay.init();
-    
+
     Serial.println("end of main setup");
 }
 
@@ -93,18 +89,14 @@ void setup()
 void loop()
 {
     bbDisplay.checkButtons();
-
     if (genericSensor.scheduler->needToBeExecuted())
     {
-        // Serial.println("exec read capteurs");
-        genericSensor.sensorAcquisition();
+        int length = genericSensor.sensorAcquisition(sensorData);
+        btle.write(sensorData, length);
     }
-
     if (bbDisplay.scheduler->needToBeExecuted())
     {
-        // Serial.println("exec display");
         bbDisplay.update();
     }
-
     delay(MAIN_LOOP_DELAY);
 }

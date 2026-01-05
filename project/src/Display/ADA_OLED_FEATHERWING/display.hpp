@@ -24,7 +24,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include "Sensors/muscleSensor.hpp"
+#include "Sensors/genericSensor.hpp"
 #include "Config/BBConfig.hpp"
 #include "tools.hpp"
 
@@ -76,7 +76,7 @@ extern Adafruit_SSD1306 display;
 #define KEY_BATTERY 4
 #define KEY_LICENCE 5
 
-extern genericSensorClass muscleSensor;
+extern genericSensorClass genericSensor;
 
 class BBDisplay
 {
@@ -106,7 +106,7 @@ private:
   int isButtonPressed(void);
   void displayAxes(int type);
   void capteurs(int type);
-  void displayCapteur(int channel, int type);
+  void displayAnalogInputs(int channel, int type);
   void joystick(void);
   void refreshDisplay(void);
   void displayConfig(void);

@@ -251,8 +251,8 @@ void BBDisplay::capteurs(int type)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(0, type);
-        displayCapteur(1, type);
+        displayAnalogInputs(0, type);
+        displayAnalogInputs(1, type);
         break;
     case 1:
         tblCapteur[idxTblCapteur] = capteur1;
@@ -260,7 +260,7 @@ void BBDisplay::capteurs(int type)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(0, type);
+        displayAnalogInputs(0, type);
         break;
     case 2:
         tblCapteur[idxTblCapteur] = capteur2;
@@ -268,7 +268,7 @@ void BBDisplay::capteurs(int type)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(1, type);
+        displayAnalogInputs(1, type);
         break;
     }
     idxTblCapteur++;
@@ -276,10 +276,10 @@ void BBDisplay::capteurs(int type)
 
 //*********************************************
 //*
-//*       displayCapteur
+//*       displayAnalogInputs
 //*
 //*********************************************
-void BBDisplay::displayCapteur(int channel, int type)
+void BBDisplay::displayAnalogInputs(int channel, int type)
 {
     int posX, posY;
 
