@@ -239,7 +239,7 @@ void BBDisplay::displayAxes(int type)
 //*********************************************
 void BBDisplay::capteurs(int type)
 {
-    muscleSensor.getValue(&capteur1, &capteur2);
+    genericSensor.getAnalogInputs(&capteur1, &capteur2);
     displayAxes(type);
 
     switch (type)
@@ -251,8 +251,8 @@ void BBDisplay::capteurs(int type)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(0, type);
-        displayCapteur(1, type);
+        displayAnalogInputs(0, type);
+        displayAnalogInputs(1, type);
         break;
     case 1:
         tblCapteur[idxTblCapteur] = capteur1;
@@ -260,7 +260,7 @@ void BBDisplay::capteurs(int type)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(0, type);
+        displayAnalogInputs(0, type);
         break;
     case 2:
         tblCapteur[idxTblCapteur] = capteur2;
@@ -268,7 +268,7 @@ void BBDisplay::capteurs(int type)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(1, type);
+        displayAnalogInputs(1, type);
         break;
     }
     idxTblCapteur++;
@@ -276,10 +276,10 @@ void BBDisplay::capteurs(int type)
 
 //*********************************************
 //*
-//*       displayCapteur
+//*       displayAnalogInputs
 //*
 //*********************************************
-void BBDisplay::displayCapteur(int channel, int type)
+void BBDisplay::displayAnalogInputs(int channel, int type)
 {
     int posX, posY;
 
@@ -334,10 +334,10 @@ void BBDisplay::refreshDisplay()
 //*********************************************
 void BBDisplay::joystick()
 {
-    int btGauche = digitalRead(config.joystickDigitalInputTab[1]);
-    int btDroit = digitalRead(config.joystickDigitalInputTab[0]);
-    int btBas = digitalRead(config.joystickDigitalInputTab[2]);
-    int btHaut = digitalRead(config.joystickDigitalInputTab[3]);
+    int btGauche = digitalRead(config.digitalInput[1]);
+    int btDroit = digitalRead(config.digitalInput[0]);
+    int btBas = digitalRead(config.digitalInput[2]);
+    int btHaut = digitalRead(config.digitalInput[3]);
     // int btGauche = digitalRead(11);
     // int btDroit = digitalRead(A5);
     // int btBas = digitalRead(12);
@@ -395,7 +395,7 @@ void BBDisplay::displayConfig()
     tft.print("BTLE : ");
     tft.println(config.btleDeviceName);
     tft.print(getTranslatedString(KEY_ANALOG_INPUTS));
-    tft.println(config.pinAnalogInputs);
+    tft.println(config.analogInput[0]); // todo: fix this
     tft.print(getTranslatedString(KEY_VERSION));
     tft.println(VERSION_BBox);
 }

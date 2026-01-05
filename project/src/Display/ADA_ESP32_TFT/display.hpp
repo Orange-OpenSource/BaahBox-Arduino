@@ -24,7 +24,7 @@
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include <SPI.h>
 
-#include "Sensors/muscleSensor.hpp"
+#include "Sensors/genericSensor.hpp"
 #include "Config/BBConfig.hpp"
 #include "tools.hpp"
 
@@ -42,7 +42,7 @@ extern Adafruit_ST7789 display;
 #define KEY_BATTERY 4
 #define KEY_LICENCE 5
 
-extern muscleSensorClass muscleSensor;
+extern genericSensorClass genericSensor;
 
 class BBDisplay
 {
@@ -72,7 +72,7 @@ private:
   int isButtonPressed(void);
   void displayAxes(int type);
   void capteurs(int type);
-  void displayCapteur(int channel, int type);
+  void displayAnalogInputs(int channel, int type);
   void joystick(void);
   void refreshDisplay(void);
   void displayConfig(void);
