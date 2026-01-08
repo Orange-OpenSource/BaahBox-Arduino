@@ -51,6 +51,6 @@ typedef struct
 #define NB_DIGITAL_PINS 4
 #define NB_ANALOG_SENSORS 2
 #define SENSOR_ACQUISITION_PERIOD_IN_MS 50 // timer refresh value for sensor acquisition
-#define ANALOG_SENSOR_FILTER 0.5           // time constant for low pass filter on muscle signal
+#define ANALOG_SENSOR_FILTER 0.5           // time constant for low pass filter on analog signal
 
 #endif /* config_hpp */

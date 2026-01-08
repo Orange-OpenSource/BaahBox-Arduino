@@ -49,10 +49,11 @@ private:
   int button_A_pressed;
   int button_B_pressed;
   int button_C_pressed;
-  int tblCapteur1[62], tblCapteur2[62];
-  int tblCapteur[126];
+  int tblCapteur1[118], tblCapteur2[118]; //62
+  int tblCapteur[238]; //126
   int capteur1, capteur2, idxTblCapteur;
   int displayMode;
+  int currentDisplayMode;
   int buttonNotReleased;
 
   int cptRefresh = 0;

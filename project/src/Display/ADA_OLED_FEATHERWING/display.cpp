@@ -400,7 +400,7 @@ void BBDisplay::displayBattery()
     oled.setTextSize(1);
     oled.setTextColor(WHITE);
     oled.setCursor(0, 0);
-    oled.println(getTranslatedString(KEY_SETTINGS));
+    oled.print(getTranslatedString(KEY_BATTERY));
     float tmp = getVbat();
     // map batterie level between 3,7V and 4,2V to %
     int charge = map(tmp * 100, 370, 420, 0, 100);
@@ -417,7 +417,6 @@ void BBDisplay::displayBattery()
     oled.print("V (");
     oled.print(charge);
     oled.println("%)");
-    oled.print(getTranslatedString(KEY_BATTERY));
     oled.print("[");
     for (int i = 0; i <= 95; i += 12)
     {

@@ -22,7 +22,7 @@
 #include <Adafruit_MAX1704X.h>
 
 Adafruit_MAX17048 lipo;
-int decalage = 64;
+int decalage = 120;
 int cptDisplayBatt = 0;
 
 extern BBConfigClass config;
@@ -80,11 +80,8 @@ void BBDisplay::init(void)
     Serial.print(F("Found MAX17048"));
     Serial.print(F(" with Chip ID: 0x"));
     Serial.println(lipo.getChipID(), HEX);
-    //
-    // oleddisplay.clearDisplay();
-    //  display.display();
-    // 128 X 32
-    for (int index = 0; index < 62; index++)
+
+    for (int index = 0; index < 118; index++)
     {
         tblCapteur1[index] = 0;
         tblCapteur2[index] = 0;
@@ -92,6 +89,7 @@ void BBDisplay::init(void)
     idxTblCapteur = 0;
 
     displayMode = 1;
+    currentDisplayMode = displayMode;
 
     pinMode(BUTTON_A, INPUT_PULLDOWN);
     pinMode(BUTTON_B, INPUT_PULLUP);
@@ -209,25 +207,26 @@ void BBDisplay::displayAxes(int type)
 
     canvas.setTextSize(1);
     canvas.setTextColor(ST77XX_WHITE);
-    int PosLegende = 25;
+    int PosLegende = 125; 
     int x0 = 0;
     int y0 = 0;
-    int x1 = 64;
-    int y1 = 23;
+    int x1 = 120; 
+    int y1 = 90;
 
     switch (type)
     {
     case 0:
         // display caption for sensor 1
+
         canvas.setCursor(5, PosLegende);
         canvas.print(getTranslatedString(KEY_SENSOR));
         canvas.print("1");
         // display caption for sensor 2
-        canvas.setCursor(64 + 5, PosLegende);
+        canvas.setCursor(120 + 5, PosLegende);
         canvas.print(getTranslatedString(KEY_SENSOR));
         canvas.print("2");
 
-        canvas.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
+         canvas.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
         canvas.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
 
         canvas.drawLine(x0 + decalage, y0, x0 + decalage, y1, ST77XX_WHITE);
@@ -235,7 +234,7 @@ void BBDisplay::displayAxes(int type)
         break;
     case 1:
     case 2:
-        x1 = 64 + decalage;
+        x1 = 120 + decalage;
         // display caption for selected sensor
         canvas.setCursor(50, PosLegende);
         canvas.print(getTranslatedString(KEY_SENSOR));
@@ -244,6 +243,7 @@ void BBDisplay::displayAxes(int type)
         canvas.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
         break;
     }
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -255,13 +255,18 @@ void BBDisplay::capteurs(int type)
 {
     genericSensor.getAnalogInputs(&capteur1, &capteur2);
     displayAxes(type);
-
+    // int capteur1 = analogRead(config.analogInput[0]);
+    // int capteur2 = analogRead(config.analogInput[1]);
+    Serial.print(capteur1);
+    Serial.print("cap1 cap2");
+    Serial.println(capteur2);
+   
     switch (type)
     {
     case 0:
         tblCapteur1[idxTblCapteur] = capteur1;
         tblCapteur2[idxTblCapteur] = capteur2;
-        if (idxTblCapteur >= 62)
+        if (idxTblCapteur >= 118)
         {
             idxTblCapteur = 0;
         }
@@ -270,7 +275,7 @@ void BBDisplay::capteurs(int type)
         break;
     case 1:
         tblCapteur[idxTblCapteur] = capteur1;
-        if (idxTblCapteur >= 126)
+        if (idxTblCapteur >= 238)
         {
             idxTblCapteur = 0;
         }
@@ -278,7 +283,7 @@ void BBDisplay::capteurs(int type)
         break;
     case 2:
         tblCapteur[idxTblCapteur] = capteur2;
-        if (idxTblCapteur >= 126)
+        if (idxTblCapteur >= 238)
         {
             idxTblCapteur = 0;
         }
@@ -286,7 +291,6 @@ void BBDisplay::capteurs(int type)
         break;
     }
     idxTblCapteur++;
-    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -301,28 +305,28 @@ void BBDisplay::displayAnalogInputs(int channel, int type)
     switch (type)
     {
     case 0:
-        for (int index = 0; index < 62; index++)
+        for (int index = 0; index < 118; index++)
         {
             if (channel == 0)
             {
                 posX = index + 1;
-                posY = map(tblCapteur1[index], 0, 1023, 22, 0);
+                posY = map(tblCapteur1[index], 0, 1023, 80, 20);
             }
             else
             {
                 posX = index + 1 + decalage;
-                posY = map(tblCapteur2[index], 0, 1023, 22, 0);
+                posY = map(tblCapteur2[index], 0, 1023, 80, 20);
             }
-            canvas.drawPixel(posX, posY, ST77XX_WHITE);
+            tft.drawPixel(posX, posY, ST77XX_BLUE);
         }
         break;
     case 1:
     case 2:
-        for (int index = 0; index < 126; index++)
+        for (int index = 0; index < 238; index++)
         {
             posX = index + 1;
-            posY = map(tblCapteur[index], 0, 1023, 22, 0);
-            canvas.drawPixel(posX, posY, ST77XX_WHITE);
+            posY = map(tblCapteur[index], 0, 1023, 80, 0);
+            tft.drawPixel(posX, posY, ST77XX_GREEN);
         }
         break;
     }
@@ -405,7 +409,7 @@ void BBDisplay::displayConfig()
 {
     canvas.setTextSize(1);
     canvas.setTextColor(ST77XX_WHITE);
-    canvas.setCursor(0, 10);
+    canvas.setCursor(0, 30);
     canvas.println(getTranslatedString(KEY_SETTINGS));
     canvas.print("BTLE : ");
     canvas.println(config.btleDeviceName);
@@ -483,16 +487,17 @@ void BBDisplay::update(void)
         // nothing to display
         break;
     case 1:
-        // canvas.fillScreen(ST77XX_BLACK);
-        // DisplayBanner();
-        displayBattery();
-        displayMode = 0;
+       // if (displayMode != currentDisplayMode)
+        //{
+            //DisplayBanner();
+            capteurs(0); 
+            displayMode = 0;
+        //}
         break;
     case 20:
         displayMode = 21;
         break;
     case 21:
-        // canvas.fillScreen(ST77XX_BLACK);
         capteurs(0);
         break;
     case 22:
@@ -530,15 +535,13 @@ void BBDisplay::update(void)
     case 34:
         if (cptDisplayBatt++ > 50)
         {
-            canvas.fillScreen(ST77XX_BLACK);
-        
+            // canvas.fillScreen(ST77XX_BLACK);
             displayBattery();
             cptDisplayBatt = 0;
         }
         break;
     case 35:
         // canvas.fillScreen(ST77XX_BLACK);
-        ;
         displayLicences();
         displayMode = 36;
         break;
@@ -546,6 +549,7 @@ void BBDisplay::update(void)
         Serial.println("Unknown display mode");
         displayMode = 0;
     }
+    currentDisplayMode = displayMode;
     refreshDisplay();
 }
 
