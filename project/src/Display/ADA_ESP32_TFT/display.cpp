@@ -307,6 +307,10 @@ void BBDisplay::displayAnalogInputs(int channel, int type)
     case 0:
         for (int index = 0; index < 118; index++)
         {
+            Serial.print(tblCapteur1[index]);
+    Serial.print(" :cap1 cap2: ");
+    Serial.println(tblCapteur2[index]);
+   
             if (channel == 0)
             {
                 posX = index + 1;
