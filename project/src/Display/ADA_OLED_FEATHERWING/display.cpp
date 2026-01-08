@@ -392,10 +392,10 @@ void BBDisplay::displayConfig()
 
 //*********************************************
 //*
-//*       displayConfig2
+//*       displayBattery
 //*
 //*********************************************
-void BBDisplay::displayConfig2()
+void BBDisplay::displayBattery()
 {
     oled.setTextSize(1);
     oled.setTextColor(WHITE);
@@ -502,7 +502,7 @@ void BBDisplay::update(void)
         break;
     case 33:
         oled.clearDisplay();
-        displayConfig2();
+        displayBattery();
         cptDisplayBatt = 0;
         displayMode = 34;
         break;
@@ -510,7 +510,7 @@ void BBDisplay::update(void)
         if (cptDisplayBatt++ > 50)
         {
             oled.clearDisplay();
-            displayConfig2();
+            displayBattery();
             cptDisplayBatt = 0;
         }
         break;
@@ -595,10 +595,7 @@ void BBDisplay::checkButtons(void)
     }
 }
 
-// key are defined in display.hpp
-String EN_Strings[] = {"Sensor ", "Used channels:", "Settings", "Version: ", "Battery: ", "Copyright (c) 2025\nOrange SA\nLicence: GPLv3"};
-String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Copyright (c) 2025\nOrange SA\nLicence: GPLv3"};
-String ES_Strings[] = {"Sensor ", "Canales usados : ", "Configuraciones", "Version: ", "Batería: ", "Copyright (c) 2025\nOrange SA\nLicencia: GPLv3"};
+
 //*********************************************
 //*
 //*       getTranslatedString

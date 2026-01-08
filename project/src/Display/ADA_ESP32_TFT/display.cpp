@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2025 Orange SA
+// Copyright (C) 2017 – 2026 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,12 +21,13 @@
 #include "display.hpp"
 #include <Adafruit_MAX1704X.h>
 
-Adafruit_MAX17048 maxlipo;
+Adafruit_MAX17048 lipo;
 int decalage = 64;
 int cptDisplayBatt = 0;
 
 extern BBConfigClass config;
-
+Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+GFXcanvas16 canvas(240, 135);
 //*********************************************
 //*
 //*       Constructor
@@ -64,12 +65,21 @@ void BBDisplay::init(void)
     delay(10);
 
     // initialize TFT
-    tft.init(240, 135); // Init ST7789 240x135
+    tft.init(135, 240); // Init ST7789 240x135
     tft.setRotation(3);
-    tft.fillScreen(ST77XX_BLACK);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setFont(&FreeSans12pt7b);
 
     Serial.println(F("Initialized"));
-
+    if (!lipo.begin())
+    {
+        Serial.println(F("Couldnt find Adafruit MAX17048?\nMake sure a battery is plugged in!"));
+        while (1)
+            delay(10);
+    }
+    Serial.print(F("Found MAX17048"));
+    Serial.print(F(" with Chip ID: 0x"));
+    Serial.println(lipo.getChipID(), HEX);
     //
     // oleddisplay.clearDisplay();
     //  display.display();
@@ -100,15 +110,19 @@ void BBDisplay::init(void)
 //*********************************************
 void BBDisplay::DisplayBanner(void)
 {
-    tft.setTextWrap(false);
-    tft.fillScreen(ST77XX_BLACK);
-    tft.setCursor(10, 1);
-    tft.setTextColor(ST77XX_WHITE);
-    tft.setTextSize(2);
-    tft.println(APPLICATION_NAME);
-    tft.setTextSize(1);
-    tft.setCursor(10, 24);
-    tft.println(config.copyright);
+    canvas.setTextWrap(false);
+    canvas.fillScreen(ST77XX_BLACK);
+
+    canvas.setCursor(10, 60);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setTextSize(2);
+    canvas.println(APPLICATION_NAME);
+    canvas.setTextSize(1);
+    canvas.setCursor(15, 100);
+    canvas.println(config.copyright);
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
+    pinMode(TFT_BACKLITE, OUTPUT);
+    digitalWrite(TFT_BACKLITE, HIGH);
 }
 
 //*********************************************
@@ -193,8 +207,8 @@ void BBDisplay::displayAxes(int type)
     //  1 : sensor 1 only
     //  2 : sensor 2 only
 
-    tft.setTextSize(1);
-    tft.setTextColor(ST77XX_WHITE);
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
     int PosLegende = 25;
     int x0 = 0;
     int y0 = 0;
@@ -205,29 +219,29 @@ void BBDisplay::displayAxes(int type)
     {
     case 0:
         // display caption for sensor 1
-        tft.setCursor(5, PosLegende);
-        tft.print(getTranslatedString(KEY_SENSOR));
-        tft.print("1");
+        canvas.setCursor(5, PosLegende);
+        canvas.print(getTranslatedString(KEY_SENSOR));
+        canvas.print("1");
         // display caption for sensor 2
-        tft.setCursor(64 + 5, PosLegende);
-        tft.print(getTranslatedString(KEY_SENSOR));
-        tft.print("2");
+        canvas.setCursor(64 + 5, PosLegende);
+        canvas.print(getTranslatedString(KEY_SENSOR));
+        canvas.print("2");
 
-        tft.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
-        tft.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
+        canvas.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
+        canvas.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
 
-        tft.drawLine(x0 + decalage, y0, x0 + decalage, y1, ST77XX_WHITE);
-        tft.drawLine(x0 + decalage, y1, x1 + decalage - 2, y1, ST77XX_WHITE);
+        canvas.drawLine(x0 + decalage, y0, x0 + decalage, y1, ST77XX_WHITE);
+        canvas.drawLine(x0 + decalage, y1, x1 + decalage - 2, y1, ST77XX_WHITE);
         break;
     case 1:
     case 2:
         x1 = 64 + decalage;
         // display caption for selected sensor
-        tft.setCursor(50, PosLegende);
-        tft.print(getTranslatedString(KEY_SENSOR));
-        tft.print(type);
-        tft.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
-        tft.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
+        canvas.setCursor(50, PosLegende);
+        canvas.print(getTranslatedString(KEY_SENSOR));
+        canvas.print(type);
+        canvas.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
+        canvas.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
         break;
     }
 }
@@ -272,6 +286,7 @@ void BBDisplay::capteurs(int type)
         break;
     }
     idxTblCapteur++;
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -298,7 +313,7 @@ void BBDisplay::displayAnalogInputs(int channel, int type)
                 posX = index + 1 + decalage;
                 posY = map(tblCapteur2[index], 0, 1023, 22, 0);
             }
-            tft.drawPixel(posX, posY, ST77XX_WHITE);
+            canvas.drawPixel(posX, posY, ST77XX_WHITE);
         }
         break;
     case 1:
@@ -307,7 +322,7 @@ void BBDisplay::displayAnalogInputs(int channel, int type)
         {
             posX = index + 1;
             posY = map(tblCapteur[index], 0, 1023, 22, 0);
-            tft.drawPixel(posX, posY, ST77XX_WHITE);
+            canvas.drawPixel(posX, posY, ST77XX_WHITE);
         }
         break;
     }
@@ -346,39 +361,39 @@ void BBDisplay::joystick()
     char blancs[20] = "           ";
     char titre[20] = " Joystick  ";
 
-    tft.setTextSize(1);
-    tft.setTextColor(ST77XX_WHITE);
-    tft.setCursor(0, 0);
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setCursor(0, 0);
 
-    tft.print(blancs);
-    tft.print("   [");
+    canvas.print(blancs);
+    canvas.print("   [");
     if (btHaut == 0)
-        tft.print("*");
+        canvas.print("*");
     else
-        tft.print(" ");
-    tft.println("]");
+        canvas.print(" ");
+    canvas.println("]");
 
-    tft.print(titre);
-    tft.print("[");
+    canvas.print(titre);
+    canvas.print("[");
     if (btGauche == 0)
-        tft.print("*");
+        canvas.print("*");
     else
-        tft.print(" ");
-    tft.print("]");
-    tft.print("   [");
+        canvas.print(" ");
+    canvas.print("]");
+    canvas.print("   [");
     if (btDroit == 0)
-        tft.print("*");
+        canvas.print("*");
     else
-        tft.print(" ");
-    tft.println("]");
+        canvas.print(" ");
+    canvas.println("]");
 
-    tft.print(blancs);
-    tft.print("   [");
+    canvas.print(blancs);
+    canvas.print("   [");
     if (btBas == 0)
-        tft.print("*");
+        canvas.print("*");
     else
-        tft.print(" ");
-    tft.print("]");
+        canvas.print(" ");
+    canvas.print("]");
 }
 
 //*********************************************
@@ -388,60 +403,54 @@ void BBDisplay::joystick()
 //*********************************************
 void BBDisplay::displayConfig()
 {
-    tft.setTextSize(1);
-    tft.setTextColor(ST77XX_WHITE);
-    tft.setCursor(0, 0);
-    tft.println(getTranslatedString(KEY_SETTINGS));
-    tft.print("BTLE : ");
-    tft.println(config.btleDeviceName);
-    tft.print(getTranslatedString(KEY_ANALOG_INPUTS));
-    tft.println(config.analogInput[0]); // todo: fix this
-    tft.print(getTranslatedString(KEY_VERSION));
-    tft.println(VERSION_BBox);
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setCursor(0, 10);
+    canvas.println(getTranslatedString(KEY_SETTINGS));
+    canvas.print("BTLE : ");
+    canvas.println(config.btleDeviceName);
+    canvas.print(getTranslatedString(KEY_ANALOG_INPUTS));
+    canvas.println(config.analogInput[0]); // todo: fix this
+    canvas.print(getTranslatedString(KEY_VERSION));
+    canvas.println(VERSION_BBox);
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
 //*
-//*       displayConfig2
+//*       displayBattery
 //*
 //*********************************************
-void BBDisplay::displayConfig2()
+void BBDisplay::displayBattery()
 {
-    tft.setTextSize(1);
-    tft.setTextColor(ST77XX_WHITE);
-    tft.setCursor(0, 0);
-    tft.println(getTranslatedString(KEY_SETTINGS));
-    float tmp = getVbat();
-    // map batterie level between 3,7V and 4,2V to %
-    int charge = map(tmp * 100, 370, 420, 0, 100);
-    if (charge > 100)
+    canvas.setTextSize(2);
+    canvas.setTextColor(ST77XX_BLUE);
+    canvas.setCursor(0, 45);
+    canvas.println(getTranslatedString(KEY_BATTERY));
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setTextSize(2);
+    float charge = lipo.cellVoltage();
+    canvas.print(charge, 1);
+    canvas.print(" V   ");
+    canvas.setTextSize(2);
+    charge = 4.03;
+    if (charge < 3.8)
     {
-        charge = 100;
+        canvas.setTextColor(ST77XX_RED);
+        canvas.println("(!)");
     }
-    else if (charge < 0)
+    else if (charge < 4.0)
     {
-        charge = 0;
+        canvas.setTextColor(ST77XX_YELLOW);
+        canvas.println("(!)");
     }
-    tft.print("Vbat = ");
-    tft.print(tmp);
-    tft.print("V (");
-    tft.print(charge);
-    tft.println("%)");
-    tft.print(getTranslatedString(KEY_BATTERY));
-    tft.print("[");
-    for (int i = 0; i <= 95; i += 12)
+    else
     {
-        if (i <= charge)
-        {
-            tft.print("*");
-        }
-        else
-        {
-            tft.print(" ");
-        }
+        canvas.setTextColor(ST77XX_GREEN);
+        canvas.println("(ok)");
     }
-    tft.println("]");
-    // tft.display();
+
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -451,10 +460,11 @@ void BBDisplay::displayConfig2()
 //*********************************************
 void BBDisplay::displayLicences()
 {
-    tft.setTextSize(1);
-    tft.setTextColor(ST77XX_WHITE);
-    tft.setCursor(0, 0);
-    tft.println(getTranslatedString(KEY_LICENCE));
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setCursor(0, 30);
+    canvas.println(getTranslatedString(KEY_LICENCE));
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -473,60 +483,61 @@ void BBDisplay::update(void)
         // nothing to display
         break;
     case 1:
-        tft.fillScreen(ST77XX_BLACK);
-        DisplayBanner();
+        // canvas.fillScreen(ST77XX_BLACK);
+        // DisplayBanner();
+        displayBattery();
         displayMode = 0;
         break;
     case 20:
         displayMode = 21;
         break;
     case 21:
-        tft.fillScreen(ST77XX_BLACK);
+        // canvas.fillScreen(ST77XX_BLACK);
         capteurs(0);
         break;
     case 22:
         displayMode = 23;
         break;
     case 23:
-        tft.fillScreen(ST77XX_BLACK);
+        // canvas.fillScreen(ST77XX_BLACK);
         capteurs(1);
         break;
     case 24:
         displayMode = 25;
         break;
     case 25:
-        tft.fillScreen(ST77XX_BLACK);
+        // canvas.fillScreen(ST77XX_BLACK);
         capteurs(2);
         break;
     case 26:
         displayMode = 27;
         break;
     case 27:
-        tft.fillScreen(ST77XX_BLACK);
+        // canvas.fillScreen(ST77XX_BLACK);
         joystick();
         break;
     case 31:
-        tft.fillScreen(ST77XX_BLACK);
+        // canvas.fillScreen(ST77XX_BLACK);
         displayConfig();
         displayMode = 32;
         break;
     case 33:
-        tft.fillScreen(ST77XX_BLACK);
-        displayConfig2();
+        // canvas.fillScreen(ST77XX_BLACK);
+        displayBattery();
         cptDisplayBatt = 0;
         displayMode = 34;
         break;
     case 34:
         if (cptDisplayBatt++ > 50)
         {
-            tft.fillScreen(ST77XX_BLACK);
-            ;
-            displayConfig2();
+            canvas.fillScreen(ST77XX_BLACK);
+        
+            displayBattery();
             cptDisplayBatt = 0;
         }
         break;
     case 35:
-        tft.fillScreen(ST77XX_BLACK);
+        // canvas.fillScreen(ST77XX_BLACK);
         ;
         displayLicences();
         displayMode = 36;
@@ -607,12 +618,7 @@ void BBDisplay::checkButtons(void)
     }
 }
 
-// key are defined in display.hpp
-String EN_Strings[] = {"Sensor ", "Used channels:", "Settings", "Version: ", "Battery: ", "Licence"};
-String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Licence"};
-String ES_Strings[] = {"Sensor ", "Canales usados : ", "Configuraciones", "Version: ", "Batería: ", "Licencia"};
-String DE_Strings[] = {"Sensor ", "Benutzte Kanäle : ", "Parameter", "Version: ", "Batterie: ", "Lizenz"};
-//*********************************************
+//
 //*
 //*       getTranslatedString
 //*
@@ -632,10 +638,6 @@ String BBDisplay::getTranslatedString(int key)
     else if (language.equals("ES"))
     {
         return ES_Strings[key];
-    }
-    else if (language.equals("DE"))
-    {
-        return DE_Strings[key];
     }
     return EN_Strings[key];
 }

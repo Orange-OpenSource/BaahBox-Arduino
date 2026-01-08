@@ -21,26 +21,17 @@
 #define __DISPLAY_HPP
 
 #include <Adafruit_GFX.h>
-#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
+#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789 display
 #include <SPI.h>
+#include <Fonts/FreeSans12pt7b.h>
 
 #include "Sensors/genericSensor.hpp"
 #include "Config/BBConfig.hpp"
-#include "tools.hpp"
-
-extern Adafruit_ST7789 display;
+#include "Display/commonDisplay.hpp"
 
 #define BUTTON_A 0
 #define BUTTON_B 1
 #define BUTTON_C 2
-
-// key for translation
-#define KEY_SENSOR 0
-#define KEY_ANALOG_INPUTS 1
-#define KEY_SETTINGS 2
-#define KEY_VERSION 3
-#define KEY_BATTERY 4
-#define KEY_LICENCE 5
 
 extern genericSensorClass genericSensor;
 
@@ -66,8 +57,6 @@ private:
 
   int cptRefresh = 0;
 
-  Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
-
   void DisplayBanner(void);
   int isButtonPressed(void);
   void displayAxes(int type);
@@ -76,7 +65,7 @@ private:
   void joystick(void);
   void refreshDisplay(void);
   void displayConfig(void);
-  void displayConfig2(void);
+  void displayBattery(void);
   void displayLicences(void);
   String getTranslatedString(int key);
 };
