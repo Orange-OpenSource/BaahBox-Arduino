@@ -516,7 +516,7 @@ void BBDisplay::update(void)
         joystick();
         break;
     case 30:
-    canvas.fillScreen(ST77XX_BLACK);
+        canvas.fillScreen(ST77XX_BLACK);
         displayMode = 31;
         break;
     case 31:
