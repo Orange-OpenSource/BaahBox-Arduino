@@ -53,7 +53,7 @@ void BBConfigClass::init(void)
 //*********************************************
 void BBConfigClass::loadDefaultValues(void)
 {
-  this->btleDeviceName = "Baah Box dans BBconfig";
+  this->btleDeviceName = "BaahBox dans BBconfig"; // "BaahBox dans BBconfig";
   this->nbAnalogSensors = NB_ANALOG_SENSORS;
   this->analogInput[0] = A0;
   this->analogInput[1] = A1;
@@ -63,7 +63,7 @@ void BBConfigClass::loadDefaultValues(void)
   this->digitalInput[3] = 13;
   this->analogSensorFilter = ANALOG_SENSOR_FILTER;
   this->copyright = COPYRIGHT;
-  this->language = "EN";
+  this->language = "FR";
 }
 
 //*********************************************

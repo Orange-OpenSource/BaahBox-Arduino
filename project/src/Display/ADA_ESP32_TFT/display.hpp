@@ -21,26 +21,17 @@
 #define __DISPLAY_HPP
 
 #include <Adafruit_GFX.h>
-#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
+#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789 display
 #include <SPI.h>
+#include <Fonts/FreeSans12pt7b.h>
 
 #include "Sensors/genericSensor.hpp"
 #include "Config/BBConfig.hpp"
-#include "tools.hpp"
+#include "Display/commonDisplay.hpp"
 
-extern Adafruit_ST7789 display;
-
-#define BUTTON_A 0
-#define BUTTON_B 1
-#define BUTTON_C 2
-
-// key for translation
-#define KEY_SENSOR 0
-#define KEY_ANALOG_INPUTS 1
-#define KEY_SETTINGS 2
-#define KEY_VERSION 3
-#define KEY_BATTERY 4
-#define KEY_LICENCE 5
+#define TFT_BUTTON_A 0
+#define TFT_BUTTON_B 1
+#define TFT_BUTTON_C 2
 
 extern genericSensorClass genericSensor;
 
@@ -58,15 +49,14 @@ private:
   int button_A_pressed;
   int button_B_pressed;
   int button_C_pressed;
-  int tblCapteur1[62], tblCapteur2[62];
-  int tblCapteur[126];
+  int tblCapteur1[118], tblCapteur2[118]; //62
+  int tblCapteur[238]; //126
   int capteur1, capteur2, idxTblCapteur;
   int displayMode;
+  int currentDisplayMode;
   int buttonNotReleased;
 
   int cptRefresh = 0;
-
-  Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
 
   void DisplayBanner(void);
   int isButtonPressed(void);
@@ -76,7 +66,7 @@ private:
   void joystick(void);
   void refreshDisplay(void);
   void displayConfig(void);
-  void displayConfig2(void);
+  void displayBattery(void);
   void displayLicences(void);
   String getTranslatedString(int key);
 };

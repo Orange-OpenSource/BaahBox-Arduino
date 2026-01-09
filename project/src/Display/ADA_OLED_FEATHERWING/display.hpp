@@ -26,6 +26,8 @@
 #include <Adafruit_SSD1306.h>
 #include "Sensors/genericSensor.hpp"
 #include "Config/BBConfig.hpp"
+#include "Display/commonDisplay.hpp"
+
 #include "tools.hpp"
 
 extern Adafruit_SSD1306 display;
@@ -67,14 +69,6 @@ extern Adafruit_SSD1306 display;
 #error ("Height incorrect, please fix Adafruit_SSD1306.h!");
 #endif
 #define WIRE Wire
-
-// key for translation
-#define KEY_SENSOR 0
-#define KEY_ANALOG_INPUTS 1
-#define KEY_SETTINGS 2
-#define KEY_VERSION 3
-#define KEY_BATTERY 4
-#define KEY_LICENCE 5
 
 extern genericSensorClass genericSensor;
 

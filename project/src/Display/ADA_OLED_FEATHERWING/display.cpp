@@ -392,15 +392,15 @@ void BBDisplay::displayConfig()
 
 //*********************************************
 //*
-//*       displayConfig2
+//*       displayBattery
 //*
 //*********************************************
-void BBDisplay::displayConfig2()
+void BBDisplay::displayBattery()
 {
     oled.setTextSize(1);
     oled.setTextColor(WHITE);
     oled.setCursor(0, 0);
-    oled.println(getTranslatedString(KEY_SETTINGS));
+    oled.print(getTranslatedString(KEY_BATTERY));
     float tmp = getVbat();
     // map batterie level between 3,7V and 4,2V to %
     int charge = map(tmp * 100, 370, 420, 0, 100);
@@ -417,7 +417,6 @@ void BBDisplay::displayConfig2()
     oled.print("V (");
     oled.print(charge);
     oled.println("%)");
-    oled.print(getTranslatedString(KEY_BATTERY));
     oled.print("[");
     for (int i = 0; i <= 95; i += 12)
     {
@@ -502,7 +501,7 @@ void BBDisplay::update(void)
         break;
     case 33:
         oled.clearDisplay();
-        displayConfig2();
+        displayBattery();
         cptDisplayBatt = 0;
         displayMode = 34;
         break;
@@ -510,7 +509,7 @@ void BBDisplay::update(void)
         if (cptDisplayBatt++ > 50)
         {
             oled.clearDisplay();
-            displayConfig2();
+            displayBattery();
             cptDisplayBatt = 0;
         }
         break;
@@ -528,7 +527,7 @@ void BBDisplay::update(void)
 
 //*********************************************
 //*
-//*       chackButtons
+//*       checkButtons
 //*
 //*********************************************
 void BBDisplay::checkButtons(void)
@@ -595,10 +594,7 @@ void BBDisplay::checkButtons(void)
     }
 }
 
-// key are defined in display.hpp
-String EN_Strings[] = {"Sensor ", "Used channels:", "Settings", "Version: ", "Battery: ", "Copyright (c) 2025\nOrange SA\nLicence: GPLv3"};
-String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Copyright (c) 2025\nOrange SA\nLicence: GPLv3"};
-String ES_Strings[] = {"Sensor ", "Canales usados : ", "Configuraciones", "Version: ", "Batería: ", "Copyright (c) 2025\nOrange SA\nLicencia: GPLv3"};
+
 //*********************************************
 //*
 //*       getTranslatedString

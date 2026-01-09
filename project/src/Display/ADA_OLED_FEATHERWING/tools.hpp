@@ -22,4 +22,5 @@
 
 float getVbat(void);
 void solveButtonConflict();
+
 #endif /* __TOOLS.HPP */
