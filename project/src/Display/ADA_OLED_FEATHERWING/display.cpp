@@ -527,7 +527,7 @@ void BBDisplay::update(void)
 
 //*********************************************
 //*
-//*       chackButtons
+//*       checkButtons
 //*
 //*********************************************
 void BBDisplay::checkButtons(void)

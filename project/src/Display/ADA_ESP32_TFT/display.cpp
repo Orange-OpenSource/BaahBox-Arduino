@@ -91,9 +91,11 @@ void BBDisplay::init(void)
     displayMode = 1;
     currentDisplayMode = displayMode;
 
-    pinMode(BUTTON_A, INPUT_PULLDOWN);
-    pinMode(BUTTON_B, INPUT_PULLUP);
-    pinMode(BUTTON_C, INPUT_PULLUP);
+    pinMode(TFT_BUTTON_A, INPUT_PULLUP);
+    pinMode(TFT_BUTTON_B, INPUT_PULLDOWN);
+    pinMode(TFT_BUTTON_C, INPUT_PULLDOWN);
+
+
     button_A_pressed = 0;
     button_B_pressed = 0;
     button_C_pressed = 0;
@@ -131,10 +133,10 @@ void BBDisplay::DisplayBanner(void)
 int BBDisplay::isButtonPressed(void)
 {
     // read displayer buttons
-    int button_A = digitalRead(BUTTON_A);
-    int button_B = digitalRead(BUTTON_B);
-    int button_C = digitalRead(BUTTON_C);
-
+    int button_A = !digitalRead(TFT_BUTTON_A);
+    int button_B = digitalRead(TFT_BUTTON_B);
+    int button_C = !digitalRead(TFT_BUTTON_C);
+        
     if (button_A != 0) // not pressed
     {
         if (button_A_pressed == 0)
@@ -152,7 +154,7 @@ int BBDisplay::isButtonPressed(void)
         }
     }
 
-    if (button_B == 0)
+    if (button_B)
     {
         if (button_B_pressed == 0)
         {
@@ -225,6 +227,7 @@ void BBDisplay::displayAxes(int type)
         canvas.setCursor(120 + 5, PosLegende);
         canvas.print(getTranslatedString(KEY_SENSOR));
         canvas.print("2");
+        canvas.drawFastVLine(x0, y0, y1-y0, ST77XX_YELLOW);
 
          canvas.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
         canvas.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
@@ -255,12 +258,7 @@ void BBDisplay::capteurs(int type)
 {
     genericSensor.getAnalogInputs(&capteur1, &capteur2);
     displayAxes(type);
-    // int capteur1 = analogRead(config.analogInput[0]);
-    // int capteur2 = analogRead(config.analogInput[1]);
-    Serial.print(capteur1);
-    Serial.print("cap1 cap2");
-    Serial.println(capteur2);
-   
+
     switch (type)
     {
     case 0:
@@ -307,10 +305,6 @@ void BBDisplay::displayAnalogInputs(int channel, int type)
     case 0:
         for (int index = 0; index < 118; index++)
         {
-            Serial.print(tblCapteur1[index]);
-    Serial.print(" :cap1 cap2: ");
-    Serial.println(tblCapteur2[index]);
-   
             if (channel == 0)
             {
                 posX = index + 1;
@@ -319,7 +313,7 @@ void BBDisplay::displayAnalogInputs(int channel, int type)
             else
             {
                 posX = index + 1 + decalage;
-                posY = map(tblCapteur2[index], 0, 1023, 80, 20);
+                posY = map(tblCapteur2[index], 0, 1023, 88, 10);
             }
             tft.drawPixel(posX, posY, ST77XX_BLUE);
         }
@@ -329,7 +323,7 @@ void BBDisplay::displayAnalogInputs(int channel, int type)
         for (int index = 0; index < 238; index++)
         {
             posX = index + 1;
-            posY = map(tblCapteur[index], 0, 1023, 80, 0);
+            posY = map(tblCapteur[index], 0, 1023, 88, 10);
             tft.drawPixel(posX, posY, ST77XX_GREEN);
         }
         break;
@@ -345,7 +339,7 @@ void BBDisplay::refreshDisplay()
 {
     if (cptRefresh++ > 5)
     {
-        // display.display();
+        canvas.fillScreen(ST77XX_BLACK);
         cptRefresh = 0;
     }
 }
@@ -366,12 +360,11 @@ void BBDisplay::joystick()
     // int btBas = digitalRead(12);
     // int btHaut = digitalRead(13);
 
-    char blancs[20] = "           ";
-    char titre[20] = " Joystick  ";
-
+    char blancs[25] = "                    ";
+    char titre[19] = "  Joystick   ";
     canvas.setTextSize(1);
     canvas.setTextColor(ST77XX_WHITE);
-    canvas.setCursor(0, 0);
+    canvas.setCursor(0, 40);
 
     canvas.print(blancs);
     canvas.print("   [");
@@ -382,13 +375,14 @@ void BBDisplay::joystick()
     canvas.println("]");
 
     canvas.print(titre);
+   
     canvas.print("[");
     if (btGauche == 0)
         canvas.print("*");
     else
         canvas.print(" ");
     canvas.print("]");
-    canvas.print("   [");
+    canvas.print("     [");
     if (btDroit == 0)
         canvas.print("*");
     else
@@ -402,6 +396,7 @@ void BBDisplay::joystick()
     else
         canvas.print(" ");
     canvas.print("]");
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -482,56 +477,59 @@ void BBDisplay::displayLicences()
 //*********************************************
 void BBDisplay::update(void)
 {
+    //Serial.print("displayMode : ");
+    //Serial.println(displayMode);
+
     switch (displayMode)
     {
     case 0:
-    case 30:
+    //case 30:
     case 32:
     case 36:
         // nothing to display
         break;
     case 1:
-       // if (displayMode != currentDisplayMode)
-        //{
-            //DisplayBanner();
-            capteurs(0); 
-            displayMode = 0;
-        //}
+        DisplayBanner();
+        displayMode = 0;
         break;
     case 20:
         displayMode = 21;
+        tft.fillScreen(ST77XX_BLACK);
         break;
     case 21:
         capteurs(0);
         break;
     case 22:
         displayMode = 23;
+        canvas.fillScreen(ST77XX_BLACK);
         break;
     case 23:
-        // canvas.fillScreen(ST77XX_BLACK);
         capteurs(1);
         break;
     case 24:
         displayMode = 25;
+        canvas.fillScreen(ST77XX_BLACK);
         break;
     case 25:
-        // canvas.fillScreen(ST77XX_BLACK);
         capteurs(2);
         break;
     case 26:
         displayMode = 27;
+        canvas.fillScreen(ST77XX_BLACK);
         break;
     case 27:
-        // canvas.fillScreen(ST77XX_BLACK);
         joystick();
         break;
+    case 30:
+        tft.fillScreen(ST77XX_BLACK);
+        displayMode = 31;
+        break;
     case 31:
-        // canvas.fillScreen(ST77XX_BLACK);
         displayConfig();
         displayMode = 32;
         break;
     case 33:
-        // canvas.fillScreen(ST77XX_BLACK);
+       tft.fillScreen(ST77XX_BLACK);
         displayBattery();
         cptDisplayBatt = 0;
         displayMode = 34;
@@ -539,13 +537,13 @@ void BBDisplay::update(void)
     case 34:
         if (cptDisplayBatt++ > 50)
         {
-            // canvas.fillScreen(ST77XX_BLACK);
+      //      tft.fillScreen(ST77XX_BLACK);
             displayBattery();
             cptDisplayBatt = 0;
         }
         break;
     case 35:
-        // canvas.fillScreen(ST77XX_BLACK);
+        tft.fillScreen(ST77XX_BLACK);
         displayLicences();
         displayMode = 36;
         break;
@@ -599,6 +597,7 @@ void BBDisplay::checkButtons(void)
             {
                 switch (displayMode)
                 {
+                case 30: // nothing to do 
                 case 31: // nothing to do
                 case 33: // nothing to do
                 case 35: // nothing to do
@@ -613,7 +612,7 @@ void BBDisplay::checkButtons(void)
                     displayMode = 31;
                     break;
                 default: // first press of C button
-                    displayMode = 31;
+                    displayMode = 30;
                     break;
                 }
             }

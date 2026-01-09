@@ -145,7 +145,7 @@ int genericSensorClass::sensorAcquisition(char *sensorDataFormatted)
     sensorDataFormatted[index] = 90;
     index++;
 
-#ifdef __DEBUG__
+#ifdef __DEBG__
     char tmp2[2048] = "";
     if (tmpDisplay++ > 10)
     {

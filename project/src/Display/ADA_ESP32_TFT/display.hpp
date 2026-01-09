@@ -29,9 +29,9 @@
 #include "Config/BBConfig.hpp"
 #include "Display/commonDisplay.hpp"
 
-#define BUTTON_A 0
-#define BUTTON_B 1
-#define BUTTON_C 2
+#define TFT_BUTTON_A 0
+#define TFT_BUTTON_B 1
+#define TFT_BUTTON_C 2
 
 extern genericSensorClass genericSensor;
 
