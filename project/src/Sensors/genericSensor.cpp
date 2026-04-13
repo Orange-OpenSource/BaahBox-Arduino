@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,18 +18,18 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <Arduino.h>
-#include "config.hpp"
-#include "muscleSensor.hpp"
-#include "configSD.hpp"
+#include "Config/config.hpp"
+#include "Config/BBConfig.hpp"
+#include "genericSensor.hpp"
 
-extern configSDClass config3dHandz;
+extern BBConfigClass config;
 
 //*********************************************
 //*
 //*       Constructor
 //*
 //*********************************************
-muscleSensorClass::muscleSensorClass()
+genericSensorClass::genericSensorClass()
 {
 }
 
@@ -38,7 +38,7 @@ muscleSensorClass::muscleSensorClass()
 //*       Destructor
 //*
 //*********************************************
-muscleSensorClass::~muscleSensorClass()
+genericSensorClass::~genericSensorClass()
 {
 }
 
@@ -47,9 +47,9 @@ muscleSensorClass::~muscleSensorClass()
 //*       lowpass
 //*
 //*********************************************
-int muscleSensorClass::lowpass(int value, int index)
+int genericSensorClass::lowpass(int value, int index)
 {
-    float factor = config3dHandz.muscleFilterSensor;
+    float factor = config.analogSensorFilter;
     // the equivalent number of value used to calc the out is proportionnal to 1/factor
     // if factor -> 0 ; out -> value
     // if factor -> 1 ; out -> memory[index]
@@ -63,21 +63,20 @@ int muscleSensorClass::lowpass(int value, int index)
 //*       init
 //*
 //*********************************************
-int muscleSensorClass::init(unsigned long period, btleClass btle)
+int genericSensorClass::init(unsigned long period)
 {
-    this->btle = btle;
-
-    for (int i = 0; i < config3dHandz.nbMuscleSensor; i++)
+    for (int i = 0; i < config.nbAnalogSensors; i++)
     {
         Serial.print("Pin");
         Serial.print(i);
         Serial.print(":");
-        Serial.println(config3dHandz.pinAnalogInputTab[i]);
+        Serial.println(config.analogInput[i]);
     }
 
     // init joystick digital input
-    for (int idx=0 ; idx < NB_JOYSTICK_PIN ; idx++){
-        pinMode((uint32_t) config3dHandz.joystickDigitalInputTab[idx],INPUT_PULLUP);
+    for (int idx = 0; idx < NB_DIGITAL_PINS; idx++)
+    {
+        pinMode((uint32_t)config.digitalInput[idx], INPUT_PULLUP);
     }
     /*
     pinMode(A5, INPUT_PULLUP);
@@ -87,70 +86,74 @@ int muscleSensorClass::init(unsigned long period, btleClass btle)
     */
 
     // init scheduler
-    scheduler = new Scheduler(millis(), MUSCLE_PERIOD_IN_MS);
+    scheduler = new BBScheduler(millis(), SENSOR_ACQUISITION_PERIOD_IN_MS);
     Serial.println("muscleClass::init => OK\n");
     return 0;
 }
 
 //*********************************************
 //*
-//*       getValue
+//*       getAnalogInputs
 //*
 //*********************************************
-void muscleSensorClass::getValue(int *capteur1, int *capteur2)
+void genericSensorClass::getAnalogInputs(int *input1, int *input2)
 {
-    *capteur1 = this->storedValues[0];
-    *capteur2 = this->storedValues[1];
+    *input1 = this->storedValues[0];
+    *input2 = this->storedValues[1];
 }
 
 //*********************************************
 //*
-//*       muscleAcquisition
+//*       sensorAcquisition
 //*
-//*         Fonction waked up périodicly
+//*         Fonction waked up periodicly
 //*         to read physicals datas
-//*         on muscles sensors
+//*         from sensors and format it
 //*
 //*********************************************
 int tmpDisplay = 0;
-void muscleSensorClass::muscleAcquisition(void)
+int genericSensorClass::sensorAcquisition(char *sensorDataFormatted)
 {
-    char tmp[10];
-    char tmp2[2048] = "";
     int index = 0;
-
-    int value[MAX_NB_MUSCLE_SENSOR];
-
-    for (int i = 0; i < config3dHandz.nbMuscleSensor; i++)
+    // Analog input acquisition
+    for (int i = 0; i < config.nbAnalogSensors; i++)
     {
-        int mapValue = lowpass(analogRead(config3dHandz.pinAnalogInputTab[i]), i);
+        int mapValue = lowpass(analogRead(config.analogInput[i]), i);
+#ifdef __ANALOG__JOYSTICK__
+        if (mapValue >= 440 && mapValue <= 550)
+        {
+            mapValue = 500;
+        }
+#endif
         storedValues[i] = mapValue;
         int a = mapValue / 32;
         int b = mapValue - (a * 32);
-        tmp[index] = a;
+        sensorDataFormatted[index] = a;
         index++;
-        tmp[index] = b;
+        sensorDataFormatted[index] = b;
         index++;
     }
-
+    // digital input acquisition
     int c =
-        (1 - digitalRead(config3dHandz.joystickDigitalInputTab[0])) * 8 +
-        (1 - digitalRead(config3dHandz.joystickDigitalInputTab[1])) * 4 +
-        (1 - digitalRead(config3dHandz.joystickDigitalInputTab[2])) * 2 + 1 - digitalRead(config3dHandz.joystickDigitalInputTab[3]);
+        (1 - digitalRead(config.digitalInput[0])) * 8 +
+        (1 - digitalRead(config.digitalInput[1])) * 4 +
+        (1 - digitalRead(config.digitalInput[2])) * 2 +
+        1 - digitalRead(config.digitalInput[3]);
 
-    tmp[index] = c;
+    sensorDataFormatted[index] = c;
     index++;
-    tmp[index] = 90;
+    sensorDataFormatted[index] = 90;
     index++;
 
-    btle.write(tmp, index);
-
-#ifdef __DEBUG__
+#ifdef __DEBG__
+    char tmp2[2048] = "";
     if (tmpDisplay++ > 10)
     {
-        sprintf(tmp2, "%d %d %d %d", tmp[0] * 32 + tmp[1], tmp[2] * 32 + tmp[3], tmp[4], tmp[5]);
+        sprintf(tmp2, "%d %d %d %d", sensorDataFormatted[0] * 32 + sensorDataFormatted[1], sensorDataFormatted[2] * 32 + sensorDataFormatted[3], sensorDataFormatted[4], sensorDataFormatted[5]);
         Serial.println(tmp2);
         tmpDisplay = 0;
     }
 #endif
+
+    return index;
 }

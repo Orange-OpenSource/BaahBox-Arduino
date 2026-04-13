@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,92 +21,52 @@
 #define __DISPLAY_HPP
 
 #include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include "muscleSensor.hpp"
-#include "config.hpp"
-#include "tools.hpp"
+#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789 display
+#include <SPI.h>
+#include <Fonts/FreeSans12pt7b.h>
 
-extern Adafruit_SSD1306 display;
+#include "Sensors/genericSensor.hpp"
+#include "Config/BBConfig.hpp"
+#include "Display/commonDisplay.hpp"
 
-#if defined(ESP8266)
-#define BUTTON_A 0
-#define BUTTON_B 16
-#define BUTTON_C 2
-#define LED 0
-#elif defined(ESP32)
-#define BUTTON_A 15
-#define BUTTON_B 32
-#define BUTTON_C 14
-#define LED 13
-#elif defined(ARDUINO_STM32F2_FEATHER)
-#define BUTTON_A PA15
-#define BUTTON_B PC7
-#define BUTTON_C PC5
-#define LED PB5
-#elif defined(TEENSYDUINO)
-#define BUTTON_A 4
-#define BUTTON_B 3
-#define BUTTON_C 8
-#define LED 13
-#elif defined(ARDUINO_FEATHER52)
-#define BUTTON_A 31
-#define BUTTON_B 30
-#define BUTTON_C 27
-#define LED 17
-#else // 32u4, M0, M4, and 328p
-#define BUTTON_A 9
-#define BUTTON_B 6
-#define BUTTON_C 5
-#define LED 13
-#endif
+#define TFT_BUTTON_A 0
+#define TFT_BUTTON_B 1
+#define TFT_BUTTON_C 2
 
-#if (SSD1306_LCDHEIGHT != 32)
-#error("Height incorrect, please fix Adafruit_SSD1306.h!");
-#endif
+extern genericSensorClass genericSensor;
 
-// key for translation
-#define KEY_SENSOR 0
-#define KEY_ANALOG_INPUTS 1
-#define KEY_SETTINGS 2
-#define KEY_VERSION 3
-#define KEY_BATTERY 4
-#define KEY_LICENCE 5
-
-extern muscleSensorClass muscleSensor;
-
-class handzDisplay
+class BBDisplay
 {
 public:
-  handzDisplay(void);
-  ~handzDisplay();
+  BBDisplay(void);
+  ~BBDisplay();
   void init(void);
   void checkButtons(void);
   void update(void);
-  Scheduler *scheduler;
+  BBScheduler *scheduler;
 
 private:
   int button_A_pressed;
   int button_B_pressed;
   int button_C_pressed;
-  int tblCapteur1[62], tblCapteur2[62];
-  int tblCapteur[126];
+  int tblCapteur1[118], tblCapteur2[118]; //62
+  int tblCapteur[238]; //126
   int capteur1, capteur2, idxTblCapteur;
   int displayMode;
+  int currentDisplayMode;
   int buttonNotReleased;
 
   int cptRefresh = 0;
-
-  Adafruit_SSD1306 display = Adafruit_SSD1306();
 
   void DisplayBanner(void);
   int isButtonPressed(void);
   void displayAxes(int type);
   void capteurs(int type);
-  void displayCapteur(int channel, int type);
+  void displayAnalogInputs(int channel, int type);
   void joystick(void);
   void refreshDisplay(void);
   void displayConfig(void);
-  void displayConfig2(void);
+  void displayBattery(void);
   void displayLicences(void);
   String getTranslatedString(int key);
 };

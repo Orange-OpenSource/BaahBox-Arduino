@@ -1,203 +1,184 @@
-// ******************************************
-// * Baah Box Arduino : Sensor BTLE gateway *
-// ******************************************
+// // // ******************************************
+// // // * Baah Box Arduino : Sensor BTLE gateway *
+// // // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// // // Copyright (C) 2017 – 2025 Orange SA
 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// // // This program is free software: you can redistribute it and/or modify
+// // // it under the terms of the GNU General Public License as published by
+// // // the Free Software Foundation, either version 3 of the License, or
+// // // (at your option) any later version.
 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// // // This program is distributed in the hope that it will be useful,
+// // // but WITHOUT ANY WARRANTY; without even the implied warranty of
+// // // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// // // GNU General Public License for more details.
 
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// // // You should have received a copy of the GNU General Public License
+// // // along with this program. If not, see <http://www.gnu.org/licenses/>.
+// // /*
+// // #include <SPI.h>
+// #include "btle.hpp"
+// #include <bluefruit.h>
+// #include <Adafruit_LittleFS.h>
+// #include <InternalFileSystem.h>
 
-#include <SPI.h>
-#include "btle.hpp"
-#include "Adafruit_BLE.h"
-#include "Adafruit_BluefruitLE_SPI.h"
-#include "Adafruit_BluefruitLE_UART.h"
+//  // BLE Service
+//  BLEDfu  bledfu;  // OTA DFU service
+//  BLEDis  bledis;  // device information
+//  BLEUart bleuart; // uart over ble
+//  BLEBas  blebas;  // battery
 
-/*=========================================================================
-  APPLICATION SETTINGS
+// // /* create the ble object */
 
-      FACTORYRESET_ENABLE       Perform a factory reset when running this sketch
-     
-                                Enabling this will put your Bluefruit LE module
-  in a 'known good' state and clear any config
-  data set in previous sketches or projects, so
-                                running this at least once is a good idea.
-     
-                                When deploying your project, however, you will
-  want to disable factory reset by setting this
-  value to 0.  If you are making changes to your
-                                Bluefruit LE device via AT commands, and those
-  changes aren't persisting across resets, this
-  is the reason why.  Factory reset will erase
-  the non-volatile memory where config data is
-  stored, setting it back to factory default
-  values.
-         
-                                Some sketches that require you to bond to a
-  central device (HID mouse, keyboard, etc.)
-  won't work at all with this feature enabled
-  since the factory reset will clear all of the
-  bonding data stored on the chip, meaning the
-  central device won't be able to reconnect.
-  MINIMUM_FIRMWARE_VERSION  Minimum firmware version to have some new features
-  MODE_LED_BEHAVIOUR        LED activity, valid options are
-  "DISABLE" or "MODE" or "BLEUART" or
-  "HWUART"  or "SPI"  or "MANUAL"
-  -----------------------------------------------------------------------*/
-#define FACTORYRESET_ENABLE 1
-#define MINIMUM_FIRMWARE_VERSION "0.6.6"
-#define MODE_LED_BEHAVIOUR "MODE"
-/*=========================================================================*/
+// //*********************************************
+// //*
+// //*       Constructor
+// //*
+// //*********************************************
+// btleClass::btleClass()
+// {
+//   btleBufferInputsIndex = 0;
+//   for (int i = 0; i < BTLE_MAX_BUFFER_SIZE; i++)
+//   {
+//     btleBufferInputs[i] = 0;
+//   }
+// }
 
-/* create the ble object */
-Adafruit_BluefruitLE_SPI ble(BLUEFRUIT_SPI_CS, BLUEFRUIT_SPI_IRQ, BLUEFRUIT_SPI_RST);
+// //*********************************************
+// //*
+// //*       init
+// //*
+// //*********************************************
+//  void btleClass::init(char *inputDeviceName)
+// {
 
-//*********************************************
-//*
-//*       Constructor
-//*
-//*********************************************
-btleClass::btleClass()
-{
-  btleBufferInputsIndex = 0;
-  for (int i = 0; i < BTLE_MAX_BUFFER_SIZE; i++)
-  {
-    btleBufferInputs[i] = 0;
-  }
-}
+// //   /* Initialise the module */
+// //   memset(deviceName, 0, BTLE_MAX_DEVICE_NAME);
+// //   strncpy(deviceName, inputDeviceName, BTLE_MAX_DEVICE_NAME - 1);
 
-//*********************************************
-//*
-//*       init
-//*
-//*********************************************
-void btleClass::init(char *inputDeviceName)
-{
-  /* Initialise the module */
-  memset(deviceName, 0, BTLE_MAX_DEVICE_NAME);
-  strncpy(deviceName, inputDeviceName, BTLE_MAX_DEVICE_NAME - 1);
+// // Setup the BLE LED to be enabled on CONNECT
+//   // Note: This is actually the default behavior, but provided
+//   // here in case you want to control this LED manually via PIN 19
+//   Bluefruit.autoConnLed(true);
 
-  Serial.println("begin of btle Init");
-  if (!ble.begin(VERBOSE_MODE))
-  {
-    Serial.println(F("Couldn't find Bluefruit, make sure it's in CoMmanD mode & check wiring?"));
-  }
+//   // Config the peripheral connection with maximum bandwidth
+//   // more SRAM required by SoftDevice
+//   // Note: All config***() function must be called before begin()
+//   Bluefruit.configPrphBandwidth(BANDWIDTH_MAX);
 
-  if (FACTORYRESET_ENABLE)
-  {
-    /* Perform a factory reset to make sure everything is in a known state */
-    if (!ble.factoryReset())
-    {
-      Serial.println(F("Couldn't factory reset"));
-    }
-  }
+//   Bluefruit.begin();
+//   Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
+//   //Bluefruit.setName(getMcuUniqueID()); // useful testing with multiple central connections
+//   Bluefruit.Periph.setConnectCallback(connect_callback);
+//   Bluefruit.Periph.setDisconnectCallback(disconnect_callback);
 
-  /* Disable command echo from Bluefruit */
-  ble.echo(true);
+//   // To be consistent OTA DFU should be added first if it exists
+//   bledfu.begin();
 
-  /* Print Bluefruit information */
-  ble.info();
-  ble.verbose(false); // debug info is a little annoying after this point!
+//   // Configure and Start Device Information Service
+//   bledis.setManufacturer("Adafruit Industries");
+//   bledis.setModel("Bluefruit Feather52");
+//   bledis.begin();
 
-  char tmpChar[BTLE_MAX_DEVICE_NAME + 30];
+//   // Configure and Start BLE Uart Service
+//   bleuart.begin();
 
-  sprintf(tmpChar, "AT+GAPDEVNAME=%s", deviceName);
+//   // Start BLE Battery Service
+//   blebas.begin();
+//   blebas.write(100);
 
-  ble.sendCommandCheckOK(tmpChar);
+//   // Set up and start advertising
+//   // Advertising packet
+//   Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);
+//   Bluefruit.Advertising.addTxPower();
 
-  Serial.println("wait for connection");
-  /* Wait for connection */
+//   // Include bleuart 128-bit uuid
+//   Bluefruit.Advertising.addService(bleuart);
 
-  configured = false;
-}
+//   // Secondary Scan Response packet (optional)
+//   // Since there is no room for 'Name' in Advertising packet
+//   Bluefruit.ScanResponse.addName();
 
-//*********************************************
-//*
-//*       write
-//*
-//*********************************************
-void btleClass::write(char *data, int dataLength)
-{
-  if (ble.isConnected())
-  {
-    if (configured == false)
-    {
-      configured = true;
-      // LED Activity command is only supported from 0.6.6
-      if (ble.isVersionAtLeast(MINIMUM_FIRMWARE_VERSION))
-      {
-        // Change Mode LED Activity
-        ble.sendCommandCheckOK("AT+HWModeLED=" MODE_LED_BEHAVIOUR);
-      }
-      // Set module to DATA mode
-      ble.setMode(BLUEFRUIT_MODE_DATA);
-    }
-    ble.write(data, dataLength);
-  }
-}
+//   /* Start Advertising
+//    * - Enable auto advertising if disconnected
+//    * - Interval:  fast mode = 20 ms, slow mode = 152.5 ms
+//    * - Timeout for fast mode is 30 seconds
+//    * - Start(timeout) with timeout = 0 will advertise forever (until connected)
+//    *
+//    * For recommended advertising interval
+//    * https://developer.apple.com/library/content/qa/qa1931/_index.html
+//    */
+//   Bluefruit.Advertising.restartOnDisconnect(true);
+//   Bluefruit.Advertising.setInterval(32, 244);    // in unit of 0.625 ms
+//   Bluefruit.Advertising.setFastTimeout(30);      // number of seconds in fast mode
+//   Bluefruit.Advertising.start(0);                // 0 = Don't stop advertising after n seconds
 
-/**************************************************************************/
-/*!
-  @brief  Constantly poll for new command or response data
-*/
-/**************************************************************************/
-int btleClass::read(char *command)
-{
-  if (ble.isConnected())
-  {
-    if (configured == false)
-    {
-      configured = true;
-      Serial.println("Btle read");
-      // LED Activity command is only supported from 0.6.6
-      if (ble.isVersionAtLeast(MINIMUM_FIRMWARE_VERSION))
-      {
-        // Change Mode LED Activity
-        ble.sendCommandCheckOK("AT+HWModeLED=" MODE_LED_BEHAVIOUR);
-      }
+//  }
 
-      // Set module to DATA mode
-      ble.setMode(BLUEFRUIT_MODE_DATA);
-    }
+// //*********************************************
+// //*
+// //*       write
+// //*
+// //*********************************************
+// void btleClass::write(char *data, int dataLength)
+// {
+//     bleuart.write(data, dataLength);
+// }
 
-    // Echo received data
-    while (ble.available())
-    {
-      char c = (char)ble.read();
-      if (btleBufferInputsIndex < BTLE_MAX_BUFFER_SIZE)
-      {
-        btleBufferInputs[btleBufferInputsIndex] = c;
-        btleBufferInputsIndex++;
-      }
-      if (c == BTLE_END_OF_CHAR)
-      {
-        memcpy(command, btleBufferInputs, btleBufferInputsIndex + 1);
-        int output = btleBufferInputsIndex;
-        btleBufferInputsIndex = 0;
-        if (output < BTLE_MAX_BUFFER_SIZE)
-        {
-          return output;
-        }
-        else
-        {
-          return 0;
-        }
-      }
-    }
-    return 0;
-  }
-  else
-  {
-    return 0;
-  }
-}
+// // /**************************************************************************/
+// // /*!
+// //   @brief  Constantly poll for new command or response data
+// // */
+// // /**************************************************************************/
+// // int btleClass::read(char *command)
+// // {
+// //   if (ble.isConnected())
+// //   {
+// //     if (configured == false)
+// //     {
+// //       configured = true;
+// //       Serial.println("Btle read");
+// //       // LED Activity command is only supported from 0.6.6
+// //       if (ble.isVersionAtLeast(MINIMUM_FIRMWARE_VERSION))
+// //       {
+// //         // Change Mode LED Activity
+// //         ble.sendCommandCheckOK("AT+HWModeLED=" MODE_LED_BEHAVIOUR);
+// //       }
+
+// //       // Set module to DATA mode
+// //       ble.setMode(BLUEFRUIT_MODE_DATA);
+// //     }
+
+// //     // Echo received data
+// //     while (ble.available())
+// //     {
+// //       char c = (char)ble.read();
+// //       if (btleBufferInputsIndex < BTLE_MAX_BUFFER_SIZE)
+// //       {
+// //         btleBufferInputs[btleBufferInputsIndex] = c;
+// //         btleBufferInputsIndex++;
+// //       }
+// //       if (c == BTLE_END_OF_CHAR)
+// //       {
+// //         memcpy(command, btleBufferInputs, btleBufferInputsIndex + 1);
+// //         int output = btleBufferInputsIndex;
+// //         btleBufferInputsIndex = 0;
+// //         if (output < BTLE_MAX_BUFFER_SIZE)
+// //         {
+// //           return output;
+// //         }
+// //         else
+// //         {
+// //           return 0;
+// //         }
+// //       }
+// //     }
+// //     return 0;
+// //   }
+// //   else
+// //   {
+// //     return 0;
+// //   }
+// // }
+// // */

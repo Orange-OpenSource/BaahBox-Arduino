@@ -1,8 +1,9 @@
 // ******************************************
-// * Baah Box Arduino : Sensor BTLE gateway *
+// * Baah Box Arduino : Sensor BTLE gateway
+// * for NRF51 Adafruit boards like FEATHER M0 Bluefruit
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,8 +18,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef btle_hpp
-#define btle_hpp
+#ifndef btle51Class_hpp
+#define btle51Class_hpp
 
 #include <stdio.h>
 #define BTLE_END_OF_CHAR '#'
@@ -79,10 +80,10 @@
 #define BLUEFRUIT_SPI_MOSI 11
 
 /* Btle lib Class*/
-class btleClass
+class btle51Class
 {
 public:
-  btleClass();
+  btle51Class();
   void init(char *inputDeviceName);
   int read(char *command);
   void write(char *data, int dataLength);
@@ -94,4 +95,4 @@ private:
   char btleBufferInputs[BTLE_MAX_BUFFER_SIZE];
 };
 
-#endif /* btle_hpp */
+#endif /* btleNRF51_hpp */
