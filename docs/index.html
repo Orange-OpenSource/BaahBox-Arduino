@@ -1,244 +1,227 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="BaahBox - Solution pour la rééducation musculaire et l'entraînement aux prothèses myo-électriques proposée par Orange OPpen Source" />
-    <title>BaahBox - Rééducation et prothèses myo-électriques</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/dispo.css" />
-  </head>
-  <body>
-    <header class="header">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="BaahBox - Solution pour la rééducation musculaire et l'entraînement aux prothèses myo-électriques proposée par Orange OPpen Source" />
+  <title>BaahBox - Rééducation et prothèses myo-électriques</title>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dispo.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/logo.webp" width="50px" height="50px" style="border-radius: 50%" alt="" />
+            <span>BaahBox</span>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#accueil" class="active">Accueil</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="#telechargements">Téléchargements</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="accueil" class="hero">
       <div class="container">
-        <nav class="navbar">
-          <div class="logo">
-            <a href="index.html">
-              <img src="assets/images/logo.webp" width="50px" height="50px" style="border-radius: 50%" alt="" />
-              <span>BaahBox</span>
+        <div class="hero-image">
+          <img src="assets/images/Baahbox_Hero_1024.webp" alt="BaahBox - Dispositif de rééducation musculaire" />
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="container">
+        <h1 style="text-align: center">Qu'est-ce que la BaahBox ?</h1>
+        <br />
+        <h4 style="text-align: center">
+          La BaahBox est un équipement d'aide à la rééducation <br />ou à l'entraînement des muscles.
+        </h4>
+        <p style="text-align: justify">
+          Elle se compose d'un boîtier électronique qui se connecte à des applications mobiles (iOS ou Android) pour
+          transformer la rééducation ou la préparation musculaire en une expérience ludique et motivante. <br />
+          Grâce à ses accessoires (capteurs musculaires, joystick, poignée, etc.), le boîtier transmet les mouvements
+          du patient aux jeux pour faire bouger les personnages. <br />
+          Ce dispositif est publié en Open Source (sous licence LGPL V3), par la division
+          <a href="https://opensource.orange.com/fr/accueil/">Open Source d'Orange</a>, sur son espace
+          <a href="https://github.com/Orange-OpenSource/">github</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="about">
+      <h1 style="text-align: center">Que peut on faire avec la BaahBox ?</h1>
+      <br />
+      <p style="font-size: 1.5rem; text-align: center; color: var(--color-accent-alt)">
+        Il y a plusieurs versions de la BaahBox, chacune permettant de faire une rééducation ou une préparation
+        musculaire différente.
+      </p>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <div class="row">
+        <div class="column" style="background-color: #aaaaaa26">
+          <h6 style="text-align: center">Simulateur de fauteuil roulant</h6>
+          <p style="font-size: 1.25rem; text-align: center">
+            <a href="BaahBox_fauteuil.html">Apprendre à se déplacer en fauteuil roulant électrique, avec un simulateur
+              et un jeu de labyrinthe.</a>
+          </p>
+
+          <br />
+
+          <div class="hero-image">
+            <img src="assets/images/fauteuilRoulantF.png"
+              alt="BaahBox - Simulateur de joystick de fauteuil roulant electrique  " />
+          </div>
+
+        </div>
+        <div class="column" style="background-color: #aaaaaa26">
+          <h6 style="text-align: center">Entraînement au pilotage de prothèse </h6>
+          <p style="font-size: 1.25rem; text-align: center">
+            Rééducation ou entraînement des muscles à l'aide de capteurs musculaires,
+            par exemple pour apprendre à piloter une prothèse électrique. <br />
+          </p>
+          <div class="hero-image">
+            <img src="assets/images/photoBaahBox.jpg"
+              alt="BaahBox - entraînement des muscles pour apprendre à piloter une prothèse électrique" />
+          </div>
+        </div>
+        <div class="column" style="background-color: #aaaaaa26">
+          <h6 style="text-align: center">Rééducation du membre supérieur par le jeu</h6>
+          <p style="font-size: 1.25rem; text-align: center">
+            Rééducation de parties d'un membre supérieur (doigts, poignet, etc.) avec un joystick à forme modulable,
+            une poignée, un télécommande Wii.
+          </p>
+          <div class="hero-image">
+            <img src="assets/images/BBoxV4_Modules.webp"
+              alt="BaahBox - Dispositif de rééducation du membre supérieur" />
+          </div>
+          <br />
+          <div class="hero-image">
+            <img src="assets/images/JoystickYohann.png" alt="BaahBox - Dispositif de rééducation du membre supérieur" />
+          </div>
+
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+    </section>
+
+    <section id="telechargements" class="downloads">
+      <div class="container">
+        <div class="section-header">
+          <h2>Télécharger l'application</h2>
+          <p class="section-subtitle">Disponible sur iOS et Android pour une rééducation ludique et efficace</p>
+        </div>
+
+        <div class="download-cards">
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fab fa-android"></i>
+            </div>
+            <h3>Pour Android</h3>
+            <a href="https://play.google.com/store/apps/details?id=com.orange.labs.baahbox&pcampaignid=web_share"
+              target="_blank" class="store-badge" aria-label="Télécharger sur le Google Play Store pour Android">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                style="width: 150px; height: auto" alt="Disponible sur Google Play" />
             </a>
           </div>
-          <ul class="nav-links">
-            <li><a href="#accueil" class="active">Accueil</a></li>
+
+          <div class="download-card">
+            <div class="download-icon">
+              <i class="fab fa-apple"></i>
+            </div>
+            <h3>Pour iOS</h3>
+            <a href="https://apps.apple.com/fr/app/baahbox/id1474621985" target="_blank" class="store-badge"
+              aria-label="Télécharger sur l'App Store pour iOS">
+              <img
+                src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
+                style="width: 150px; height: auto" alt="Télécharger sur l'App Store" />
+            </a>
+          </div>
+        </div>
+
+        <div class="qr-section">
+          <h3 class="qr-title">Ou scannez le QR code</h3>
+          <p class="qr-subtitle">
+            Utilisez l'appareil photo de votre téléphone pour scanner le code correspondant à votre appareil
+          </p>
+
+          <div class="qr-container">
+            <div class="qr-item">
+              <div class="qr-code">
+                <p class="qr-label">Android</p>
+                <img src="assets/images/doc/qrcode-android.webp" alt="QR code pour télécharger l'application Android"
+                  class="qr-image" />
+              </div>
+            </div>
+
+            <div class="qr-item">
+              <div class="qr-code">
+                <p class="qr-label">iOS</p>
+                <img src="assets/images/doc/qrcode-apple.webp" alt="QR code pour télécharger l'application iOS"
+                  class="qr-image" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BaahBox</h3>
+          <p>Équipement d’aide à la rééducation de muscles suite à un accident ou à un traumatisme</p>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><img src="https://www.svgrepo.com/show/450156/github.svg"
+                style="width: 20px; height: auto" alt="" /></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Liens rapides</h3>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
             <li><a href="documentation.html">Documentation</a></li>
             <li><a href="#telechargements">Téléchargements</a></li>
           </ul>
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section id="accueil" class="hero">
-        <div class="container">
-          <div class="hero-image">
-            <img src="assets/images/Baahbox_Hero_1024.png" alt="BaahBox - Dispositif de rééducation musculaire" />
-          </div>
         </div>
-        <br />
-        <br />
-        <div class="container">
-          <h1 style="text-align: center">Qu'est-ce que la BaahBox ?</h1>
-          <br />
-          <h4 style="text-align: center">
-            La BaahBox est un équipement d'aide à la rééducation <br />ou à l'entraînement des muscles.
-          </h4>
-          <p style="text-align: justify">
-            Elle se compose d'un boîtier électronique qui se connecte à des applications mobiles (iOS ou Android) pour
-            transformer la rééducation ou la préparation musculaire en une expérience ludique et motivante. <br />
-            Grâce à ses accessoires (capteurs musculaires, joystick, poignée, etc.), le boîtier transmet les mouvements
-            du patient aux jeux pour faire bouger les personnages. <br />
-            Ce dispositif est publié en Open Source (sous licence LGPL V3), par la division
-            <a href="https://opensource.orange.com/fr/accueil/">Open Source d'Orange</a>, sur son espace
-            <a href="https://github.com/Orange-OpenSource/">github</a>.
-          </p>
-        </div>
-      </section>
-
-      <section class="about">
-        <h1 style="text-align: center">Que peut on faire avec la BaahBox ?</h1>
-        <br />
-        <p style="font-size: 1.5rem; text-align: center; color: var(--color-accent-alt)">
-          Il y a plusieurs versions de la BaahBox, chacune permettant de faire une rééducation ou une préparation
-          musculaire différente.
-        </p>
-
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <div class="row">
-          <div class="column" style="background-color: #aaaaaa26">
-            <h6 style="text-align: center">Simulateur de fauteuil roulant</h6>
-            <p style="font-size: 1.25rem; text-align: center">
-              <a href= "BaahBox_fauteuil.html">Apprendre à se déplacer en fauteuil roulant électrique, avec un simulateur et un jeu de labyrinthe.</a>
-            </p>
-
-              <br/>
-          
-            <div class="hero-image">
-              <img
-                src="assets/images/BaahStick.png"
-                alt="BaahBox - Simulateur de joystick de fauteuil roulant electrique  " />
-            </div>
-          
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-email">
+            <img src="assets/images/icons/mailto.svg" alt="Email" class="email-icon" />
+            <a href="mailto:frederique.pinson@orange.com">frederique.pinson@orange.com</a>
           </div>
-          <div class="column" style="background-color: #aaaaaa26">
-            <h6 style="text-align: center">Entraînement au pilotage de prothèse </h6>
-            <p style="font-size: 1.25rem; text-align: center">
-              Rééducation ou entraînement des muscles à l'aide de capteurs musculaires, 
-              par exemple pour apprendre à piloter une prothèse électrique. <br/>
-            </p>
-            <div class="hero-image">
-              <img
-                src="assets/images/photoBaahBox.jpg"
-               
-                alt="BaahBox - entraînement des muscles pour apprendre à piloter une prothèse électrique" />
-            </div>
-          </div>
-          <div class="column" style="background-color: #aaaaaa26">
-            <h6 style="text-align: center">Rééducation du membre supérieur par le jeu</h6>
-            <p style="font-size: 1.25rem; text-align: center">
-              Rééducation de parties d'un membre supérieur (doigts, poignet, etc.) avec un joystick à forme modulable,
-              une poignée, un télécommande Wii.
-            </p>
-            <div class="hero-image">
-              <img
-                src="assets/images/BBoxV4_Modules.png"
-                alt="BaahBox - Dispositif de rééducation du membre supérieur" />
-            </div>
-            <br/>
-            <div class="hero-image">
-              <img
-                src="assets/images/JoystickYohann.png"
-                alt="BaahBox - Dispositif de rééducation du membre supérieur" />
-            </div>
-            
-          </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-      </section>
-
-      <section id="telechargements" class="downloads">
-        <div class="container">
-          <div class="section-header">
-            <h2>Télécharger l'application</h2>
-            <p class="section-subtitle">Disponible sur iOS et Android pour une rééducation ludique et efficace</p>
-          </div>
-
-          <div class="download-cards">
-            <div class="download-card">
-              <div class="download-icon">
-                <i class="fab fa-android"></i>
-              </div>
-              <h3>Pour Android</h3>
-              <a
-                href="https://play.google.com/store/apps/details?id=com.orange.labs.baahbox&pcampaignid=web_share"
-                target="_blank"
-                class="store-badge"
-                aria-label="Télécharger sur le Google Play Store pour Android">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                  style="width: 150px; height: auto"
-                  alt="Disponible sur Google Play" />
-              </a>
-            </div>
-
-            <div class="download-card">
-              <div class="download-icon">
-                <i class="fab fa-apple"></i>
-              </div>
-              <h3>Pour iOS</h3>
-              <a
-                href="https://apps.apple.com/fr/app/baahbox/id1474621985"
-                target="_blank"
-                class="store-badge"
-                aria-label="Télécharger sur l'App Store pour iOS">
-                <img
-                  src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
-                  style="width: 150px; height: auto"
-                  alt="Télécharger sur l'App Store" />
-              </a>
-            </div>
-          </div>
-
-          <div class="qr-section">
-            <h3 class="qr-title">Ou scannez le QR code</h3>
-            <p class="qr-subtitle">
-              Utilisez l'appareil photo de votre téléphone pour scanner le code correspondant à votre appareil
-            </p>
-
-            <div class="qr-container">
-              <div class="qr-item">
-                <div class="qr-code">
-                  <p class="qr-label">Android</p>
-                  <img
-                    src="assets/images/doc/qrcode-android.webp"
-                    alt="QR code pour télécharger l'application Android"
-                    class="qr-image" />
-                </div>
-              </div>
-
-              <div class="qr-item">
-                <div class="qr-code">
-                  <p class="qr-label">iOS</p>
-                  <img
-                    src="assets/images/doc/qrcode-apple.webp"
-                    alt="QR code pour télécharger l'application iOS"
-                    class="qr-image" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>BaahBox</h3>
-            <p>Équipement d’aide à la rééducation de muscles suite à un accident ou à un traumatisme</p>
-            <div class="social-links">
-              <a href="#" aria-label="GitHub"
-                ><img src="https://www.svgrepo.com/show/450156/github.svg" style="width: 20px; height: auto" alt=""
-              /></a>
-            </div>
-          </div>
-          <div class="footer-section">
-            <h3>Liens rapides</h3>
-            <ul>
-              <li><a href="#accueil">Accueil</a></li>
-              <li><a href="documentation.html">Documentation</a></li>
-              <li><a href="#telechargements">Téléchargements</a></li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h3>Contact</h3>
-            <div class="contact-email">
-              <img src="assets/images/icons/mailto.svg" alt="Email" class="email-icon" />
-              <a href="mailto:frederique.pinson@orange.com">frederique.pinson@orange.com</a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 Orange SA. Distribué sous licence GPL v3.</p>
         </div>
       </div>
-    </footer>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Orange SA. Distribué sous licence GPL v3.</p>
+      </div>
+    </div>
+  </footer>
 
-    <script src="js/main.js"></script>
-  </body>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
