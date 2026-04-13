@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,32 +20,28 @@
 #include <Arduino.h>
 
 #ifdef USE_NRF51
-  #include "BLE/Nrf51/btle.hpp"
-  #include "Display/ADA_OLED_FEATHERWING/display.hpp"
-
+#include "BLE/Nrf51/btle.hpp"
+#include "Display/ADA_OLED_FEATHERWING/display.hpp"
 #endif
 
 #ifdef USE_NRF52
-    #include "BLE/Nrf52/btle.hpp"
-    #include "Display/ADA_OLED_FEATHERWING/display.hpp"
-
+#include "BLE/Nrf52/btle.hpp"
+#include "Display/ADA_OLED_FEATHERWING/display.hpp"
 #endif
 
 #ifdef USE_ESP32S3
-    #include "BLE/ESP32S3/btle.hpp"
-     #include "Display/ADA_ESP32_TFT/display.hpp"
+#include "BLE/ESP32S3/btle.hpp"
+#include "Display/ADA_ESP32_TFT/display.hpp"
 #endif
 
-#include "Config/config.hpp"
-#include "./Sensors/muscleSensor.hpp"
-#include "./SD/configSD.hpp"
+#include "Sensors/genericSensor.hpp"
+#include "Config/BBConfig.hpp"
 
 btleClass btle;
-muscleSensorClass muscleSensor;
-handzDisplay display3dhandz;
-
-// SDCard
-configSDClass config3dHandz;
+genericSensorClass genericSensor;
+BBDisplay bbDisplay;
+BBConfigClass config;
+char sensorData[10];
 
 //*********************************************
 //*
@@ -54,7 +50,6 @@ configSDClass config3dHandz;
 //*********************************************
 void setup()
 {
-
 #ifdef __DEBUG__
     {
         // initialize serial communication
@@ -69,23 +64,19 @@ void setup()
         Serial.println("Serial initialized");
     }
 #endif
-    // init SD Card and load parameters
-    config3dHandz.init();
-    Serial.println("SD Card initialized");
-
-    // initialise BTLE
+    // load parameters
+    config.init();
+    // initialize BTLE
     char tmpDeviceName[50];
-    config3dHandz.btleDeviceName.toCharArray(tmpDeviceName, 50);
+    config.btleDeviceName.toCharArray(tmpDeviceName, 50);
     btle.init(tmpDeviceName);
     Serial.print("BTLE initialized => ");
     Serial.println(tmpDeviceName);
-
-    muscleSensor.init(MUSCLE_PERIOD_IN_MS, btle);
+    // initialize Sensors
+    genericSensor.init(SENSOR_ACQUISITION_PERIOD_IN_MS);
     Serial.println("Sensors initialized");
-
-    // init display
-    display3dhandz.init();
-    Serial.println("Display initialized");
+    // initialize Display
+    bbDisplay.init();
 
     Serial.println("end of main setup");
 }
@@ -97,19 +88,15 @@ void setup()
 //*********************************************
 void loop()
 {
-    display3dhandz.checkButtons();
-
-    if (muscleSensor.scheduler->needToBeExecuted())
+    bbDisplay.checkButtons();
+    if (genericSensor.scheduler->needToBeExecuted())
     {
-        // Serial.println("exec read capteurs");
-        muscleSensor.muscleAcquisition();
+        int length = genericSensor.sensorAcquisition(sensorData);
+        btle.write(sensorData, length);
     }
-
-    if (display3dhandz.scheduler->needToBeExecuted())
+    if (bbDisplay.scheduler->needToBeExecuted())
     {
-        // Serial.println("exec display");
-        display3dhandz.update();
+        bbDisplay.update();
     }
-
     delay(MAIN_LOOP_DELAY);
 }

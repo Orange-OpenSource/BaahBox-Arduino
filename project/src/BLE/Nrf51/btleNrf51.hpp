@@ -1,9 +1,9 @@
 // ******************************************
 // * Baah Box Arduino : Sensor BTLE gateway
-// * for NRF51 Adafruit boards like FEATHER M0 Bluefruit 
+// * for NRF51 Adafruit boards like FEATHER M0 Bluefruit
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

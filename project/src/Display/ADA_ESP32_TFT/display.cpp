@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2026 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,19 +21,19 @@
 #include "display.hpp"
 #include <Adafruit_MAX1704X.h>
 
-Adafruit_MAX17048 maxlipo;
-int decalage = 64;
+Adafruit_MAX17048 lipo;
+int decalage = 120;
 int cptDisplayBatt = 0;
 
-
-extern configSDClass config3dHandz;
-
+extern BBConfigClass config;
+Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+GFXcanvas16 canvas(240, 135);
 //*********************************************
 //*
 //*       Constructor
 //*
 //*********************************************
-handzDisplay::handzDisplay()
+BBDisplay::BBDisplay()
 {
 }
 
@@ -42,7 +42,7 @@ handzDisplay::handzDisplay()
 //*       Destructor
 //*
 //*********************************************
-handzDisplay::~handzDisplay()
+BBDisplay::~BBDisplay()
 {
 }
 
@@ -51,31 +51,37 @@ handzDisplay::~handzDisplay()
 //*       Init
 //*
 //*********************************************
-void handzDisplay::init(void)
+void BBDisplay::init(void)
 {
     Serial.println("ESP32S3 TFT  test");
 
-  // turn on backlite
-  pinMode(TFT_BACKLITE, OUTPUT);
-  digitalWrite(TFT_BACKLITE, HIGH);
+    // turn on backlite
+    pinMode(TFT_BACKLITE, OUTPUT);
+    digitalWrite(TFT_BACKLITE, HIGH);
 
-  // turn on the TFT / I2C power supply
-  pinMode(TFT_I2C_POWER, OUTPUT);
-  digitalWrite(TFT_I2C_POWER, HIGH);
-  delay(10);
+    // turn on the TFT / I2C power supply
+    pinMode(TFT_I2C_POWER, OUTPUT);
+    digitalWrite(TFT_I2C_POWER, HIGH);
+    delay(10);
 
-  // initialize TFT
-  display.init(240,135); // Init ST7789 240x135
-  display.setRotation(3);
-  display.fillScreen(ST77XX_BLACK);
+    // initialize TFT
+    tft.init(135, 240); // Init ST7789 240x135
+    tft.setRotation(3);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setFont(&FreeSans12pt7b);
 
-  Serial.println(F("Initialized"));
+    Serial.println(F("Initialized"));
+    if (!lipo.begin())
+    {
+        Serial.println(F("Couldnt find Adafruit MAX17048?\nMake sure a battery is plugged in!"));
+        while (1)
+            delay(10);
+    }
+    Serial.print(F("Found MAX17048"));
+    Serial.print(F(" with Chip ID: 0x"));
+    Serial.println(lipo.getChipID(), HEX);
 
-  //
-   // oleddisplay.clearDisplay();
-  //  display.display();
-// 128 X 32
-    for (int index = 0; index < 62; index++)
+    for (int index = 0; index < 118; index++)
     {
         tblCapteur1[index] = 0;
         tblCapteur2[index] = 0;
@@ -83,15 +89,17 @@ void handzDisplay::init(void)
     idxTblCapteur = 0;
 
     displayMode = 1;
+    currentDisplayMode = displayMode;
 
-    pinMode(BUTTON_A, INPUT_PULLDOWN);
-    pinMode(BUTTON_B, INPUT_PULLUP);
-    pinMode(BUTTON_C, INPUT_PULLUP);
+    pinMode(TFT_BUTTON_A, INPUT_PULLUP);
+    pinMode(TFT_BUTTON_B, INPUT_PULLDOWN);
+    pinMode(TFT_BUTTON_C, INPUT_PULLDOWN);
+
     button_A_pressed = 0;
     button_B_pressed = 0;
     button_C_pressed = 0;
 
-    scheduler = new Scheduler(millis(), DISPLAY_DELAY);
+    scheduler = new BBScheduler(millis(), DISPLAY_DELAY);
 }
 
 //*********************************************
@@ -99,17 +107,21 @@ void handzDisplay::init(void)
 //*       Display banner
 //*
 //*********************************************
-void handzDisplay::DisplayBanner(void)
+void BBDisplay::DisplayBanner(void)
 {
-    display.setTextWrap(false);
-    display.fillScreen(ST77XX_BLACK);
-    display.setCursor(10, 1);
-    display.setTextColor(ST77XX_WHITE);
-    display.setTextSize(2);
-    display.println(APPLICATION_NAME);
-    display.setTextSize(1);
-    display.setCursor(10, 24);
-    display.println(config3dHandz.copyright);
+    canvas.setTextWrap(false);
+    canvas.fillScreen(ST77XX_BLACK);
+
+    canvas.setCursor(10, 60);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setTextSize(2);
+    canvas.println(APPLICATION_NAME);
+    canvas.setTextSize(1);
+    canvas.setCursor(15, 100);
+    canvas.println(config.copyright);
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
+    pinMode(TFT_BACKLITE, OUTPUT);
+    digitalWrite(TFT_BACKLITE, HIGH);
 }
 
 //*********************************************
@@ -117,12 +129,12 @@ void handzDisplay::DisplayBanner(void)
 //*       isButtonPressed
 //*
 //*********************************************
-int handzDisplay::isButtonPressed(void)
+int BBDisplay::isButtonPressed(void)
 {
     // read displayer buttons
-    int button_A = digitalRead(BUTTON_A);
-    int button_B = digitalRead(BUTTON_B);
-    int button_C = digitalRead(BUTTON_C);
+    int button_A = !digitalRead(TFT_BUTTON_A);
+    int button_B = digitalRead(TFT_BUTTON_B);
+    int button_C = !digitalRead(TFT_BUTTON_C);
 
     if (button_A != 0) // not pressed
     {
@@ -141,7 +153,7 @@ int handzDisplay::isButtonPressed(void)
         }
     }
 
-    if (button_B == 0)
+    if (button_B)
     {
         if (button_B_pressed == 0)
         {
@@ -187,50 +199,53 @@ int handzDisplay::isButtonPressed(void)
 //*       displayAxes
 //*
 //*********************************************
-void handzDisplay::displayAxes(int type)
+void BBDisplay::displayAxes(int type)
 {
     // type =>
     //  0 : 2 sensors
     //  1 : sensor 1 only
     //  2 : sensor 2 only
 
-    display.setTextSize(1);
-    display.setTextColor(ST77XX_WHITE);
-    int PosLegende = 25;
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
+    int PosLegende = 125;
     int x0 = 0;
     int y0 = 0;
-    int x1 = 64;
-    int y1 = 23;
+    int x1 = 120;
+    int y1 = 90;
 
     switch (type)
     {
     case 0:
         // display caption for sensor 1
-        display.setCursor(5, PosLegende);
-        display.print(getTranslatedString(KEY_SENSOR));
-        display.print("1");
+
+        canvas.setCursor(5, PosLegende);
+        canvas.print(getTranslatedString(KEY_SENSOR));
+        canvas.print("1");
         // display caption for sensor 2
-        display.setCursor(64 + 5, PosLegende);
-        display.print(getTranslatedString(KEY_SENSOR));
-        display.print("2");
+        canvas.setCursor(120 + 5, PosLegende);
+        canvas.print(getTranslatedString(KEY_SENSOR));
+        canvas.print("2");
+        canvas.drawFastVLine(x0, y0, y1 - y0, ST77XX_YELLOW);
 
-        display.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
-        display.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
+        canvas.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
+        canvas.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
 
-        display.drawLine(x0 + decalage, y0, x0 + decalage, y1, ST77XX_WHITE);
-        display.drawLine(x0 + decalage, y1, x1 + decalage - 2, y1, ST77XX_WHITE);
+        canvas.drawLine(x0 + decalage, y0, x0 + decalage, y1, ST77XX_WHITE);
+        canvas.drawLine(x0 + decalage, y1, x1 + decalage - 2, y1, ST77XX_WHITE);
         break;
     case 1:
     case 2:
-        x1 = 64 + decalage;
+        x1 = 120 + decalage;
         // display caption for selected sensor
-        display.setCursor(50, PosLegende);
-        display.print(getTranslatedString(KEY_SENSOR));
-        display.print(type);
-        display.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
-        display.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
+        canvas.setCursor(50, PosLegende);
+        canvas.print(getTranslatedString(KEY_SENSOR));
+        canvas.print(type);
+        canvas.drawLine(x0, y0, x0, y1, ST77XX_WHITE);
+        canvas.drawLine(x0, y1, x1 - 2, y1, ST77XX_WHITE);
         break;
     }
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -238,9 +253,9 @@ void handzDisplay::displayAxes(int type)
 //*       capteurs
 //*
 //*********************************************
-void handzDisplay::capteurs(int type)
+void BBDisplay::capteurs(int type)
 {
-    muscleSensor.getValue(&capteur1, &capteur2);
+    genericSensor.getAnalogInputs(&capteur1, &capteur2);
     displayAxes(type);
 
     switch (type)
@@ -248,28 +263,28 @@ void handzDisplay::capteurs(int type)
     case 0:
         tblCapteur1[idxTblCapteur] = capteur1;
         tblCapteur2[idxTblCapteur] = capteur2;
-        if (idxTblCapteur >= 62)
+        if (idxTblCapteur >= 118)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(0, type);
-        displayCapteur(1, type);
+        displayAnalogInputs(0, type);
+        displayAnalogInputs(1, type);
         break;
     case 1:
         tblCapteur[idxTblCapteur] = capteur1;
-        if (idxTblCapteur >= 126)
+        if (idxTblCapteur >= 238)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(0, type);
+        displayAnalogInputs(0, type);
         break;
     case 2:
         tblCapteur[idxTblCapteur] = capteur2;
-        if (idxTblCapteur >= 126)
+        if (idxTblCapteur >= 238)
         {
             idxTblCapteur = 0;
         }
-        displayCapteur(1, type);
+        displayAnalogInputs(1, type);
         break;
     }
     idxTblCapteur++;
@@ -277,38 +292,38 @@ void handzDisplay::capteurs(int type)
 
 //*********************************************
 //*
-//*       displayCapteur
+//*       displayAnalogInputs
 //*
 //*********************************************
-void handzDisplay::displayCapteur(int channel, int type)
+void BBDisplay::displayAnalogInputs(int channel, int type)
 {
     int posX, posY;
 
     switch (type)
     {
     case 0:
-        for (int index = 0; index < 62; index++)
+        for (int index = 0; index < 118; index++)
         {
             if (channel == 0)
             {
                 posX = index + 1;
-                posY = map(tblCapteur1[index], 0, 1023, 22, 0);
+                posY = map(tblCapteur1[index], 0, 1023, 80, 20);
             }
             else
             {
                 posX = index + 1 + decalage;
-                posY = map(tblCapteur2[index], 0, 1023, 22, 0);
+                posY = map(tblCapteur2[index], 0, 1023, 88, 10);
             }
-            display.drawPixel(posX, posY, ST77XX_WHITE);
+            tft.drawPixel(posX, posY, ST77XX_BLUE);
         }
         break;
     case 1:
     case 2:
-        for (int index = 0; index < 126; index++)
+        for (int index = 0; index < 238; index++)
         {
             posX = index + 1;
-            posY = map(tblCapteur[index], 0, 1023, 22, 0);
-            display.drawPixel(posX, posY, ST77XX_WHITE);
+            posY = map(tblCapteur[index], 0, 1023, 88, 10);
+            tft.drawPixel(posX, posY, ST77XX_GREEN);
         }
         break;
     }
@@ -319,11 +334,11 @@ void handzDisplay::displayCapteur(int channel, int type)
 //*       refreshDisplay
 //*
 //*********************************************
-void handzDisplay::refreshDisplay()
+void BBDisplay::refreshDisplay()
 {
     if (cptRefresh++ > 5)
     {
-        //display.display();
+        canvas.fillScreen(ST77XX_BLACK);
         cptRefresh = 0;
     }
 }
@@ -333,53 +348,54 @@ void handzDisplay::refreshDisplay()
 //*       joystick
 //*
 //*********************************************
-void handzDisplay::joystick()
+void BBDisplay::joystick()
 {
-    int btGauche = digitalRead(config3dHandz.joystickDigitalInputTab[1]);
-    int btDroit = digitalRead(config3dHandz.joystickDigitalInputTab[0]);
-    int btBas = digitalRead(config3dHandz.joystickDigitalInputTab[2]);
-    int btHaut = digitalRead(config3dHandz.joystickDigitalInputTab[3]);
-    //int btGauche = digitalRead(11);
-    //int btDroit = digitalRead(A5);
-    //int btBas = digitalRead(12);
-    //int btHaut = digitalRead(13);
+    int btGauche = digitalRead(config.digitalInput[1]);
+    int btDroit = digitalRead(config.digitalInput[0]);
+    int btBas = digitalRead(config.digitalInput[2]);
+    int btHaut = digitalRead(config.digitalInput[3]);
+    // int btGauche = digitalRead(11);
+    // int btDroit = digitalRead(A5);
+    // int btBas = digitalRead(12);
+    // int btHaut = digitalRead(13);
 
-    char blancs[20] = "           ";
-    char titre[20] = " Joystick  ";
+    char blancs[25] = "                    ";
+    char titre[19] = "  Joystick   ";
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setCursor(0, 40);
 
-    display.setTextSize(1);
-    display.setTextColor(ST77XX_WHITE);
-    display.setCursor(0, 0);
-
-    display.print(blancs);
-    display.print("   [");
+    canvas.print(blancs);
+    canvas.print("   [");
     if (btHaut == 0)
-        display.print("*");
+        canvas.print("*");
     else
-        display.print(" ");
-    display.println("]");
+        canvas.print(" ");
+    canvas.println("]");
 
-    display.print(titre);
-    display.print("[");
+    canvas.print(titre);
+
+    canvas.print("[");
     if (btGauche == 0)
-        display.print("*");
+        canvas.print("*");
     else
-        display.print(" ");
-    display.print("]");
-    display.print("   [");
+        canvas.print(" ");
+    canvas.print("]");
+    canvas.print("     [");
     if (btDroit == 0)
-        display.print("*");
+        canvas.print("*");
     else
-        display.print(" ");
-    display.println("]");
+        canvas.print(" ");
+    canvas.println("]");
 
-    display.print(blancs);
-    display.print("   [");
+    canvas.print(blancs);
+    canvas.print("   [");
     if (btBas == 0)
-        display.print("*");
+        canvas.print("*");
     else
-        display.print(" ");
-    display.print("]");
+        canvas.print(" ");
+    canvas.print("]");
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -387,62 +403,56 @@ void handzDisplay::joystick()
 //*       displayConfig
 //*
 //*********************************************
-void handzDisplay::displayConfig()
+void BBDisplay::displayConfig()
 {
-    display.setTextSize(1);
-    display.setTextColor(ST77XX_WHITE);
-    display.setCursor(0, 0);
-    display.println(getTranslatedString(KEY_SETTINGS));
-    display.print("BTLE : ");
-    display.println(config3dHandz.btleDeviceName);
-    display.print(getTranslatedString(KEY_ANALOG_INPUTS));
-    display.println(config3dHandz.pinAnalogInputs);
-    display.print(getTranslatedString(KEY_VERSION));
-    display.println(VERSION_3DHANDZ);
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setCursor(0, 30);
+    canvas.println(getTranslatedString(KEY_SETTINGS));
+    canvas.print("BTLE : ");
+    canvas.println(config.btleDeviceName);
+    canvas.print(getTranslatedString(KEY_ANALOG_INPUTS));
+    canvas.println(config.analogInput[0]); // todo: fix this
+    canvas.print(getTranslatedString(KEY_VERSION));
+    canvas.println(VERSION_BBox);
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
 //*
-//*       displayConfig2
+//*       displayBattery
 //*
 //*********************************************
-void handzDisplay::displayConfig2()
+void BBDisplay::displayBattery()
 {
-    display.setTextSize(1);
-    display.setTextColor(ST77XX_WHITE);
-    display.setCursor(0, 0);
-    display.println(getTranslatedString(KEY_SETTINGS));
-    float tmp = getVbat();
-    // map batterie level between 3,7V and 4,2V to %
-    int charge = map(tmp * 100, 370, 420, 0, 100);
-    if (charge > 100)
+    canvas.setTextSize(2);
+    canvas.setTextColor(ST77XX_BLUE);
+    canvas.setCursor(0, 45);
+    canvas.println(getTranslatedString(KEY_BATTERY));
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setTextSize(2);
+    float charge = lipo.cellVoltage();
+    canvas.print(charge, 1);
+    canvas.print(" V   ");
+    canvas.setTextSize(2);
+    charge = 4.03;
+    if (charge < 3.8)
     {
-        charge = 100;
+        canvas.setTextColor(ST77XX_RED);
+        canvas.println("(!)");
     }
-    else if (charge < 0)
+    else if (charge < 4.0)
     {
-        charge = 0;
+        canvas.setTextColor(ST77XX_YELLOW);
+        canvas.println("(!)");
     }
-    display.print("Vbat = ");
-    display.print(tmp);
-    display.print("V (");
-    display.print(charge);
-    display.println("%)");
-    display.print(getTranslatedString(KEY_BATTERY));
-    display.print("[");
-    for (int i = 0; i <= 95; i += 12)
+    else
     {
-        if (i <= charge)
-        {
-            display.print("*");
-        }
-        else
-        {
-            display.print(" ");
-        }
+        canvas.setTextColor(ST77XX_GREEN);
+        canvas.println("(ok)");
     }
-    display.println("]");
-    //display.display();
+
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -450,12 +460,13 @@ void handzDisplay::displayConfig2()
 //*       displayLicences
 //*
 //*********************************************
-void handzDisplay::displayLicences()
+void BBDisplay::displayLicences()
 {
-    display.setTextSize(1);
-    display.setTextColor(ST77XX_WHITE);
-    display.setCursor(0, 0);
-    display.println(getTranslatedString(KEY_LICENCE));
+    canvas.setTextSize(1);
+    canvas.setTextColor(ST77XX_WHITE);
+    canvas.setCursor(0, 30);
+    canvas.println(getTranslatedString(KEY_LICENCE));
+    tft.drawRGBBitmap(0, 0, canvas.getBuffer(), 240, 135);
 }
 
 //*********************************************
@@ -463,70 +474,70 @@ void handzDisplay::displayLicences()
 //*       update
 //*
 //*********************************************
-void handzDisplay::update(void)
+void BBDisplay::update(void)
 {
     switch (displayMode)
     {
     case 0:
-    case 30:
     case 32:
     case 36:
         // nothing to display
         break;
     case 1:
-        display.fillScreen(ST77XX_BLACK);
         DisplayBanner();
         displayMode = 0;
         break;
     case 20:
         displayMode = 21;
+        tft.fillScreen(ST77XX_BLACK);
         break;
     case 21:
-        display.fillScreen(ST77XX_BLACK);
         capteurs(0);
         break;
     case 22:
         displayMode = 23;
+        canvas.fillScreen(ST77XX_BLACK);
         break;
     case 23:
-        display.fillScreen(ST77XX_BLACK);
         capteurs(1);
         break;
     case 24:
         displayMode = 25;
+        canvas.fillScreen(ST77XX_BLACK);
         break;
     case 25:
-        display.fillScreen(ST77XX_BLACK);
         capteurs(2);
         break;
     case 26:
         displayMode = 27;
+        canvas.fillScreen(ST77XX_BLACK);
         break;
     case 27:
-        display.fillScreen(ST77XX_BLACK);
         joystick();
         break;
+    case 30:
+        canvas.fillScreen(ST77XX_BLACK);
+        displayMode = 31;
+        break;
     case 31:
-        display.fillScreen(ST77XX_BLACK);
         displayConfig();
         displayMode = 32;
         break;
     case 33:
-        display.fillScreen(ST77XX_BLACK);
-        displayConfig2();
+        tft.fillScreen(ST77XX_BLACK);
+        displayBattery();
         cptDisplayBatt = 0;
         displayMode = 34;
         break;
     case 34:
         if (cptDisplayBatt++ > 50)
         {
-            display.fillScreen(ST77XX_BLACK);;
-            displayConfig2();
+            displayBattery();
             cptDisplayBatt = 0;
         }
         break;
     case 35:
-        display.fillScreen(ST77XX_BLACK);;
+        tft.fillScreen(ST77XX_BLACK);
         displayLicences();
         displayMode = 36;
         break;
@@ -534,6 +545,7 @@ void handzDisplay::update(void)
         Serial.println("Unknown display mode");
         displayMode = 0;
     }
+    currentDisplayMode = displayMode;
     refreshDisplay();
 }
 
@@ -542,7 +554,7 @@ void handzDisplay::update(void)
 //*       chackButtons
 //*
 //*********************************************
-void handzDisplay::checkButtons(void)
+void BBDisplay::checkButtons(void)
 {
     int buttonPressed = isButtonPressed();
 
@@ -556,7 +568,6 @@ void handzDisplay::checkButtons(void)
             if (button_A_pressed == 1)
             {
                 displayMode = 1;
-                Serial.println("Banner screen");
             }
             if (button_B_pressed == 1)
             {
@@ -579,6 +590,7 @@ void handzDisplay::checkButtons(void)
             {
                 switch (displayMode)
                 {
+                case 30: // nothing to do
                 case 31: // nothing to do
                 case 33: // nothing to do
                 case 35: // nothing to do
@@ -593,7 +605,7 @@ void handzDisplay::checkButtons(void)
                     displayMode = 31;
                     break;
                 default: // first press of C button
-                    displayMode = 31;
+                    displayMode = 30;
                     break;
                 }
             }
@@ -606,20 +618,15 @@ void handzDisplay::checkButtons(void)
     }
 }
 
-// key are defined in display.hpp
-String EN_Strings[] = {"Sensor ", "Used channels:", "Settings", "Version: ", "Battery: ", "Licence"};
-String FR_Strings[] = {"Capteur ", "Canaux utilises : ", "Parametres", "Version : ", "Batterie : ", "Licence"};
-String ES_Strings[] = {"Sensor ", "Canales usados : ", "Configuraciones", "Version: ", "Batería: ", "Licencia"};
-String DE_Strings[] = {"Sensor ", "Benutzte Kanäle : ", "Parameter", "Version: ", "Batterie: ", "Lizenz"};
-//*********************************************
+//
 //*
 //*       getTranslatedString
 //*
 //*********************************************
-String handzDisplay::getTranslatedString(int key)
+String BBDisplay::getTranslatedString(int key)
 {
     // get the translated value of string identified by the key
-    String language = config3dHandz.language;
+    String language = config.language;
     if (language.equals("FR"))
     {
         return FR_Strings[key];
@@ -631,10 +638,6 @@ String handzDisplay::getTranslatedString(int key)
     else if (language.equals("ES"))
     {
         return ES_Strings[key];
-    }
-    else if (language.equals("DE"))
-    {
-        return DE_Strings[key];
     }
     return EN_Strings[key];
 }

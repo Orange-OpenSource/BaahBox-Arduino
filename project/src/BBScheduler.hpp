@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,8 +17,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __TOOLS_HPP
-#define __TOOLS_HPP
+#ifndef __BBscheduler_hpp
+#define __BBscheduler_hpp
 
-float getVbat(void);
-#endif /* __TOOLS.HPP */
+class BBScheduler
+{
+public:
+  BBScheduler(unsigned long loopTimestamp, unsigned long refreshDelay);
+  BBScheduler();
+  bool needToBeExecuted(void);
+
+private:
+  unsigned long displayLoopDelay;
+  unsigned long loopTimestamp;
+  unsigned long refreshDelay;
+};
+
+#endif /* __BBscheduler_hpp */

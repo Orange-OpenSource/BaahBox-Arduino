@@ -21,19 +21,16 @@
 #ifndef btle_hpp
 #define btle_hpp
 
-
+#include <stdio.h>
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLEUtils.h>
 #include <BLE2902.h>
 
-#include <stdio.h>
+
 #define BTLE_END_OF_CHAR '#'
 #define BTLE_MAX_BUFFER_SIZE 512
 #define BTLE_MAX_DEVICE_NAME 128
-
-
-
 
 // UUIDs pour le service et caractéristiques
 #define SERVICE_UUID        "6E400001-B5A3-F393-E0A9-E50E24DCCA9E"
@@ -42,15 +39,10 @@
 
 
 
+/*=========================================================================*/
+/* Btle ESP32S3 lib Class*/
+/*=========================================================================*/
 
-// COMMON SETTINGS
-// ----------------------------------------------------------------------------------------------
-// These settings are used in both SW UART, HW UART and SPI mode
-// ----------------------------------------------------------------------------------------------
-// #define BUFSIZE 128        // Size of the read buffer for incoming data
-// #define VERBOSE_MODE false // If set to 'true' enables debug output
-
-/* Btle lib Class*/
 class btleClass
 {
 public:

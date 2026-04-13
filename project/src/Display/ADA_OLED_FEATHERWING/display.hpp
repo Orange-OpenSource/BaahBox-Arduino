@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,11 +20,14 @@
 #ifndef __DISPLAY_HPP
 #define __DISPLAY_HPP
 
+#include <SPI.h>
+#include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include "../../Sensors/muscleSensor.hpp"
-#include "../../SD/configSD.hpp"
-#include "../../Config/config.hpp"
+#include "Sensors/genericSensor.hpp"
+#include "Config/BBConfig.hpp"
+#include "Display/commonDisplay.hpp"
+
 #include "tools.hpp"
 
 extern Adafruit_SSD1306 display;
@@ -34,6 +37,7 @@ extern Adafruit_SSD1306 display;
 #define BUTTON_B 16
 #define BUTTON_C 2
 #define LED 0
+
 #elif defined(ESP32)
 #define BUTTON_A 15
 #define BUTTON_B 32
@@ -62,28 +66,21 @@ extern Adafruit_SSD1306 display;
 #endif
 
 #if (SSD1306_LCDHEIGHT != 32)
-#error("Height incorrect, please fix Adafruit_SSD1306.h!");
+#error ("Height incorrect, please fix Adafruit_SSD1306.h!");
 #endif
+#define WIRE Wire
 
-// key for translation
-#define KEY_SENSOR 0
-#define KEY_ANALOG_INPUTS 1
-#define KEY_SETTINGS 2
-#define KEY_VERSION 3
-#define KEY_BATTERY 4
-#define KEY_LICENCE 5
+extern genericSensorClass genericSensor;
 
-extern muscleSensorClass muscleSensor;
-
-class handzDisplay
+class BBDisplay
 {
 public:
-  handzDisplay(void);
-  ~handzDisplay();
+  BBDisplay(void);
+  ~BBDisplay();
   void init(void);
   void checkButtons(void);
   void update(void);
-  Scheduler *scheduler;
+  BBScheduler *scheduler;
 
 private:
   int button_A_pressed;
@@ -97,13 +94,13 @@ private:
 
   int cptRefresh = 0;
 
-  Adafruit_SSD1306 display = Adafruit_SSD1306();
+  Adafruit_SSD1306 oled;
 
   void DisplayBanner(void);
   int isButtonPressed(void);
   void displayAxes(int type);
   void capteurs(int type);
-  void displayCapteur(int channel, int type);
+  void displayAnalogInputs(int channel, int type);
   void joystick(void);
   void refreshDisplay(void);
   void displayConfig(void);

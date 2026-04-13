@@ -2,7 +2,7 @@
 // * Baah Box Arduino : Sensor BTLE gateway *
 // ******************************************
 
-// Copyright (C) 2017 – 2023 Orange SA
+// Copyright (C) 2017 – 2025 Orange SA
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,45 +17,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+#ifndef BBConfig_hpp
+#define BBConfig_hpp
 
+#include "Config/config.hpp"
 
-#ifdef USE_NRF51
-  #include "./BLE/Nrf51/btle.hpp"
-#endif
-
-#ifdef USE_NRF52
-    #include "./BLE/Nrf52/btle.hpp"
-#endif
-
-#ifdef USE_ESP32S3
-    #include "./BLE/ESP32S3/btle.hpp"
-#endif
-
-#include "SD/configSD.hpp"
-#include "../scheduler.hpp"
-
-
-#ifndef muscleSensor_hpp
-#define muscleSensor_hpp
-
-class muscleSensorClass
+class BBConfigClass
 {
-
 public:
-  muscleSensorClass(void);
-  ~muscleSensorClass();
+  BBConfigClass();
+  void init();
 
-  int init(unsigned long period, btleClass btle);
-  int memory[MAX_NB_MUSCLE_SENSOR] = {};
-  void getValue(int *capteur1, int *capteur2);
-  void muscleAcquisition(void);
-
-  btleClass btle;
-  int storedValues[MAX_NB_MUSCLE_SENSOR];
-  Scheduler *scheduler;
+  String btleDeviceName;
+  int nbAnalogSensors;
+  int analogInput[NB_ANALOG_SENSORS];
+  int digitalInput[NB_DIGITAL_PINS];
+  float analogSensorFilter;
+  String copyright;
+  String language;
 
 private:
-  int lowpass(int value, int index);
+  void printConfig(void);
+  void loadDefaultValues(void);
 };
 
-#endif /* muscleSensor_hpp */
+#endif /* BBConfig_hpp */

@@ -17,17 +17,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-//#include <SPI.h>
-
 #include "btle.hpp"
-
+#include <string.h>
 
 // Callback pour recevoir la commande
-class MyCallbacks : public BLECharacteristicCallbacks {
-  void onWrite(BLECharacteristic *pCharacteristic) {
+class MyCallbacks : public BLECharacteristicCallbacks
+{
+  void onWrite(BLECharacteristic *pCharacteristic)
+  {
     std::string rxValue = pCharacteristic->getValue();
-    if (rxValue == "CALIBRATE") {
-      //Serial.println("Commande CALIBRATE reçue");
+    if (rxValue == "CALIBRATE")
+    {
+      // Serial.println("Commande CALIBRATE reçue");
     }
   }
 };
@@ -62,16 +63,14 @@ void btleClass::init(char *inputDeviceName)
   BLEService *pService = pServer->createService(SERVICE_UUID);
   // Caractéristique pour recevoir la commande (écriture)
   pCommandCharacteristic = pService->createCharacteristic(
-                                CHAR_COMMAND_UUID,
-                                BLECharacteristic::PROPERTY_WRITE
-                              );
+      CHAR_COMMAND_UUID,
+      BLECharacteristic::PROPERTY_WRITE);
   pCommandCharacteristic->setCallbacks(new MyCallbacks());
 
   // Caractéristique pour envoyer la position (notification)
   pSensorDataCharacteristic = pService->createCharacteristic(
-                                CHAR_POSITION_UUID,
-                                BLECharacteristic::PROPERTY_NOTIFY
-                              );
+      CHAR_POSITION_UUID,
+      BLECharacteristic::PROPERTY_NOTIFY);
   pSensorDataCharacteristic->addDescriptor(new BLE2902());
 
   pService->start();
@@ -88,7 +87,15 @@ void btleClass::init(char *inputDeviceName)
 //*********************************************/
 void btleClass::write(char *data, int dataLength)
 {
-  pSensorDataCharacteristic->setValue(data);
+  std::string str;
+  // Manually push characters from char* to string
+  for (int i = 0; data[i] != '\0'; i++)
+  {
+    str.push_back(data[i]);
+  }
+  // quid du 90 ?
+
+  pSensorDataCharacteristic->setValue(str);
   pSensorDataCharacteristic->notify();
 }
 /**************************************************************************/
@@ -98,6 +105,5 @@ void btleClass::write(char *data, int dataLength)
 /**************************************************************************/
 int btleClass::read(char *command)
 {
-
+  return 0;
 }
-
