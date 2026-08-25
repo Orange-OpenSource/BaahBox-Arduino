@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guide d'assemblage de la BaahBox - Solution de rééducation musculaire" />
+  <title>Assemblage - BaahBox</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="../css/lightbox.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="../assets/images/logo.webp" style="border-radius: 50%;" alt="" width="50" height="50">
+            <span>BaahBox</span>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="../documentation.html">Documentation</a></li>
+          <li><a href="../index.html#telechargements">Téléchargements</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="documentation">
+    <div class="container">
+      <div class="doc-sidebar">
+        <h3>Sommaire</h3>
+        <ul class="doc-nav">
+          <li><a href="#introduction">1. Introduction</a></li>
+          <li><a href="#materiel">2. Matériel</a></li>
+          <li><a href="#impression">3. Impression 3D</a></li>
+          <li><a href="#electronique">4. Électronique</a></li>
+          <li><a href="#connectique">5. Connectique</a></li>
+          <li><a href="#montage">6. Montage final</a></li>
+        </ul>
+      </div>
+      
+      <div class="doc-content">
+        <section id="introduction" class="doc-section card">
+          <h1>Guide d'assemblage de la BaahBox</h1>
+          <p>Ce guide vous explique comment assembler votre BaahBox à partir des composants électroniques et des pièces imprimées en 3D.</p>
+          <img src="assets/images/doc/assemblage/BOM_BaahBoxV2.webp" alt="Vue d'ensemble de la BaahBox" class="lightbox-img">
+        </section>
+        
+        <section id="materiel" class="doc-section card">
+          <h2>Matériel requis</h2>
+          <h2>Composants électroniques principaux</h2>
+
+          <div class="doc-grid">
+            <div class="card">
+              <h3>Feather M0 Bluefruit (Adafruit Feather M0 Bluefruit LE)</h3>
+              <p>Carte de développement principale avec connectivité Bluetooth Low Energy.</p>
+              <p><a href="https://www.adafruit.com/product/2995" target="_blank">Voir sur Adafruit</a></p>
+              <p>Avec broches empilables longues : <a href="https://www.adafruit.com/product/2830" target="_blank">Voir sur Adafruit</a></p>
+            </div>
+
+            <div class="card">
+              <h3>FeatherWing de prototypage double (proto shield)</h3>
+              <p>Pour le prototypage et les connexions personnalisées.</p>
+              <p><a href="https://www.adafruit.com/product/2890" target="_blank">Voir sur Adafruit</a></p>
+              <p>Avec broches empilables courtes : <a href="https://www.adafruit.com/product/2886" target="_blank">Voir sur Adafruit</a></p>
+            </div>
+
+            <div class="card">
+              <h3>FeatherWing écran OLED 128x32 (assemblée)</h3>
+              <p>Affichage pour les informations système et la navigation.</p>
+              <p><a href="https://www.adafruit.com/product/3045" target="_blank">Voir sur Adafruit</a></p>
+            </div>
+
+          </div>
+          
+          <div class="note">
+            <img src="assets/images/icons/note.png" class="note-img" style="max-width:15px" alt=""/>
+            <p><strong>Optionnel :</strong> Vous pouvez ajouter une batterie et un interrupteur pour une utilisation sur batterie.</p>
+          </div>
+
+          <p>Le DB9 sert à connecter un capteur à plusieurs sorties (numériques). Vous pourrez y brancher par exemple un joystick de borne d'arcade.</p>
+          
+          <p>Consultez la <a href="materiel.html">liste complète du matériel</a> pour tous les détails sur les composants nécessaires.</p>
+        </section>
+        
+        <section id="impression" class="doc-section card">
+          <h2>Impression du boîtier</h2>
+          <p>Le design de notre boîtier est une adaptation de celui <a href="https://learn.adafruit.com/3d-printed-case-for-adafruit-feather" target="_blank">proposé par Adafruit</a> pour ses cartes Feather.</p>
+          
+          <p>Téléchargez les fichiers STL nécessaires :</p>
+          <ul>
+            <li><a href="Hardware/BaahBox/" target="_blank">Dossier des fichiers STL</a></li>
+          </ul>
+          
+          <div class="note">
+            <img src="assets/images/icons/note.png" class="note-img" style="max-width:15px" alt=""/>
+            <p><strong>Conseils d'impression :</strong> Adafruit propose des <a href="https://learn.adafruit.com/3d-printed-case-for-adafruit-feather/3d-printing" target="_blank">réglages recommandés</a> pour Cura et Simplify3D que nous vous conseillons d'utiliser.</p>
+          </div>
+          
+          <p>Assurez-vous d'imprimer toutes les pièces nécessaires avant de commencer l'assemblage.</p>
+        </section>
+        
+        <section id="electronique" class="doc-section card">
+          <h2>Préparation des cartes électroniques</h2>
+          
+          <h3>Étape 1 : Soudure des broches</h3>
+          <p>Commencez par souder les broches sur les différentes cartes pour pouvoir les empiler.</p>
+          
+          <div class="warning">
+            <img src="assets/images/icons/warning.png" class="warning-img" style="max-width:25px" alt=""/>
+            <p><strong>Attention :</strong> Faites attention au sens des cartes. Il y a un côté avec moins de broches. Assurez-vous de bien repérer ce côté sur la proto shield.</p>
+          </div>
+          
+          <p>Voici les cartes avec leurs broches avant soudure :</p>
+          
+          <div class="image-grid">
+            <div>
+              <img src="assets/images/doc/assemblage/M0_headers.webp" alt="Feather M0 avec broches" class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Feather M0 avec broches</p>
+            </div>
+            <div>
+              <img src="assets/images/doc/assemblage/double_proto_shield_M0_headers.webp" alt="Proto shield avec broches" class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Proto shield avec broches</p>
+            </div>
+            <div>
+              <img src="assets/images/doc/assemblage/ADA_TFT_headers.webp" alt="Écran TFT avec broches" class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Écran TFT avec broches</p>
+            </div>
+          </div>
+          
+          <div class="note">
+            <img src="assets/images/icons/note.png" class="note-img" style="max-width:15px" alt=""/>
+            <p><strong>Astuce :</strong> Pour souder les broches bien parallèles, retournez la carte avec les broches en place, et utilisez de la patafix pour éviter qu'elles ne bougent pendant la soudure.</p>
+            <img src="assets/images/doc/assemblage/patafix_trick.webp" alt="Astuce patafix"  class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+          </div>
+          
+          <h3>Étape 2 : Empilement des cartes</h3>
+          <p>Une fois les broches soudées, vous pouvez empiler les cartes dans l'ordre suivant (de bas en haut) :</p>
+          <ol>
+            <li>La proto shield (en bas)</li>
+            <li>La Feather M0</li>
+            <li>L'écran TFT (en haut)</li>
+          </ol>
+          
+          <div class="image-grid">
+            <div>
+              <img src="assets/images/doc/assemblage/M0_soldered.webp" alt="Feather M0 soudée" class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Feather M0 soudée</p>
+            </div>
+            <div>
+              <img src="assets/images/doc/assemblage/double_proto_shield_aside_M0.webp" alt="Vue de côté de l'empilage" class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Vue de côté de l'empilage</p>
+            </div>
+            <div>
+              <img src="assets/images/doc/assemblage/M0_stacked.webp" alt="Empilage partiel" class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Empilage partiel</p>
+            </div>
+            <div>
+              <img src="assets/images/doc/assemblage/Full_stack.webp" alt="Empilage complet" class="lightbox-img" style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Empilage complet<br/>De bas en haut: la proto shield, puis la Feather M0, la SD shield, et la TFT. </p>
+            </div>
+          </div>
+        </section>
+        
+        <section id="connectique" class="doc-section card">
+          <h2>Installation de la connectique</h2>
+          
+          <p>Nous allons maintenant connecter les prises jack stéréo et le connecteur DB9 à la proto shield.</p>
+          
+          <h3>Connexion du DB9</h3>
+          <p>Le connecteur DB9 permet de brancher un joystick ou d'autres périphériques à plusieurs entrées.</p>
+          
+          <p>Pour le câblage du DB9, vous aurez besoin de :</p>
+          <ul>
+            <li>4 fils de couleurs différentes pour deux caneaux analogiques (par exemple : les axes vertical et horizontal d'un joystick)</li>
+            <li>1 fil noir pour la masse (GND)</li>
+            <li>4 fils pour 4 contacteurs (par exemple : bouton d'un joystick)</li>
+          </ul>
+          
+          <img src="assets/images/doc/assemblage/DB9_colors.webp" alt="Câblage du DB9" class="lightbox-img" style="width: 100%; max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+          
+          <p>Suivez le schéma de câblage ci-dessous pour connecter le DB9 à la proto shield :</p>
+          <img src="assets/images/doc/assemblage/DB9-Joystick.webp" alt="Schéma de câblage du DB9" class="lightbox-img" style="width: 100%; max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+        </section>
+        
+        <section id="montage" class="doc-section card">
+          <h2>Montage final</h2>
+          
+          <p>Une fois toutes les connexions effectuées, vous pouvez procéder au montage final dans le boîtier imprimé en 3D.</p>
+          
+          <ol>
+            <li>Placez les cartes empilées dans la partie inférieure du boîtier</li>
+            <li>Fixez les cartes avec les vis fournies</li>
+            <li>Installez les connecteurs jack et DB9 dans leurs emplacements respectifs</li>
+            <li>Si vous utilisez une batterie, installez-la dans le compartiment prévu à cet effet</li>
+            <li>Fermez le boîtier avec la partie supérieure</li>
+            <li>Vissez les deux parties du boîtier ensemble</li>
+          </ol>
+          
+          <div class="image-grid">
+            <div>
+              <img src="assets/images/doc/assemblage/Full_BOX_Lid.webp" alt="Boîtier fermé" class="lightbox-img" style="width: 100%; max-width: 300px; height: auto; border-radius: 8px; box-shadow:> 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Vue du boîtier fermé</p>
+            </div>
+            <div>
+              <img src="assets/images/doc/assemblage/DB9_outside_Box.webp" alt="Vue du connecteur DB9" class="lightbox-img" style="width: 100%; max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+              <p>Vue du connecteur DB9</p>
+            </div>
+          </div>
+
+          <p>Votre BaahBox est maintenant assemblée. Vous pouvez passer à l'installation de l'application et à la configuration de l'application.</p>
+          
+          <p>Pour installer l'application et configurer votre BaahBox, consultez le <a href="manuel-utilisation.html">manuel d'utilisation</a>.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BaahBox</h3>
+          <p>Une solution pour la rééducation musculaire et l'entraînement aux prothèses myo-électriques.</p>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><img src="https://www.svgrepo.com/show/450156/github.svg"  style="width:20px; height:auto;" alt=""/></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Liens rapides</h3>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="#telechargements">Téléchargements</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-email">
+            <img src="assets/images/icons/mailto.svg" alt="Email" class="email-icon">
+            <a href="mailto:frederique.pinson@orange.com">frederique.pinson@orange.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Orange SA. Distribué sous licence GPL v3.</p>
+      </div>
+    </div>
+  </footer>
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script src="js/lightbox.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
