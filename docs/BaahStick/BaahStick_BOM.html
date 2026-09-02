@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Guide d'assemblage de la BaahBox - Solution de rééducation musculaire" />
+    <title>Assemblage - BaahBox</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/lightbox.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <a href="BaahBox_WC_simulator.html">
+              <img src="../assets/images/logo.webp" style="border-radius: 50%" alt="" width="50" height="50" />
+              <span>BaahBox</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="documentation">
+      <div class="doc-content">
+        <section id="introduction" class="doc-section card">
+          <h1 id="liste-du-matériel">
+            Liste du matériel pour fabriquer <br />
+            un joystick connecté <br />pour simulateur de fauteuil roulant
+          </h1>
+          <p><img src="../assets/images/doc/BaahStick/build/joyVueDessus.webp" alt="Bom" /></p>
+          <div class="note">
+            <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
+            <p>
+              Les références pour acheter les composants sont données <strong>à titre indicatif</strong>. Il est tout à
+              fait possible de les acheter ailleurs. <br />
+              <br />Il est cependant <strong>impératif </strong>de commander les mêmes éléments pour pouvoir utiliser le
+              code source, les plans de découpe bois et de 3D proposés.<br />
+              Si vous souhaitez utiliser d'autres composants, il faudra modéliser un autre boîtier. <br />
+              De même si vous souhaitez utiliser une autre carte arduino (il faut qu'elle soit Bluetooth LE), il faudra
+              modifier le code source.<br />
+              L'architecture du code source est modulaire et permet d'utiliser une aure carte, sous réserve de fournir
+              le code adéquat.
+            </p>
+          </div>
+          <ul>
+            <li>
+              <h5>1 carte arduino Feather Bluetooth LE de chez Adafruit</h5>
+
+              <ul>
+                Soit
+                <li>
+                  Feather M0 Bluefruit:
+                  <a href="https://www.adafruit.com/product/2995" target="_blank">
+                    https://www.adafruit.com/product/2995</a
+                  >
+                </li>
+                ou
+                <li>
+                  Feather nRF52840 Express:
+                  <a href="https://www.adafruit.com/product/4062" target="_blank">
+                    https://www.adafruit.com/product/4062
+                  </a>
+                </li>
+              </ul>
+
+              avec broches empilables longues (qu'il faudra souder dessus) <br />
+              <a href="https://www.adafruit.com/product/2830" target="_blank"> https://www.adafruit.com/product/2830</a
+              >. <br />
+              <br /><br />
+            </li>
+
+            <li class="liSpacer">
+              <h5>1 écran OLED 128x32 FeatherWing (assemblé)</h5>
+
+              Affichage pour les informations système et la navigation.
+              <br />La version assemblée a déjà les broches soudées.
+              <br />
+              <a href="https://www.adafruit.com/product/3045" target="_blank">Voir sur Adafruit</a>
+              <br />
+              <br /><br />
+            </li>
+
+            <li class="liSpacer">
+              <h5>1 Joystick analogique JH-D202X-R4</h5>
+              Bien choisir la version R4 qui est en 10k Ohms, pas la R2 (5k Ohms)
+              <br />
+              <a href="https://www.gotronic.fr/art-joystick-analogique-jh-d202x-r4-25549.htm" target="_blank"
+                >Voir sur gotronic</a
+              >
+              ou <a href="https://www.adafruit.com/product/3102"> Adafruit</a>
+              ou sur un moteur de recherche pour trouver en dessous de 10 €.
+              <br />
+              <br /><br />
+            </li>
+
+            <li class="liSpacer">
+              <h5>1 Batterie Lipo 3,7V en 1000 ou 12000 mAh avec connecteur JST-PH</h5>
+              <p>
+                A commander par exemple
+                <a href="https://www.adafruit.com/product/258" target="_blank">sur Adafruit</a>.
+                <br />
+                Prendre au maximum une 1200 mAh pour qu'elle rentre dans le boîtier.
+              </p>
+
+              <p class="warning">
+                Attention à la polarité si vous n'achetez pas ce modèle, certaines batteries LiPo avec connecteur JST-PH
+                ont la polarité inversée par rapport à l'original.
+                <br />
+                Vous pouvez inverser les fils en les dégageant du connecteur avec une petite pointe.
+              </p>
+              <br />
+              <br />
+              <br />
+            </li>
+
+            <li class="liSpacer">
+              <p>
+                1 mini interrupteur à bascule (<a
+                  href="https://fr.aliexpress.com/item/1005006007996752.html"
+                  target="_blank"
+                  >https://fr.aliexpress.com/item/1005006007996752.html</a
+                >)
+              </p>
+              <img src="../assets/images/doc/BaahStick/build/miniInterBascule.jpeg" alt="" />
+
+              <br />
+            </li>
+            <li class="liSpacer">
+              <p>
+                1 câble de connection JST-PH (<a href="https://www.adafruit.com/product/1131" target="_blank">
+                  https://www.adafruit.com/product/1131</a
+                >)
+              </p> <img src="../assets/images/doc/BaahStick/build/jst-ph-cable.jpg" 
+                        alt="1 câble de connection JST-PH " width="300" />
+            </li>
+
+            <li class="liSpacer">
+              <p>
+                1 prise USB-C femelle vissable (<a href="https://fr.aliexpress.com/item/1005005347655323.html" target="_blank"
+                  >https://fr.aliexpress.com/item/1005005347655323.html</a
+                >)
+              </p> <img src="../assets/images/doc/BaahStick/build/priseUSB-C_femelle.jpeg" alt="1 prise USB-C femelle vissable" />
+            </li>
+
+            <li class="liSpacer">
+              <p>
+                1 prise usb-micro mâle (<a href="https://fr.aliexpress.com/item/1005007457909582.html" target="_blank">
+                  https://fr.aliexpress.com/item/1005007457909582.html</a
+                >)
+              </p> <img src="../assets/images/doc/BaahStick/build/MicroUSB_male_plug.jpg" 
+                        alt=" 1 prise usb-micro mâle" />
+            </li>
+
+            <li class="liSpacer">
+              <p>4 vis M2.5 x 25 ou 22 + écrous pour visser la feather sur le boîtier</p>
+              <img src="../assets/images/doc/BaahStick/build/visPlastiqueM2_5.jpeg" alt="" />
+            </li> 
+            
+            <li class="liSpacer">
+              <p>8 vis m4x14/16  tête plate empreinte hexagonale 2.5 
+                (<a href="https://fr.aliexpress.com/item/1005006674753858.html" target="_blank">
+                  https://fr.aliexpress.com/item/1005006674753858.html</a
+                >)</p>
+              <img src="../assets/images/doc/BaahStick/build/M4_tetePlate.jpeg" alt="" />
+            </li>
+
+            <li class="liSpacer">
+              <p>zip lock</p>
+            </li>
+            <li class="liSpacer">
+              <p>fils de connection</p>
+            </li>
+            <li class="liSpacer">
+              <p>manchons thermo-rétractables</p>
+            </li>
+            <li>
+              Filament 3D
+              <br />
+            </li>
+            <li>une plaque de bois en CP 5mm de 800x400 mm</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
