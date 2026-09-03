@@ -39,11 +39,10 @@
           <h3>Sommaire</h3>
           <ul class="doc-nav">
             <li><a href="#introduction">1. Introduction</a></li>
-            <li><a href="#materiel">2. Matériel</a></li>
-            <li><a href="#impression">3. Impression 3D et découpe</a></li>
-            <li><a href="#electronique">4. Électronique</a></li>
-            <li><a href="#connectique">5. Connectique</a></li>
-            <li><a href="#montage">6. Montage final</a></li>
+            <li><a href="#impression">2. Impression 3D et découpe</a></li>
+            <li><a href="#electronique">3. Électronique</a></li>
+            <li><a href="#connectique">4. Connectique</a></li>
+            <li><a href="#montage">5. Montage final</a></li>
           </ul>
         </div>
 
@@ -56,90 +55,27 @@
               <a href="../BaahStick/BaahStick_BOM.html">dans la liste du matériel nécessaire (BOM)</a>. <br /><br /><br />
               <img
                 src="../assets/images/doc/BaahStick/build/joyVueDessus.webp"
-                alt="Vue d'ensemble de la BaahBox"
+                alt="Vue de dessus du joystick connecté"
                 class="lightbox-img" />
             </p>
-          </section>
-
-          <div class="note">
-            <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
-            <p>
-              Les références pour acheter les composants sont données <strong>à titre indicatif</strong>. Il est tout à
-              fait possible de les acheter ailleurs. <br />
-              <br />Il est cependant <strong>impératif </strong>de commander les mêmes éléments pour pouvoir utiliser le
-              code source, les plans de découpe bois et de 3D proposés.<br />
-              Si vous souhaitez utiliser d'autres composants, il faudra modéliser un autre boîtier. <br />
-              De même si vous souhaitez utiliser une autre carte arduino (il faut qu'elle soit Bluetooth LE), il faudra
-              modifier le code source.<br />
-              L'architecture du code source est modulaire et permet d'utiliser une aure carte, sous réserve de fournir
-              le code adéquat.
-            </p>
-          </div>
-          <section id="materiel" class="doc-section card">
-            <h2>Matériel requis</h2>
-            <h2>Composants électroniques principaux</h2>
-
-            <div class="doc-grid">
-              <div class="card">
-                <h3>
-                  1 carte Feather <a href="https://www.adafruit.com/product/2995" target="_blank">M0 Bluefruit</a> ou
-                  <a href="https://www.adafruit.com/product/4062" target="_blank">nRF52840 Express</a> de chez Adafruit
-                </h3>
-                <p>
-                  Carte de développement arduino avec connectivité Bluetooth Low Energy, au format Adafruit
-                  <strong>Feather</strong>.
-                  <br />
-                  Commandez avec des broches empilables longues (qu'il faudra souder dessus):<br />
-                  <a href="https://www.adafruit.com/product/2830" target="_blank">Voir sur Adafruit</a>
-                </p>
-                <p>
-                  Il faudra avoir téléchargé le code fourni (dans le repo) sur la carte, avant de monter l'ensemble.
-                </p>
-              </div>
-
-              <div class="card">
-                <h3>1 écran OLED 128x32 FeatherWing (assemblé)</h3>
-                <p>
-                  Affichage pour les informations système et la navigation. <br />La version assemblée a déjà les
-                  broches soudées.
-                </p>
-                <p><a href="https://www.adafruit.com/product/3045" target="_blank">Voir sur Adafruit</a></p>
-              </div>
-            </div>
-
-            <div class="card">
-              <h3>1 Joystick analogique JH-D202X-R4</h3>
-              <p>Bien choisir la version R4 qui est en 10k Ohms, pas la R2 (5k Ohms)</p>
-              <p>
-                <a href="https://www.gotronic.fr/art-joystick-analogique-jh-d202x-r4-25549.htm" target="_blank"
-                  >Voir sur gotronic</a
-                >
-                ou <a href="https://www.adafruit.com/product/3102"> Adafruit</a>.
-              </p>
-            </div>
-
-            <div class="card">
-              <h3>1 Batterie Lipo 3,7V en 1000 ou 12000 mAh avec connecteur JST-PH</h3>
-              <p>
-                Pour alimenter l'ensemble, à commander par exemple
-                <a href="https://www.adafruit.com/product/258" target="_blank">sur Adafruit</a> 
-                Prendre au maximum un 1200 mAh pour ce que la rentre dans le boîtier proposé.
-               
-              </p>
-            </div>
-            <div class="warning">
-             Attention à la polarité si vous n'achetez pas ce modèle, certaines batteries LiPo 
-                avec connecteur JST-PH ont la polarité inversée par rapport à l'original.
-            </div>
-
-            <p></p>
           </section>
 
           <section id="impression" class="doc-section card">
             <h2>Impression du boîtier et découpage des parties en bois</h2>
             <p>La partie bois va servir de support aux composants électroniques et à la coque en 3D.</p>
 
-            <p>Téléchargez les <a href="Hardware/BaahStick/" target="_blank">fichiers STL / DXF </a>nécessaires.</p>
+            <p>Téléchargez les <a href="Hardware/BaahStick/" target="_blank">
+              fichiers STL / DXF </a>nécessaires poiur obtenir les pièces suivantes:</p>
+             <img
+                src="../assets/images/doc/BaahStick/build/decoupeJoystick.webp"
+                alt="Découpes bois pour le joystick connecté"
+                class="lightbox-img" />
+            
+            
+             <img
+                src="../assets/images/doc/BaahStick/build/decoupeJoystick.webp"
+                alt="Vue d'ensemble de la BaahBox"
+                class="lightbox-img" />
 
             <div class="note">
               <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
@@ -151,9 +87,9 @@
           </section>
 
           <section id="electronique" class="doc-section card">
-            <h2>Préparation des cartes électroniques</h2>
+            <h2>Préparation des éléments électroniques et des connections</h2>
 
-            <h3>Étape 1 : Soudure des broches</h3>
+            <h3>Étape 1 : Soudure des broches de la Feather</h3>
             <p>Commencez par souder les broches sur les différentes cartes pour pouvoir les empiler.</p>
 
             <div class="warning">
@@ -164,17 +100,17 @@
               </p>
             </div>
 
-            <p>Voici les cartes avec leurs broches avant soudure :</p>
+            <p>Feather M0 avec ses broches avant soudure :</p>
 
             <div class="image-grid">
               <div>
                 <img
-                  src="assets/images/doc/assemblage/M0_headers.webp"
+                  src="../assets/images/doc/BaahBox/build/M0_headers.webp"
                   alt="Feather M0 avec broches"
                   class="lightbox-img"
                   style="
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 450px;
                     height: auto;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -183,31 +119,17 @@
               </div>
               <div>
                 <img
-                  src="assets/images/doc/assemblage/double_proto_shield_M0_headers.webp"
-                  alt="Proto shield avec broches"
-                  class="lightbox-img"
-                  style="
-                    width: 100%;
-                    max-width: 200px;
-                    height: auto;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                  " />
-                <p>Proto shield avec broches</p>
-              </div>
-              <div>
-                <img
-                  src="assets/images/doc/assemblage/ADA_TFT_headers.webp"
+                  src="../assets/images/doc/BaahBox/build/M0_soldered.webp"
                   alt="Écran TFT avec broches"
                   class="lightbox-img"
                   style="
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 450px;
                     height: auto;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-                <p>Écran TFT avec broches</p>
+                <p>Feather M0 avec les broches soudées</p>
               </div>
             </div>
 
@@ -215,66 +137,191 @@
               <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
               <p>
                 <strong>Astuce :</strong> Pour souder les broches bien parallèles, retournez la carte avec les broches
-                en place, et utilisez de la patafix pour éviter qu'elles ne bougent pendant la soudure.
+                en place, et utilisez de la patafix pour éviter qu'elles ne bougent 
+                pendant la soudure (la photo représente sur un autre type de carte).
               </p>
               <img
-                src="assets/images/doc/assemblage/patafix_trick.webp"
+                src="../assets/images/doc/BaahBox/build/patafix_trick.webp"
                 alt="Astuce patafix"
                 class="lightbox-img"
                 style="
                   width: 100%;
-                  max-width: 200px;
+                  max-width: 300px;
                   height: auto;
                   border-radius: 8px;
                   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 " />
             </div>
 
-            <h3>Étape 2 : Empilement des cartes</h3>
-            <p>Une fois les broches soudées, vous pouvez empiler les cartes dans l'ordre suivant (de bas en haut) :</p>
-            <ol>
-              <li>La proto shield (en bas)</li>
-              <li>La Feather M0</li>
-              <li>L'écran TFT (en haut)</li>
-            </ol>
+             <h3>Étape 2 : Préparation du joystick</h3>
+            <p>Ce joystick, de type analogique, comprend deux potentiomètres situés à angle droit, 
+              avec chacun 3 bornes. <br />
+              La borne de gauche est celle de l'alimentation (3.3V ou  <Strong>+</Strong>), <br />
+              celle de droite correspond à la masse (ou <Strong>-</Strong>), et celle du milieu, au signal.
+            <br/>            <br/>
+              Souder les broches <Strong>+</Strong> et <Strong>-</Strong>
+              à des câbles rouge/noir. Puis relier (soudure) les bornes <Strong>+</Strong> ensemble.
+              faire de même pour les <Strong>-</Strong>.
+              
+              <br /> Enfin, souder les broches de signal (milieu) à des câbles de couleurs différentes.
+            .</p>
+            <div class="image-grid">
+              <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/Joystick_soude.webp"
+                  alt="Joystick soudé"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 450px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+      
+              </div>
+ </div>
+              
+               <h3>Étape 3 Soudure des câbles du joystick à la Feather: </h3>
+            <p>Positionner le joystick de façon à voir un potentiomètre de face et l'autre sur le coté droit. <br />
+              Souder les broches <Strong>+</Strong> et <Strong>-</Strong> 
+              du joystick aux broches 3.3V et GND de la Feather.
+<br /><br />
+          
+              Le signal de celui de face (vert) doit etre connecté (soudé) 
+              à la broche A0 de la carte Feather.
+              <br /> L'autre (jaune) devra être connecté à la broche A1 de la carte.
+               
+         </p>
+ <div class="note">
+              <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
+              <p>
+                Notez sur les images ci-dessous, l'utilsation de câbles Dupont (femelles sans la protection plastique) 
+                pour faciliter la soudure des câbles sur les broches de la Feather.
+les soudures sont ensuite assurées et isolées à l'aide de manchons thermoretractables.
+                
+                Autre point, il peut être utile (pas visible sur cet exemple) de raccourcir de 2 mm les broches de la Feather.
+                <br />
+              </p>
+            </div>
+            
+            
+            
+            <div class="image-grid">
+              <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0618bis.webp"
+                  alt="Feather et joystick reliés"
+                  class="lightbox-img"
+                  style="
+                    width: 150%;
+                    max-width: 450px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Feather M0 et joystick soudés</p>
+              </div> 
+              
+              <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0619.webp"
+                  alt="Vue de dessous de la Feather avec les câbles du joysticks soudés"
+                  class="lightbox-img"
+                  style="
+                    width: 150%;
+                    max-width: 450px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Feather M0 et joystick soudés</p>
+              </div> 
+                
+               <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0623.webp"
+                  alt="Broches de la Feather soudées avec manchons thermo-retractables"
+                  class="lightbox-img"
+                  style="
+                    width: 150%;
+                    max-width: 450px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Broches de la Feather soudées avec manchons thermo-retractables</p>
+              </div> 
+              </div>  
+           
+            <h3>Étape 4:  Préparation des connecteurs, prises et batterie </h3>
+            <h5> 1- Préparation de la prise Usb-C </h5>
+             <p>Soudez le câble rouge de la prise usb-c vissable au câble rouge
+            de la prise usb-micro. 
+            <br/>Faire de même avec les câbles noirs.</p>
 
             <div class="image-grid">
               <div>
                 <img
-                  src="assets/images/doc/assemblage/M0_soldered.webp"
+                  src="../assets/images/doc/BaahStick/build/IMG_0627.webp"
                   alt="Feather M0 soudée"
                   class="lightbox-img"
                   style="
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 450px;
                     height: auto;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-                <p>Feather M0 soudée</p>
+        
               </div>
+              <br/>
               <div>
                 <img
-                  src="assets/images/doc/assemblage/double_proto_shield_aside_M0.webp"
+                  src="../assets/images/doc/BaahStick/build/IMG_0626.webp"
                   alt="Vue de côté de l'empilage"
                   class="lightbox-img"
                   style="
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 450px;
                     height: auto;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-                <p>Vue de côté de l'empilage</p>
+              
               </div>
+            </div>
+            <br/><br>
+                        <h5> 2-Dérivation du câble (JST-PH) de la batterie, pour y placer un interrupteur.</h5>
+            <p>
+              <br/>
+              Les cartes Feather de chez Adafruit sont alimentables soit: 
+              <ol>
+            <li>
+              par une batterie LiPo avec un connecteur JST-PH,
+              </li>
+              <li>via usb (micro pour les M0 et nrf52) </li>
+                
+            </ol> 
+          <p>  Si la carte est connectée à une batterie -et- à via sa prise usb, l'alimentation usb recharge la batterie.
+              <br/>
+           Pour pouvoir éteindre la carte et ne pas consommer de batterie, il faut placer un interrupteur en coupure, par exemple sur le cable de masse.
+             <br />
+           
+            
+            Soudez le câble rouge de la prise usb-c vissable au câble rouge
+            de la prise usb-micro. 
+            <br/>Faire de même avec les câbles noirs.</p>
+            
+            <div class="image-grid">
               <div>
                 <img
-                  src="assets/images/doc/assemblage/M0_stacked.webp"
+                  src="../assets/images/doc/BaahStick/build/IMG_0625.webp"
                   alt="Empilage partiel"
                   class="lightbox-img"
                   style="
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 450px;
                     height: auto;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -283,7 +330,7 @@
               </div>
               <div>
                 <img
-                  src="assets/images/doc/assemblage/Full_stack.webp"
+                  src="../assets/images/doc/BaahStick/build/IMG_0623.webp"
                   alt="Empilage complet"
                   class="lightbox-img"
                   style="
