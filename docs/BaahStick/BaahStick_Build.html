@@ -90,13 +90,12 @@
             <h2>Préparation des éléments électroniques et des connections</h2>
 
             <h3>Étape 1 : Soudure des broches de la Feather</h3>
-            <p>Commencez par souder les broches sur les différentes cartes pour pouvoir les empiler.</p>
 
             <div class="warning">
               <img src="../assets/images/icons/warning.png" class="warning-img" style="max-width: 25px" alt="" />
               <p>
-                <strong>Attention :</strong> Faites attention au sens des cartes. Il y a un côté avec moins de broches.
-                Assurez-vous de bien repérer ce côté sur la proto shield.
+                <strong>Attention :</strong> Faites attention au sens de la carte. Il y a un côté avec moins de broches.
+                Assurez-vous de bien les repérer.
               </p>
             </div>
 
@@ -138,7 +137,7 @@
               <p>
                 <strong>Astuce :</strong> Pour souder les broches bien parallèles, retournez la carte avec les broches
                 en place, et utilisez de la patafix pour éviter qu'elles ne bougent 
-                pendant la soudure (la photo représente sur un autre type de carte).
+                pendant la soudure (la photo le montre sur un autre type de carte).
               </p>
               <img
                 src="../assets/images/doc/BaahBox/build/patafix_trick.webp"
@@ -196,9 +195,9 @@
  <div class="note">
               <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
               <p>
-                Notez sur les images ci-dessous, l'utilsation de câbles Dupont (femelles sans la protection plastique) 
+                Notez sur les images ci-dessous, l'utilisation de câbles Dupont (femelles sans la protection plastique) 
                 pour faciliter la soudure des câbles sur les broches de la Feather.
-les soudures sont ensuite assurées et isolées à l'aide de manchons thermoretractables.
+les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-rétractables.
                 
                 Autre point, il peut être utile (pas visible sur cet exemple) de raccourcir de 2 mm les broches de la Feather.
                 <br />
@@ -255,8 +254,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermoretr
               </div>  
            
             <h3>Étape 4:  Préparation des connecteurs, prises et batterie </h3>
-            <h5> 1- Préparation de la prise Usb-C </h5>
-             <p>Soudez le câble rouge de la prise usb-c vissable au câble rouge
+            <h5> 1- Préparation de la prise USB-C </h5>
+             <p>Soudez le câble rouge de la prise USB-C vissable au câble rouge
             de la prise usb-micro. 
             <br/>Faire de même avec les câbles noirs.</p>
 
@@ -288,36 +287,48 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermoretr
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-              
+              <br/><p>On obtient un convertisseur USB-C vers USB micro <br/> 
+                (ceci n'est nécessaire que pour les cartes FEATHER M0 et nrf52. 
+                Si vous utilisez une autre carte (y compris FEATHER BLE mais plus récente, elle aura une prise USB-C native. il faudra donc souder une prise USB-C mâle sur le prise USB-C vissable pour faire une rallonge.</p>
               </div>
             </div>
             <br/><br>
-                        <h5> 2-Dérivation du câble (JST-PH) de la batterie, pour y placer un interrupteur.</h5>
-            <p>
-              <br/>
-              Les cartes Feather de chez Adafruit sont alimentables soit: 
-              <ol>
-            <li>
-              par une batterie LiPo avec un connecteur JST-PH,
-              </li>
-              <li>via usb (micro pour les M0 et nrf52) </li>
-                
-            </ol> 
-          <p>  Si la carte est connectée à une batterie -et- à via sa prise usb, l'alimentation usb recharge la batterie.
-              <br/>
-           Pour pouvoir éteindre la carte et ne pas consommer de batterie, il faut placer un interrupteur en coupure, par exemple sur le cable de masse.
-             <br />
+<h5> 2- Dérivation du câble (JST-PH) de la batterie, pour y placer un interrupteur.</h5>
            
+         <div class="note">
+              <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
+             <p>
+                    
+              Les cartes Feather de chez Adafruit sont alimentables soit
+              par une batterie LiPo avec un connecteur JST-PH, soit
+             via usb (micro pour les M0 et nrf52), soit les deux.
+              <br/>
+          Si la carte est connectée à une batterie -et- à via sa prise usb, l'alimentation usb recharge la batterie.
+              <br/>
+           Pour pouvoir éteindre la carte et ne pas consommer de batterie,
+            il faut placer un interrupteur en coupure.
+                <br />
+             </p>
+            </div>  
+             <br /> <br/>
+          
+            <ul>
+            <li>Souder un des câbles de la prise jst-ph mâle 
+              (sur la photo, le câble rouge) sur une des broches de l'interrupteur.  </li>
+            <li>Puis souder sur l'autre broche de l'interrupteur, le câble de même couleur, de la prise jst-ph femelle.  </li>
+            <li>Souder ensuite les câbles noirs des deux prises ensemble.  </li>
+             </ul>
+            Ensuite, il suffit de connecter la batterie sur ce montage pour avoir une alimentation de Feather, avec un interrupteur.
+            Ce montage permet aussi de facilement monter le tout dans le boitier, et de changer la batterie si besoin.
+            <br/>
+
             
-            Soudez le câble rouge de la prise usb-c vissable au câble rouge
-            de la prise usb-micro. 
-            <br/>Faire de même avec les câbles noirs.</p>
-            
-            <div class="image-grid">
+         
+        <div class="image-grid">
               <div>
                 <img
-                  src="../assets/images/doc/BaahStick/build/IMG_0625.webp"
-                  alt="Empilage partiel"
+                  src="../assets/images/doc/BaahStick/build/DerivationBatterieInter.webp"
+                  alt=""
                   class="lightbox-img"
                   style="
                     width: 100%;
@@ -326,92 +337,56 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermoretr
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-                <p>Empilage partiel</p>
+                <p></p>
               </div>
               <div>
                 <img
-                  src="../assets/images/doc/BaahStick/build/IMG_0623.webp"
+                  src="../assets/images/doc/BaahStick/build/IMG_0624.webp"
                   alt="Empilage complet"
                   class="lightbox-img"
                   style="
                     width: 100%;
-                    max-width: 200px;
+                    max-width: 450px;
                     height: auto;
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-                <p>
-                  Empilage complet<br />De bas en haut: la proto shield, puis la Feather M0, la SD shield, et la TFT.
-                </p>
+                
               </div>
             </div>
           </section>
 
-          <section id="connectique" class="doc-section card">
-            <h2>Installation de la connectique</h2>
-
-            <p>Nous allons maintenant connecter les prises jack stéréo et le connecteur DB9 à la proto shield.</p>
-
-            <h3>Connexion du DB9</h3>
-            <p>Le connecteur DB9 permet de brancher un joystick ou d'autres périphériques à plusieurs entrées.</p>
-
-            <p>Pour le câblage du DB9, vous aurez besoin de :</p>
-            <ul>
-              <li>
-                4 fils de couleurs différentes pour deux caneaux analogiques (par exemple : les axes vertical et
-                horizontal d'un joystick)
-              </li>
-              <li>1 fil noir pour la masse (GND)</li>
-              <li>4 fils pour 4 contacteurs (par exemple : bouton d'un joystick)</li>
-            </ul>
-
-            <img
-              src="assets/images/doc/assemblage/DB9_colors.webp"
-              alt="Câblage du DB9"
-              class="lightbox-img"
-              style="
-                width: 100%;
-                max-width: 300px;
-                height: auto;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-              " />
-
-            <p>Suivez le schéma de câblage ci-dessous pour connecter le DB9 à la proto shield :</p>
-            <img
-              src="assets/images/doc/assemblage/DB9-Joystick.webp"
-              alt="Schéma de câblage du DB9"
-              class="lightbox-img"
-              style="
-                width: 100%;
-                max-width: 300px;
-                height: auto;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-              " />
-          </section>
 
           <section id="montage" class="doc-section card">
             <h2>Montage final</h2>
 
-            <p>
-              Une fois toutes les connexions effectuées, vous pouvez procéder au montage final dans le boîtier imprimé
-              en 3D.
-            </p>
-
             <ol>
-              <li>Placez les cartes empilées dans la partie inférieure du boîtier</li>
-              <li>Fixez les cartes avec les vis fournies</li>
-              <li>Installez les connecteurs jack et DB9 dans leurs emplacements respectifs</li>
-              <li>Si vous utilisez une batterie, installez-la dans le compartiment prévu à cet effet</li>
-              <li>Fermez le boîtier avec la partie supérieure</li>
-              <li>Vissez les deux parties du boîtier ensemble</li>
+              <li>Vissez le support de feather sur la plaque de bois du fond, avec 4 mis M2.5. </li>
+              <li>Collez le support de batterie sur la plaque du fond.</li>
+              <li>Vissez la plaque du fond sur la coque avec les vis M4 à tête plates.</li>
+              <li>Installez la prise USB-C vissable dans la coque.</li>
             </ol>
 
             <div class="image-grid">
               <div>
                 <img
-                  src="assets/images/doc/assemblage/Full_BOX_Lid.webp"
+                  src="../assets/images/doc/BaahStick/build/IMG_0628.webp"
+                  alt="Boîtier fermé"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: > 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du boîtier fermé</p>
+              </div>
+              <div>
+                <div class="image-grid">
+              <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0651.webp"
                   alt="Boîtier fermé"
                   class="lightbox-img"
                   style="
@@ -425,7 +400,168 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermoretr
               </div>
               <div>
                 <img
-                  src="assets/images/doc/assemblage/DB9_outside_Box.webp"
+                  src="../assets/images/doc/BaahStick/build/IMG_0652.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div> <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0653.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div>
+                   <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0654.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div> 
+              <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0656.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div><div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0661.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div><div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0663.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div><div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0664.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div>
+                  <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0665.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div>
+                  <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0666.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div>
+                  <div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0668.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div><div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/IMG_0670.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div><div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/joyVueDessus.webp"
+                  alt="Vue du connecteur DB9"
+                  class="lightbox-img"
+                  style="
+                    width: 100%;
+                    max-width: 300px;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  " />
+                <p>Vue du connecteur DB9</p>
+              </div><div>
+                <img
+                  src="../assets/images/doc/BaahStick/build/joyVueCote.webp"
                   alt="Vue du connecteur DB9"
                   class="lightbox-img"
                   style="
