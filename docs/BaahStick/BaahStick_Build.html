@@ -40,9 +40,8 @@
           <ul class="doc-nav">
             <li><a href="#introduction">1. Introduction</a></li>
             <li><a href="#impression">2. Impression 3D et découpe</a></li>
-            <li><a href="#electronique">3. Électronique</a></li>
-            <li><a href="#connectique">4. Connectique</a></li>
-            <li><a href="#montage">5. Montage final</a></li>
+            <li><a href="#connectique">3. Connectique</a></li>
+            <li><a href="#montage">4. Montage final</a></li>
           </ul>
         </div>
 
@@ -52,7 +51,8 @@
             <p>
               Ce guide vous explique comment assembler le joystick connecté à partir des composants électroniques, des
               pièces imprimées en 3D et des pièces en contreplaqué de 5mm qui sont listées
-              <a href="../BaahStick/BaahStick_BOM.html">dans la liste du matériel nécessaire (BOM)</a>. <br /><br /><br />
+              <a href="../BaahStick/BaahStick_BOM.html">dans la liste du matériel nécessaire (BOM)</a>.
+              <br /><br /><br />
               <img
                 src="../assets/images/doc/BaahStick/build/joyVueDessus.webp"
                 alt="Vue de dessus du joystick connecté"
@@ -64,32 +64,34 @@
             <h2>Impression du boîtier et découpage des parties en bois</h2>
             <p>La partie bois va servir de support aux composants électroniques et à la coque en 3D.</p>
 
-            <p>Téléchargez les <a href="Hardware/BaahStick/" target="_blank">
-              fichiers STL / DXF </a>nécessaires poiur obtenir les pièces suivantes:</p>
-             <img
-                src="../assets/images/doc/BaahStick/build/decoupeJoystick.webp"
-                alt="Découpes bois pour le joystick connecté"
-                class="lightbox-img" />
-            
-            
-             <img
-                src="../assets/images/doc/BaahStick/build/decoupeJoystick.webp"
-                alt="Vue d'ensemble de la BaahBox"
-                class="lightbox-img" />
+            <p>
+              Téléchargez les <a href="Hardware/BaahStick/" target="_blank"> fichiers STL / DXF </a>nécessaires poiur
+              obtenir les pièces suivantes:
+            </p>
+            <img
+              src="../assets/images/doc/BaahStick/build/decoupeJoystick.webp"
+              alt="Découpes bois pour le joystick connecté"
+              class="lightbox-img" />
+
+            <img
+              src="../assets/images/doc/BaahStick/build/decoupeJoystick.webp"
+              alt="Vue d'ensemble de la BaahBox"
+              class="lightbox-img" />
 
             <div class="note">
               <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
               <p>
-                Assurez-vous d'imprimer et de découper/poncer/vernir toutes les pièces nécessaires avant de commencer l'assemblage.
+                Assurez-vous d'imprimer et de découper/poncer/vernir toutes les pièces nécessaires avant de commencer
+                l'assemblage.
                 <br />
               </p>
             </div>
           </section>
 
-          <section id="electronique" class="doc-section card">
+          <section id="connectique" class="doc-section card">
             <h2>Préparation des éléments électroniques et des connections</h2>
 
-            <h3>Étape 1 : Soudure des broches de la Feather</h3>
+            <h3>Étape 1: Soudure des broches de la Feather</h3>
 
             <div class="warning">
               <img src="../assets/images/icons/warning.png" class="warning-img" style="max-width: 25px" alt="" />
@@ -136,8 +138,8 @@
               <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
               <p>
                 <strong>Astuce :</strong> Pour souder les broches bien parallèles, retournez la carte avec les broches
-                en place, et utilisez de la patafix pour éviter qu'elles ne bougent 
-                pendant la soudure (la photo le montre sur un autre type de carte).
+                en place, et utilisez de la patafix pour éviter qu'elles ne bougent pendant la soudure (la photo le
+                montre sur un autre type de carte).
               </p>
               <img
                 src="../assets/images/doc/BaahBox/build/patafix_trick.webp"
@@ -152,18 +154,19 @@
                 " />
             </div>
 
-             <h3>Étape 2 : Préparation du joystick</h3>
-            <p>Ce joystick, de type analogique, comprend deux potentiomètres situés à angle droit, 
-              avec chacun 3 bornes. <br />
-              La borne de gauche est celle de l'alimentation (3.3V ou  <Strong>+</Strong>), <br />
-              celle de droite correspond à la masse (ou <Strong>-</Strong>), et celle du milieu, au signal.
-            <br/>            <br/>
-              Souder les broches <Strong>+</Strong> et <Strong>-</Strong>
-              à des câbles rouge/noir. Puis relier (soudure) les bornes <Strong>+</Strong> ensemble.
-              faire de même pour les <Strong>-</Strong>.
-              
-              <br /> Enfin, souder les broches de signal (milieu) à des câbles de couleurs différentes.
-            .</p>
+            <h3>Étape 2 : Préparation du joystick</h3>
+            <p>
+              Ce joystick, de type analogique, comprend deux potentiomètres situés à angle droit, avec chacun 3 bornes.
+              <br />
+              La borne de gauche est celle de l'alimentation (3.3V ou <strong>+</strong>), <br />
+              celle de droite correspond à la masse (ou <strong>-</strong>), et celle du milieu, au signal. <br />
+              <br />
+              Souder les broches <strong>+</strong> et <strong>-</strong> à des câbles rouge/noir. Puis relier (soudure)
+              les bornes <strong>+</strong> ensemble. faire de même pour les <strong>-</strong>.
+
+              <br />
+              Enfin, souder les broches de signal (milieu) à des câbles de couleurs différentes. .
+            </p>
             <div class="image-grid">
               <div>
                 <img
@@ -177,35 +180,31 @@
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-      
               </div>
- </div>
-              
-               <h3>Étape 3 Soudure des câbles du joystick à la Feather: </h3>
-            <p>Positionner le joystick de façon à voir un potentiomètre de face et l'autre sur le coté droit. <br />
-              Souder les broches <Strong>+</Strong> et <Strong>-</Strong> 
+            </div>
+
+            <h3>Étape 3 Soudure des câbles du joystick à la Feather:</h3>
+            <p>
+              Positionner le joystick de façon à voir un potentiomètre de face et l'autre sur le coté droit. <br />
+              Souder les broches <strong>+</strong> et <strong>-</strong>
               du joystick aux broches 3.3V et GND de la Feather.
-<br /><br />
-          
-              Le signal de celui de face (vert) doit etre connecté (soudé) 
-              à la broche A0 de la carte Feather.
-              <br /> L'autre (jaune) devra être connecté à la broche A1 de la carte.
-               
-         </p>
- <div class="note">
+              <br /><br />
+
+              Le signal de celui de face (vert) doit etre connecté (soudé) à la broche A0 de la carte Feather.
+              <br />
+              L'autre (jaune) devra être connecté à la broche A1 de la carte.
+            </p>
+            <div class="note">
               <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
               <p>
-                Notez sur les images ci-dessous, l'utilisation de câbles Dupont (femelles sans la protection plastique) 
-                pour faciliter la soudure des câbles sur les broches de la Feather.
-les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-rétractables.
-                
-                Autre point, il peut être utile (pas visible sur cet exemple) de raccourcir de 2 mm les broches de la Feather.
+                Notez sur les images ci-dessous, l'utilisation de câbles Dupont (femelles sans la protection plastique)
+                pour faciliter la soudure des câbles sur les broches de la Feather. les soudures sont ensuite assurées
+                et isolées à l'aide de manchons thermo-rétractables. Autre point, il peut être utile (pas visible sur
+                cet exemple) de raccourcir de 2 mm les broches de la Feather.
                 <br />
               </p>
             </div>
-            
-            
-            
+
             <div class="image-grid">
               <div>
                 <img
@@ -220,8 +219,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Feather M0 et joystick soudés</p>
-              </div> 
-              
+              </div>
+
               <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0619.webp"
@@ -235,9 +234,9 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Feather M0 et joystick soudés</p>
-              </div> 
-                
-               <div>
+              </div>
+
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0623.webp"
                   alt="Broches de la Feather soudées avec manchons thermo-retractables"
@@ -250,14 +249,15 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Broches de la Feather soudées avec manchons thermo-retractables</p>
-              </div> 
-              </div>  
-           
-            <h3>Étape 4:  Préparation des connecteurs, prises et batterie </h3>
-            <h5> 1- Préparation de la prise USB-C </h5>
-             <p>Soudez le câble rouge de la prise USB-C vissable au câble rouge
-            de la prise usb-micro. 
-            <br/>Faire de même avec les câbles noirs.</p>
+              </div>
+            </div>
+
+            <h3>Étape 4: Préparation des connecteurs, prises et batterie</h3>
+            <h5>1- Préparation de la prise USB-C</h5>
+            <p>
+              Soudez le câble rouge de la prise USB-C vissable au câble rouge de la prise usb-micro. <br />Faire de même
+              avec les câbles noirs.
+            </p>
 
             <div class="image-grid">
               <div>
@@ -272,9 +272,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-        
               </div>
-              <br/>
+              <br />
               <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0626.webp"
@@ -287,44 +286,51 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-              <br/><p>On obtient un convertisseur USB-C vers USB micro <br/> 
-                (ceci n'est nécessaire que pour les cartes FEATHER M0 et nrf52. 
-                Si vous utilisez une autre carte (y compris FEATHER BLE mais plus récente, elle aura une prise USB-C native. il faudra donc souder une prise USB-C mâle sur le prise USB-C vissable pour faire une rallonge.</p>
+                <br />
+                <p>
+                  On obtient un convertisseur USB-C vers USB micro <br />
+                  (ceci n'est nécessaire que pour les cartes FEATHER M0 et nrf52. Si vous utilisez une autre carte (y
+                  compris FEATHER BLE mais plus récente, elle aura une prise USB-C native. il faudra donc souder une
+                  prise USB-C mâle sur le prise USB-C vissable pour faire une rallonge.
+                </p>
               </div>
             </div>
-            <br/><br>
-<h5> 2- Dérivation du câble (JST-PH) de la batterie, pour y placer un interrupteur.</h5>
-           
-         <div class="note">
-              <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
-             <p>
-                    
-              Les cartes Feather de chez Adafruit sont alimentables soit
-              par une batterie LiPo avec un connecteur JST-PH, soit
-             via usb (micro pour les M0 et nrf52), soit les deux.
-              <br/>
-          Si la carte est connectée à une batterie -et- à via sa prise usb, l'alimentation usb recharge la batterie.
-              <br/>
-           Pour pouvoir éteindre la carte et ne pas consommer de batterie,
-            il faut placer un interrupteur en coupure.
-                <br />
-             </p>
-            </div>  
-             <br /> <br/>
-          
-            <ul>
-            <li>Souder un des câbles de la prise jst-ph mâle 
-              (sur la photo, le câble rouge) sur une des broches de l'interrupteur.  </li>
-            <li>Puis souder sur l'autre broche de l'interrupteur, le câble de même couleur, de la prise jst-ph femelle.  </li>
-            <li>Souder ensuite les câbles noirs des deux prises ensemble.  </li>
-             </ul>
-            Ensuite, il suffit de connecter la batterie sur ce montage pour avoir une alimentation de Feather, avec un interrupteur.
-            Ce montage permet aussi de facilement monter le tout dans le boitier, et de changer la batterie si besoin.
-            <br/>
+            <br /><br />
+            <h5>2- Dérivation du câble (JST-PH) de la batterie, pour y placer un interrupteur.</h5>
 
-            
-         
-        <div class="image-grid">
+            <div class="note">
+              <img src="assets/images/icons/note.png" class="note-img" style="max-width: 15px" alt="" />
+              <p>
+                Les cartes Feather de chez Adafruit sont alimentables soit par une batterie LiPo avec un connecteur
+                JST-PH, soit via usb (micro pour les M0 et nrf52), soit les deux.
+                <br />
+                Si la carte est connectée à une batterie -et- à via sa prise usb, l'alimentation usb recharge la
+                batterie.
+                <br />
+                Pour pouvoir éteindre la carte et ne pas consommer de batterie, il faut placer un interrupteur en
+                coupure.
+                <br />
+              </p>
+            </div>
+            <br />
+            <br />
+
+            <ul>
+              <li>
+                Souder un des câbles de la prise jst-ph mâle (sur la photo, le câble rouge) sur une des broches de
+                l'interrupteur.
+              </li>
+              <li>
+                Puis souder sur l'autre broche de l'interrupteur, le câble de même couleur, de la prise jst-ph femelle.
+              </li>
+              <li>Souder ensuite les câbles noirs des deux prises ensemble.</li>
+            </ul>
+            Ensuite, il suffit de connecter la batterie sur ce montage pour avoir une alimentation de Feather, avec un
+            interrupteur. Ce montage permet aussi de facilement monter le tout dans le boitier, et de changer la
+            batterie si besoin.
+            <br />
+
+            <div class="image-grid">
               <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/DerivationBatterieInter.webp"
@@ -351,17 +357,15 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
-                
               </div>
             </div>
           </section>
-
 
           <section id="montage" class="doc-section card">
             <h2>Montage final</h2>
 
             <ol>
-              <li>Vissez le support de feather sur la plaque de bois du fond, avec 4 mis M2.5. </li>
+              <li>Vissez le support de feather sur la plaque de bois du fond, avec 4 mis M2.5.</li>
               <li>Collez le support de batterie sur la plaque du fond.</li>
               <li>Vissez la plaque du fond sur la coque avec les vis M4 à tête plates.</li>
               <li>Installez la prise USB-C vissable dans la coque.</li>
@@ -382,8 +386,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                   " />
                 <p>Vue du boîtier fermé</p>
               </div>
-              <div>
-                <div class="image-grid">
+            </div>
+            <div class="image-grid">
               <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0651.webp"
@@ -411,7 +415,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div> <div>
+              </div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0653.webp"
                   alt="Vue du connecteur DB9"
@@ -425,7 +430,7 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                   " />
                 <p>Vue du connecteur DB9</p>
               </div>
-                   <div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0654.webp"
                   alt="Vue du connecteur DB9"
@@ -438,7 +443,7 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div> 
+              </div>
               <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0656.webp"
@@ -452,7 +457,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div><div>
+              </div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0661.webp"
                   alt="Vue du connecteur DB9"
@@ -465,7 +471,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div><div>
+              </div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0663.webp"
                   alt="Vue du connecteur DB9"
@@ -478,7 +485,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div><div>
+              </div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0664.webp"
                   alt="Vue du connecteur DB9"
@@ -492,7 +500,7 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                   " />
                 <p>Vue du connecteur DB9</p>
               </div>
-                  <div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0665.webp"
                   alt="Vue du connecteur DB9"
@@ -506,7 +514,7 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                   " />
                 <p>Vue du connecteur DB9</p>
               </div>
-                  <div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0666.webp"
                   alt="Vue du connecteur DB9"
@@ -520,7 +528,7 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                   " />
                 <p>Vue du connecteur DB9</p>
               </div>
-                  <div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0668.webp"
                   alt="Vue du connecteur DB9"
@@ -533,7 +541,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div><div>
+              </div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/IMG_0670.webp"
                   alt="Vue du connecteur DB9"
@@ -546,7 +555,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div><div>
+              </div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/joyVueDessus.webp"
                   alt="Vue du connecteur DB9"
@@ -559,7 +569,8 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                   " />
                 <p>Vue du connecteur DB9</p>
-              </div><div>
+              </div>
+              <div>
                 <img
                   src="../assets/images/doc/BaahStick/build/joyVueCote.webp"
                   alt="Vue du connecteur DB9"
@@ -576,14 +587,14 @@ les soudures sont ensuite assurées et isolées à l'aide de manchons thermo-ré
             </div>
 
             <p>
-              Votre Joystick connecté est maintenant assemblé. Vous pouvez passer à l'installation de l'application et à la
-              configuration de l'application.
+              Votre Joystick connecté est maintenant assemblé. Vous pouvez passer à l'installation de l'application et à
+              la configuration de l'application.
             </p>
 
             <p>
               Pour installer l'application et configurer votre joystick, consultez le
-              <a href="../manuel-utilisation.html">manuel d'utilisation de la BaahBox, 
-les écrans sont exactement les mêmes que pour le joystick.</a>.
+              <a href="../manuel-utilisation.html">manuel d'utilisation de la BaahBox</a>, les écrans sont exactement
+              les mêmes que ceux du joystick.
             </p>
           </section>
         </div>
@@ -623,10 +634,7 @@ les écrans sont exactement les mêmes que pour le joystick.</a>.
         </div>
       </div>
     </footer>
-    <div id="lightbox" class="lightbox">
-      <span class="lightbox-close">&times;</span>
-      <img id="lightbox-img" src="" alt="" />
-    </div>
+
     <script src="js/lightbox.js"></script>
     <script src="js/main.js"></script>
   </body>
