@@ -1,4 +1,6 @@
 /* Styles pour la doc */
+.liSpacer {  margin-bottom: 50px;}
+
 .documentation {
   padding: 100px 0 50px;
   min-height: 100vh;
