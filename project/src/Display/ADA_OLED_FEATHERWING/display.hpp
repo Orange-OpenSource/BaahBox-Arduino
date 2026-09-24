@@ -103,6 +103,8 @@ private:
   void displayAnalogInputs(int channel, int type);
   void joystick(void);
   void refreshDisplay(void);
+  void displayBattery(void);
+
   void displayConfig(void);
   void displayConfig2(void);
   void displayLicences(void);
